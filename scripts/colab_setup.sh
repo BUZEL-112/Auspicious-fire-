@@ -31,16 +31,19 @@ if [ -f "scripts/init_db.sql" ]; then
 fi
 
 echo "=== [3/5] Installing MinIO and MinIO Client ==="
+MINIO_URL="https://web.archive.org/web/20260213151321id_/https://dl.min.io/server/minio/release/linux-amd64/minio"
+MC_URL="https://web.archive.org/web/20260115183137id_/https://dl.min.io/client/mc/release/linux-amd64/mc"
+
 if ! command -v minio &>/dev/null; then
     echo "Downloading MinIO server binary..."
-    wget -q https://dl.min.io/server/minio/release/linux-amd64/minio -O /usr/local/bin/minio
+    curl -fsSL "$MINIO_URL" -o /usr/local/bin/minio || wget -q "$MINIO_URL" -O /usr/local/bin/minio
     chmod +x /usr/local/bin/minio
 fi
 
 if ! command -v mc &>/dev/null; then
     echo "Downloading MinIO client binary..."
-    wget -q https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/bin/mc
-    chmod +x /usr/local/bin/mc
+    (curl -fsSL "$MC_URL" -o /usr/local/bin/mc || wget -q "$MC_URL" -O /usr/local/bin/mc) || true
+    chmod +x /usr/local/bin/mc 2>/dev/null || true
 fi
 
 echo "=== [4/5] Installing Apache Kafka (KRaft mode) ==="

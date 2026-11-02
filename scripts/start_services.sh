@@ -55,7 +55,23 @@ if command -v mc &>/dev/null; then
     mc alias set local http://localhost:9000 "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY" --api s3v4 >/dev/null 2>&1 || true
     mc mb --ignore-existing local/raw-images >/dev/null 2>&1 || true
     mc mb --ignore-existing local/crops >/dev/null 2>&1 || true
-    echo "MinIO buckets 'raw-images' and 'crops' verified."
+    echo "MinIO buckets 'raw-images' and 'crops' verified with mc."
+else
+    python3 -c "
+from minio import Minio
+import os
+
+endpoint = os.getenv('MINIO_ENDPOINT', 'localhost:9000')
+access_key = os.getenv('MINIO_ACCESS_KEY', 'minioadmin')
+secret_key = os.getenv('MINIO_SECRET_KEY', 'minioadmin')
+secure = os.getenv('MINIO_SECURE', 'false').lower() == 'true'
+
+client = Minio(endpoint, access_key=access_key, secret_key=secret_key, secure=secure)
+for b in ['raw-images', 'crops']:
+    if not client.bucket_exists(b):
+        client.make_bucket(b)
+" >/dev/null 2>&1 || true
+    echo "MinIO buckets 'raw-images' and 'crops' verified with Python SDK."
 fi
 
 # Initialize Kafka Topics
