@@ -21,3 +21,26 @@ Production-ready asynchronous, two-phase fashion recognition and outfit parsing 
 ```bash
 docker compose up --build
 ```
+
+### Using Google Colab (Docker-Free)
+
+Run these commands inside your Google Colab terminal or notebook cells:
+
+```bash
+# 1. Install packages and set up dependencies
+bash scripts/colab_setup.sh
+
+# 2. Launch background services (PostgreSQL, MinIO, Kafka KRaft, API, Worker)
+bash scripts/start_services.sh
+
+# 3. Verify process and port status
+bash scripts/status_services.sh
+
+# 4. Execute end-to-end pipeline verification test
+python scripts/test_pipeline_e2e.py
+
+# 5. Stop all background services
+bash scripts/stop_services.sh
+```
+
+You can also open and run [`notebooks/colab_quickstart.ipynb`](notebooks/colab_quickstart.ipynb).
