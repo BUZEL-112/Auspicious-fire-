@@ -33,19 +33,25 @@ echo "=== Stopping Application Services ==="
 stop_process_from_pid_file ".pids/worker.pid" "Fashion Worker"
 stop_process_from_pid_file ".pids/api.pid" "FastAPI API"
 
-# Fallback pattern kill for orphan worker/uvicorn processes
-pkill -f "fashion_pipeline.worker.main" 2>/dev/null || true
-pkill -f "fashion_pipeline.api.main:app" 2>/dev/null || true
+# Fallback pattern and port kills for orphan worker/uvicorn processes
+pkill -9 -f "fashion_pipeline.worker.main" 2>/dev/null || true
+pkill -9 -f "fashion_pipeline.api.main:app" 2>/dev/null || true
+pkill -9 -f "uvicorn" 2>/dev/null || true
+fuser -k 8000/tcp 2>/dev/null || true
 
 echo "=== Stopping Infrastructure Services ==="
 stop_process_from_pid_file ".pids/kafka.pid" "Apache Kafka"
 if [ -d "/opt/kafka" ]; then
     /opt/kafka/bin/kafka-server-stop.sh 2>/dev/null || true
 fi
-pkill -f "kafka.Kafka" 2>/dev/null || true
+pkill -9 -f "kafka.Kafka" 2>/dev/null || true
+fuser -k 9092/tcp 2>/dev/null || true
 
 stop_process_from_pid_file ".pids/minio.pid" "MinIO"
-pkill -x "minio" 2>/dev/null || true
+pkill -9 -f "minio server" 2>/dev/null || true
+pkill -9 -x "minio" 2>/dev/null || true
+fuser -k 9000/tcp 2>/dev/null || true
+fuser -k 9001/tcp 2>/dev/null || true
 
 echo "=== Stopping PostgreSQL ==="
 service postgresql stop 2>/dev/null || true
