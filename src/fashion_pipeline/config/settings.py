@@ -32,6 +32,11 @@ class Settings(BaseSettings):
     TAXONOMY_PATH: str = "data/deepfashion_taxonomy.json"
     MIN_MASK_PIXELS: int = 500
     MAX_RETRIES: int = 3
+    YOLO_MODEL_PATH: str = "yolov8n.pt"
+    SAM_CHECKPOINT_PATH: str = "sam_vit_b_01ec64.pth"
+    SAM_MODEL_TYPE: str = "vit_b"
+    ENABLE_PERSON_DETECTION: bool = True
+    ENABLE_LAYER_SPLITTING: bool = True
 
 
 settings = Settings()

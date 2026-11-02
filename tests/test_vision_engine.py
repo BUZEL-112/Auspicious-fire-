@@ -40,6 +40,25 @@ def test_stage2_pipeline_execution(vision_engine):
         assert piece.bbox.width > 0
         assert piece.bbox.height > 0
         assert len(piece.tags) > 0
+        assert piece.person_id is not None
+        assert piece.layer_role is not None
+
+
+def test_detect_person_instances_fallback(vision_engine):
+    img = np.zeros((200, 200, 3), dtype=np.uint8)
+    boxes = vision_engine.detect_person_instances(img)
+    assert len(boxes) >= 1
+    assert boxes[0] == (0, 0, 200, 200)
+
+
+def test_split_upper_body_layers_fallback(vision_engine):
+    crop = np.zeros((100, 100, 3), dtype=np.uint8)
+    mask = np.zeros((100, 100), dtype=np.uint8)
+    mask[20:80, 20:80] = 1
+    sub_instances = vision_engine.split_upper_body_layers(crop, mask)
+    assert len(sub_instances) == 1
+    assert sub_instances[0]["sub_role"] == "single_top"
+    assert np.sum(sub_instances[0]["mask"]) > 0
 
 
 def test_stage2_no_garments_detected_error(vision_engine):

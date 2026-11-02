@@ -24,6 +24,7 @@ dependencies = [
     "torch>=2.2.0",
     "torchvision>=0.17.0",
     "transformers>=4.38.0",
+    "ultralytics>=8.1.0",
     "sse-starlette>=2.0.0",
 ]
 

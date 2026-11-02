@@ -5,6 +5,7 @@ from fashion_pipeline.ml.image_ops import (
     decode_image_bytes,
     encode_image_png,
     isolate_and_crop_mask,
+    make_clip_ready_crop,
     prepare_stage1_tensor,
 )
 from fashion_pipeline.ml.tagger import (
@@ -46,6 +47,21 @@ def test_isolate_and_crop_mask_solid_white():
 
     # Active mask pixels should retain garment pixels
     np.testing.assert_array_equal(cropped[10, 10], [255, 0, 0])
+
+
+def test_make_clip_ready_crop_neutral_canvas():
+    img = np.zeros((100, 100, 3), dtype=np.uint8)
+    img[20:60, 30:70] = [10, 20, 200]
+    mask = np.zeros((100, 100), dtype=np.uint8)
+    mask[20:60, 30:70] = 255
+
+    crop, (x1, y1, x2, y2) = make_clip_ready_crop(img, mask, pad_ratio=0.1)
+    assert crop.shape[0] > 40
+    assert crop.shape[1] > 40
+    # Center pixel should match garment
+    assert crop[crop.shape[0] // 2, crop.shape[1] // 2, 2] == 200
+    # Border pixel should be neutral gray (240, 240, 240)
+    np.testing.assert_array_equal(crop[0, 0], [240, 240, 240])
 
 
 def test_prepare_stage1_tensor_shape():

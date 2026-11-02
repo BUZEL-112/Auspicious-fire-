@@ -44,6 +44,8 @@ class PieceResult(BaseModel):
     bbox: BoundingBox
     tags: Dict[str, FacetedTag]
     crop_url: Optional[str] = None
+    person_id: Optional[str] = None
+    layer_role: Optional[str] = None
 
 
 class JobCreateResponse(BaseModel):

@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 from typing import Dict, List, Optional, Tuple, Any
 import numpy as np
 import torch
@@ -12,6 +13,7 @@ from fashion_pipeline.schemas.job import BoundingBox, FacetedTag, PieceResult
 from fashion_pipeline.ml.image_ops import (
     decode_image_bytes,
     isolate_and_crop_mask,
+    make_clip_ready_crop,
     prepare_stage1_tensor,
     encode_image_png,
 )
@@ -64,6 +66,8 @@ class FashionVisionEngine:
         self.fashion_clip_preprocess: Optional[Any] = None
         self.segformer_model: Optional[Any] = None
         self.segformer_processor: Optional[Any] = None
+        self.yolo_model: Optional[Any] = None
+        self.sam_predictor: Optional[Any] = None
 
     def cold_start_init(self) -> None:
         """Cold-Start Initialization (Runs Once When Worker Boots):
@@ -125,6 +129,35 @@ class FashionVisionEngine:
             if self.use_fp16:
                 self.clip_model.half()
             self.clip_model.eval()
+
+            # Load YOLO Person Detector
+            if settings.ENABLE_PERSON_DETECTION:
+                try:
+                    from ultralytics import YOLO
+                    self.yolo_model = YOLO(settings.YOLO_MODEL_PATH)
+                    logger.info(f"Loaded YOLO person detector from {settings.YOLO_MODEL_PATH}")
+                except Exception as e:
+                    logger.warning(f"Could not load YOLO model ({e}). Falling back to full-image processing.")
+                    self.yolo_model = None
+            else:
+                self.yolo_model = None
+
+            # Load Segment Anything (SAM) Predictor
+            if settings.ENABLE_LAYER_SPLITTING:
+                try:
+                    from segment_anything import sam_model_registry, SamPredictor
+                    if os.path.exists(settings.SAM_CHECKPOINT_PATH):
+                        sam = sam_model_registry[settings.SAM_MODEL_TYPE](checkpoint=settings.SAM_CHECKPOINT_PATH).to(self.device)
+                        self.sam_predictor = SamPredictor(sam)
+                        logger.info(f"Loaded SAM predictor with checkpoint {settings.SAM_CHECKPOINT_PATH}")
+                    else:
+                        logger.info(f"SAM checkpoint {settings.SAM_CHECKPOINT_PATH} not found. Layer splitting will use fallback.")
+                        self.sam_predictor = None
+                except Exception as e:
+                    logger.warning(f"Could not load SAM predictor ({e}). Layer splitting will use fallback.")
+                    self.sam_predictor = None
+            else:
+                self.sam_predictor = None
 
         except Exception as e:
             logger.error(f"Error loading models: {e}. Worker will use fallback embedding synthesizer for test environment.")
@@ -279,61 +312,170 @@ class FashionVisionEngine:
 
         return [piece]
 
+    def detect_person_instances(
+        self,
+        image_rgb: np.ndarray,
+        conf: float = 0.45,
+        min_area_ratio: float = 0.08,
+    ) -> List[Tuple[int, int, int, int]]:
+        """
+        Detects primary people in the image to isolate clothes per person
+        and prevent cross-person clothing mask merging.
+        Returns list of (px1, py1, px2, py2) bounding boxes.
+        Falls back to [(0, 0, W, H)] if no person detected or YOLO unavailable.
+        """
+        H, W = image_rgb.shape[:2]
+        total_area = H * W
+
+        if self.yolo_model is not None:
+            try:
+                results = self.yolo_model(image_rgb, classes=[0], conf=conf, verbose=False)[0]
+                boxes = results.boxes.xyxy.cpu().numpy().astype(int)
+                person_boxes: List[Tuple[int, int, int, int]] = []
+                for px1, py1, px2, py2 in boxes:
+                    px1 = max(0, int(px1))
+                    py1 = max(0, int(py1))
+                    px2 = min(W, int(px2))
+                    py2 = min(H, int(py2))
+                    box_area = (px2 - px1) * (py2 - py1)
+                    if box_area >= min_area_ratio * total_area:
+                        person_boxes.append((px1, py1, px2, py2))
+                if person_boxes:
+                    return person_boxes
+            except Exception as e:
+                logger.warning(f"YOLO person detection error ({e}). Falling back to full image.")
+
+        return [(0, 0, W, H)]
+
+    def split_upper_body_layers(
+        self,
+        person_crop: np.ndarray,
+        entity_mask: np.ndarray,
+    ) -> List[Dict[str, Any]]:
+        """
+        Splits a single person's 'upper-clothes' entity mask into 1 or 2 instance masks
+        (e.g., inner tank top/t-shirt + outer open jacket/cardigan).
+        """
+        ys, xs = np.where(entity_mask > 0)
+        if len(xs) < 200:
+            return []
+
+        total_area = int(np.sum(entity_mask > 0))
+
+        if self.sam_predictor is not None:
+            try:
+                self.sam_predictor.set_image(person_crop)
+                cx, cy = int(np.median(xs)), int(np.median(ys))
+                if entity_mask[cy, cx] == 0:
+                    dists = (xs - cx) ** 2 + (ys - cy) ** 2
+                    idx = int(np.argmin(dists))
+                    cx, cy = int(xs[idx]), int(ys[idx])
+
+                masks, scores, _ = self.sam_predictor.predict(
+                    point_coords=np.array([[cx, cy]]),
+                    point_labels=np.array([1]),
+                    multimask_output=True,
+                )
+                best_idx = int(np.argmax(scores))
+                inner_mask = (masks[best_idx].astype(np.uint8)) & (entity_mask > 0).astype(np.uint8)
+                outer_remainder = (entity_mask > 0).astype(np.uint8) & (~inner_mask)
+
+                kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7))
+                outer_clean = cv2.morphologyEx(outer_remainder, cv2.MORPH_OPEN, kernel)
+
+                inner_area = int(np.sum(inner_mask > 0))
+                outer_area = int(np.sum(outer_clean > 0))
+
+                if outer_area > 0.22 * total_area and inner_area > 0.20 * total_area:
+                    return [
+                        {"sub_role": "inner_top", "mask": (inner_mask * 255).astype(np.uint8)},
+                        {"sub_role": "outer_layer", "mask": (outer_clean * 255).astype(np.uint8)},
+                    ]
+            except Exception as e:
+                logger.warning(f"SAM layer splitting error ({e}). Falling back to single top.")
+
+        return [{"sub_role": "single_top", "mask": (entity_mask > 0).astype(np.uint8) * 255}]
+
     def process_stage2(
         self,
         image_bytes: bytes,
         min_pixel_threshold: Optional[int] = None,
     ) -> Tuple[List[PieceResult], List[Tuple[str, bytes]]]:
         """Stage 2 Execution:
-        Full outfit image -> SegFormer (384x576) -> Filter garments & min pixel threshold ->
-        Isolate garment with solid-white background -> Stack into batch (N, 3, 224, 224) ->
-        Single FashionCLIP forward pass -> Grouped Softmax -> returns piece results and cropped PNG bytes.
+        Full outfit image -> Detect person instances (YOLO) ->
+        Run SegFormer per person crop -> Split upper-body layers (SAM) ->
+        Neutral gray canvas masking (make_clip_ready_crop) -> Stack batch (N, 3, 224, 224) ->
+        Batched FashionCLIP forward pass -> Grouped Softmax -> Returns PieceResults and PNG bytes.
         """
         image_rgb = decode_image_bytes(image_bytes)
         threshold = min_pixel_threshold or settings.MIN_MASK_PIXELS
 
-        pixel_map = self.parse_human_outfit_segformer(image_rgb)
+        person_boxes = self.detect_person_instances(image_rgb)
 
         crops_tensors: List[torch.Tensor] = []
         crop_png_artifacts: List[Tuple[str, bytes]] = []
         meta_pieces: List[Dict[str, Any]] = []
 
         piece_idx = 0
-        # Iterate through target classes
-        for class_id, class_name in GARMENT_CLASS_MAP.items():
-            mask = (pixel_map == class_id).astype(np.uint8) * 255
-            pixel_count = int(cv2.countNonZero(mask))
-
-            if pixel_count < threshold:
+        for person_idx, (px1, py1, px2, py2) in enumerate(person_boxes):
+            person_crop = image_rgb[py1:py2, px1:px2]
+            ph, pw = person_crop.shape[:2]
+            if ph < 20 or pw < 20:
                 continue
 
-            # Isolate garment and whiten background
-            crop_rgb, (x_min, y_min, x_max, y_max) = isolate_and_crop_mask(image_rgb, mask)
-            w = x_max - x_min
-            h = y_max - y_min
+            pred_seg = self.parse_human_outfit_segformer(person_crop)
 
-            piece_id = f"piece_{piece_idx}"
-            crop_tensor = prepare_stage1_tensor(crop_rgb)
-            crops_tensors.append(crop_tensor)
+            for class_id, class_name in GARMENT_CLASS_MAP.items():
+                entity_mask = (pred_seg == class_id).astype(np.uint8)
+                entity_pixels = int(np.sum(entity_mask > 0))
 
-            # Generate PNG bytes for artifact upload
-            crop_png_bytes = encode_image_png(crop_rgb)
-            crop_png_artifacts.append((piece_id, crop_png_bytes))
+                if entity_pixels < threshold:
+                    continue
 
-            meta_pieces.append({
-                "piece_id": piece_id,
-                "class_name": class_name,
-                "pixel_count": pixel_count,
-                "bbox": BoundingBox(
-                    x_min=x_min,
-                    y_min=y_min,
-                    x_max=x_max,
-                    y_max=y_max,
-                    width=w,
-                    height=h,
-                )
-            })
-            piece_idx += 1
+                # Stage 3: Instance splitting per entity
+                if class_name in ("Upper-clothes", "upper-clothes"):
+                    sub_instances = self.split_upper_body_layers(person_crop, entity_mask)
+                else:
+                    sub_instances = [{"sub_role": class_name.lower(), "mask": entity_mask * 255}]
+
+                # Stage 4: Build full-image mask and neutral canvas crop
+                for sub in sub_instances:
+                    inst_mask_local = sub["mask"]
+                    pixel_count = int(np.sum(inst_mask_local > 0))
+                    if pixel_count < min(threshold, 200):
+                        continue
+
+                    crop_rgb, (lx1, ly1, lx2, ly2) = make_clip_ready_crop(person_crop, inst_mask_local)
+                    full_x1 = px1 + lx1
+                    full_y1 = py1 + ly1
+                    full_x2 = px1 + lx2
+                    full_y2 = py1 + ly2
+                    w = full_x2 - full_x1
+                    h = full_y2 - full_y1
+
+                    piece_id = f"piece_{piece_idx}"
+                    crop_tensor = prepare_stage1_tensor(crop_rgb)
+                    crops_tensors.append(crop_tensor)
+
+                    crop_png_bytes = encode_image_png(crop_rgb)
+                    crop_png_artifacts.append((piece_id, crop_png_bytes))
+
+                    meta_pieces.append({
+                        "piece_id": piece_id,
+                        "class_name": class_name,
+                        "layer_role": sub["sub_role"],
+                        "person_id": f"person_{person_idx}",
+                        "pixel_count": pixel_count,
+                        "bbox": BoundingBox(
+                            x_min=full_x1,
+                            y_min=full_y1,
+                            x_max=full_x2,
+                            y_max=full_y2,
+                            width=w,
+                            height=h,
+                        ),
+                    })
+                    piece_idx += 1
 
         if not crops_tensors:
             raise ValueError("NO_GARMENTS_DETECTED")
@@ -363,6 +505,8 @@ class FashionVisionEngine:
                 pixel_count=meta["pixel_count"],
                 bbox=meta["bbox"],
                 tags=tags,
+                person_id=meta["person_id"],
+                layer_role=meta["layer_role"],
             ))
 
         return results, crop_png_artifacts

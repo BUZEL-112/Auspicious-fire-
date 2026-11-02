@@ -74,6 +74,13 @@ fi
 
 echo "=== [5/5] Installing Python Dependencies ==="
 pip install -q -r requirements.txt
+pip install -q git+https://github.com/facebookresearch/segment-anything.git || true
 pip install -q -e .
+
+# Pre-download SAM ViT-B checkpoint
+if [ ! -f "sam_vit_b_01ec64.pth" ]; then
+    echo "Downloading SAM ViT-B checkpoint..."
+    curl -fsSL "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth" -o sam_vit_b_01ec64.pth || true
+fi
 
 echo "=== Setup complete! Next run: bash scripts/start_services.sh ==="
