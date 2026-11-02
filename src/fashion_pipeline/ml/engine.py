@@ -26,12 +26,14 @@ logger = logging.getLogger(__name__)
 # Target classes for Stage 2 outfit parsing:
 # Upper-clothes, Pants, Skirt, Dress, Shoes, Bag, Hat, Scarf
 GARMENT_CLASS_MAP = {
+    1: "Hat",
     4: "Upper-clothes",
     5: "Skirt",
     6: "Pants",
     7: "Dress",
     8: "Shoes",
-    9: "Shoes",  # Left/Right shoe consolidation
+    9: "Shoes",  # Left-shoe consolidation
+    10: "Shoes",  # Right-shoe consolidation
     14: "Scarf",
     16: "Bag",
     17: "Hat",
@@ -88,14 +90,19 @@ class FashionVisionEngine:
         try:
             from transformers import AutoProcessor, AutoModelForSemanticSegmentation, CLIPModel, CLIPProcessor
 
-            # Try loading SegFormer fashn-human-parser or fall back to standard SegFormer clothing model
-            try:
-                segformer_name = "sayeed99/segformer_b4_clothes"
-                self.segformer_processor = AutoProcessor.from_pretrained(segformer_name)
-                self.segformer_model = AutoModelForSemanticSegmentation.from_pretrained(segformer_name)
-            except Exception as e:
-                logger.warning(f"Could not load remote segformer ({e}). Using mock/fallback SegFormer.")
-                self.segformer_model = None
+            # Try loading SegFormer clothing model (public mattmdjaga model or fallback)
+            for segformer_name in ["mattmdjaga/segformer_b2_clothes", "sayeed99/segformer_b4_clothes"]:
+                try:
+                    self.segformer_processor = AutoProcessor.from_pretrained(segformer_name)
+                    self.segformer_model = AutoModelForSemanticSegmentation.from_pretrained(segformer_name)
+                    logger.info(f"Loaded SegFormer model: {segformer_name}")
+                    break
+                except Exception as e:
+                    logger.warning(f"Could not load segformer {segformer_name} ({e}).")
+                    self.segformer_model = None
+
+            if self.segformer_model is None:
+                logger.warning("No remote SegFormer model could be loaded. Using mock/fallback SegFormer.")
 
             if self.segformer_model is not None:
                 self.segformer_model.to(self.device)
