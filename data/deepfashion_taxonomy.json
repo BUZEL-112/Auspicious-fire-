@@ -1,0 +1,90 @@
+{
+  "category": [
+    "top",
+    "t-shirt",
+    "shirt",
+    "blouse",
+    "sweater",
+    "hoodie",
+    "jacket",
+    "coat",
+    "blazer",
+    "pants",
+    "jeans",
+    "shorts",
+    "skirt",
+    "dress",
+    "shoes",
+    "sneakers",
+    "boots",
+    "sandals",
+    "bag",
+    "hat",
+    "scarf"
+  ],
+  "color": [
+    "black",
+    "white",
+    "grey",
+    "navy",
+    "blue",
+    "red",
+    "green",
+    "yellow",
+    "pink",
+    "purple",
+    "beige",
+    "brown",
+    "orange",
+    "multicolor"
+  ],
+  "fabric": [
+    "cotton",
+    "denim",
+    "leather",
+    "wool",
+    "silk",
+    "linen",
+    "polyester",
+    "chiffon",
+    "knit",
+    "satin",
+    "velvet",
+    "lace"
+  ],
+  "pattern": [
+    "solid",
+    "striped",
+    "plaid",
+    "floral",
+    "polka dot",
+    "graphic",
+    "animal print",
+    "geometric",
+    "camo"
+  ],
+  "neckline": [
+    "crew neck",
+    "v-neck",
+    "collar",
+    "turtleneck",
+    "hooded",
+    "off-shoulder",
+    "square neck",
+    "scoop neck"
+  ],
+  "sleeve": [
+    "sleeveless",
+    "short sleeve",
+    "long sleeve",
+    "three-quarter sleeve",
+    "cap sleeve"
+  ],
+  "fit": [
+    "slim fit",
+    "regular fit",
+    "oversized",
+    "loose fit",
+    "tight fit"
+  ]
+}
