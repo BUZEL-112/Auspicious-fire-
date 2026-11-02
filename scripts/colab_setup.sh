@@ -61,10 +61,15 @@ if [ ! -d "$KAFKA_DIR" ]; then
     tar -xzf /tmp/kafka.tgz -C /opt/
     mv /opt/kafka_2.13-3.7.0 "$KAFKA_DIR"
     rm -f /tmp/kafka.tgz
+fi
 
-    echo "Formatting Kafka KRaft storage..."
-    KAFKA_CLUSTER_ID="$("$KAFKA_DIR/bin/kafka-storage.sh" random-cluster-id)"
-    "$KAFKA_DIR/bin/kafka-storage.sh" format -t "$KAFKA_CLUSTER_ID" -c "$KAFKA_DIR/config/kraft/server.properties"
+# Ensure Kafka KRaft storage is formatted
+if [ -d "$KAFKA_DIR" ]; then
+    if ! "$KAFKA_DIR/bin/kafka-storage.sh" info -c "$KAFKA_DIR/config/kraft/server.properties" &>/dev/null; then
+        echo "Formatting Kafka KRaft storage..."
+        KAFKA_CLUSTER_ID="$("$KAFKA_DIR/bin/kafka-storage.sh" random-uuid)"
+        "$KAFKA_DIR/bin/kafka-storage.sh" format -t "$KAFKA_CLUSTER_ID" -c "$KAFKA_DIR/config/kraft/server.properties" --ignore-formatted
+    fi
 fi
 
 echo "=== [5/5] Installing Python Dependencies ==="
