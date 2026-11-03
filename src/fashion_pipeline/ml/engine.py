@@ -147,9 +147,12 @@ class FashionVisionEngine:
                 try:
                     from segment_anything import sam_model_registry, SamPredictor
                     if os.path.exists(settings.SAM_CHECKPOINT_PATH):
-                        sam = sam_model_registry[settings.SAM_MODEL_TYPE](checkpoint=settings.SAM_CHECKPOINT_PATH).to(self.device)
+                        sam = sam_model_registry[settings.SAM_MODEL_TYPE](checkpoint=settings.SAM_CHECKPOINT_PATH)
+                        if self.use_fp16:
+                            sam.half()
+                        sam.to(self.device)
                         self.sam_predictor = SamPredictor(sam)
-                        logger.info(f"Loaded SAM predictor with checkpoint {settings.SAM_CHECKPOINT_PATH}")
+                        logger.info(f"Loaded SAM predictor with checkpoint {settings.SAM_CHECKPOINT_PATH} (fp16={self.use_fp16})")
                     else:
                         logger.info(f"SAM checkpoint {settings.SAM_CHECKPOINT_PATH} not found. Layer splitting will use fallback.")
                         self.sam_predictor = None
@@ -158,6 +161,12 @@ class FashionVisionEngine:
                     self.sam_predictor = None
             else:
                 self.sam_predictor = None
+
+            # Memory cleanup after model initialization
+            import gc
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
 
         except Exception as e:
             logger.error(f"Error loading models: {e}. Worker will use fallback embedding synthesizer for test environment.")

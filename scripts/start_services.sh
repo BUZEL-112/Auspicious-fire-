@@ -6,6 +6,11 @@ set -euo pipefail
 
 mkdir -p logs .pids /data/minio
 
+# Resource constraints for Google Colab environment to prevent OOM termination
+export GOMAXPROCS="${GOMAXPROCS:-2}"
+export KAFKA_HEAP_OPTS="${KAFKA_HEAP_OPTS:--Xmx256M -Xms128M}"
+export KAFKA_JVM_PERFORMANCE_OPTS="${KAFKA_JVM_PERFORMANCE_OPTS:--server -XX:+UseSerialGC}"
+
 # Export environment defaults
 export DATABASE_URL="${DATABASE_URL:-postgresql+asyncpg://fashion_user:fashion_pass@localhost:5432/fashion_db}"
 export MINIO_ENDPOINT="${MINIO_ENDPOINT:-localhost:9000}"
@@ -26,10 +31,11 @@ else
     # Release any stale processes on port 9000 and 9001
     fuser -k 9000/tcp 2>/dev/null || true
     fuser -k 9001/tcp 2>/dev/null || true
+    pkill -9 -x minio 2>/dev/null || true
     pkill -9 -f "minio server" 2>/dev/null || true
     sleep 1
 
-    nohup minio server /data/minio --address ":9000" --console-address ":9001" > logs/minio.log 2>&1 &
+    nohup minio server /data/minio --address ":9000" --console-address ":9001" > logs/minio.log 2>&1 < /dev/null &
     echo $! > .pids/minio.pid
     echo "MinIO started with PID $(cat .pids/minio.pid)"
 fi
@@ -39,7 +45,12 @@ KAFKA_DIR="/opt/kafka"
 if (echo > /dev/tcp/localhost/9092) >/dev/null 2>&1; then
     echo "Kafka is already running."
 else
-    nohup "$KAFKA_DIR/bin/kafka-server-start.sh" "$KAFKA_DIR/config/kraft/server.properties" > logs/kafka.log 2>&1 &
+    # Release port 9092 if stale process is hanging
+    fuser -k 9092/tcp 2>/dev/null || true
+    pkill -9 -f "kafka.Kafka" 2>/dev/null || true
+    sleep 1
+
+    nohup "$KAFKA_DIR/bin/kafka-server-start.sh" "$KAFKA_DIR/config/kraft/server.properties" > logs/kafka.log 2>&1 < /dev/null &
     echo $! > .pids/kafka.pid
     echo "Kafka started with PID $(cat .pids/kafka.pid)"
 fi
@@ -89,9 +100,9 @@ for b in ['raw-images', 'crops']:
 fi
 
 # Initialize Kafka Topics
-"$KAFKA_DIR/bin/kafka-topics.sh" --create --if-not-exists --bootstrap-server localhost:9092 --topic fashion.jobs.stage1 >/dev/null 2>&1 || true
-"$KAFKA_DIR/bin/kafka-topics.sh" --create --if-not-exists --bootstrap-server localhost:9092 --topic fashion.jobs.stage2 >/dev/null 2>&1 || true
-"$KAFKA_DIR/bin/kafka-topics.sh" --create --if-not-exists --bootstrap-server localhost:9092 --topic fashion.jobs.dlq >/dev/null 2>&1 || true
+KAFKA_HEAP_OPTS="-Xmx128M" "$KAFKA_DIR/bin/kafka-topics.sh" --create --if-not-exists --bootstrap-server localhost:9092 --topic fashion.jobs.stage1 >/dev/null 2>&1 || true
+KAFKA_HEAP_OPTS="-Xmx128M" "$KAFKA_DIR/bin/kafka-topics.sh" --create --if-not-exists --bootstrap-server localhost:9092 --topic fashion.jobs.stage2 >/dev/null 2>&1 || true
+KAFKA_HEAP_OPTS="-Xmx128M" "$KAFKA_DIR/bin/kafka-topics.sh" --create --if-not-exists --bootstrap-server localhost:9092 --topic fashion.jobs.dlq >/dev/null 2>&1 || true
 echo "Kafka topics verified."
 
 echo "=== [4/5] Starting FastAPI Application Gateway ==="
@@ -100,8 +111,9 @@ if curl -fsS http://localhost:8000/healthz >/dev/null 2>&1; then
 else
     fuser -k 8000/tcp 2>/dev/null || true
     pkill -9 -f "uvicorn.*fashion_pipeline" 2>/dev/null || true
+    pkill -9 -f "fashion_pipeline.api" 2>/dev/null || true
     sleep 1
-    nohup uvicorn fashion_pipeline.api.main:app --host 0.0.0.0 --port 8000 > logs/api.log 2>&1 &
+    nohup uvicorn fashion_pipeline.api.main:app --host 0.0.0.0 --port 8000 > logs/api.log 2>&1 < /dev/null &
     echo $! > .pids/api.pid
     echo "FastAPI API started with PID $(cat .pids/api.pid)"
 fi
@@ -110,7 +122,9 @@ echo "=== [5/5] Starting Fashion GPU Worker Daemon ==="
 if pgrep -f "fashion_pipeline.worker.main" > /dev/null 2>&1; then
     echo "Fashion Worker is already running."
 else
-    nohup python -m fashion_pipeline.worker.main > logs/worker.log 2>&1 &
+    pkill -9 -f "fashion_pipeline.worker.main" 2>/dev/null || true
+    sleep 1
+    nohup python -m fashion_pipeline.worker.main > logs/worker.log 2>&1 < /dev/null &
     echo $! > .pids/worker.pid
     echo "Fashion Worker started with PID $(cat .pids/worker.pid)"
 fi
