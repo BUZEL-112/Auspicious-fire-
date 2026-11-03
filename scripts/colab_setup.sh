@@ -52,23 +52,34 @@ if ! command -v java &>/dev/null; then
     apt-get install -y -qq default-jre
 fi
 
+if ! command -v aria2c &>/dev/null; then
+    echo "Installing aria2 for accelerated multi-connection downloads..."
+    apt-get install -y -qq aria2
+fi
+
 KAFKA_DIR="/opt/kafka"
 if [ ! -d "$KAFKA_DIR" ]; then
     echo "Downloading Apache Kafka 3.7.0..."
     mkdir -p /opt
+    rm -f /tmp/kafka.tgz /tmp/kafka.tgz.aria2
 
     # Primary download from Apache Archive (Default)
     KAFKA_URL="https://archive.apache.org/dist/kafka/3.7.0/kafka_2.13-3.7.0.tgz"
-    curl -fsSL "$KAFKA_URL" -o /tmp/kafka.tgz
+    if command -v aria2c &>/dev/null; then
+        echo "Using aria2c for accelerated download (16 connections)..."
+        aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false --summary-interval=5 --dir=/tmp -o kafka.tgz "$KAFKA_URL" || curl -fsSL "$KAFKA_URL" -o /tmp/kafka.tgz
+    else
+        curl -fsSL "$KAFKA_URL" -o /tmp/kafka.tgz
+    fi
     tar -xzf /tmp/kafka.tgz -C /opt/
     mv /opt/kafka_2.13-3.7.0 "$KAFKA_DIR"
-    rm -f /tmp/kafka.tgz
+    rm -f /tmp/kafka.tgz /tmp/kafka.tgz.aria2
 
     # Maven repository fallback option (uncomment below and comment out archive.apache.org above if archive is slow):
     # KAFKA_MAVEN_REPO="https://repo1.maven.org/maven2/org/apache/kafka/kafka_2.13/3.7.0"
     # KAFKA_JAR_URL="${KAFKA_MAVEN_REPO}/kafka_2.13-3.7.0.jar"
     # mkdir -p "$KAFKA_DIR/libs"
-    # curl -fsSL "$KAFKA_JAR_URL" -o "$KAFKA_DIR/libs/kafka_2.13-3.7.0.jar"
+    # aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false --dir="$KAFKA_DIR/libs" -o kafka_2.13-3.7.0.jar "$KAFKA_JAR_URL" || curl -fsSL "$KAFKA_JAR_URL" -o "$KAFKA_DIR/libs/kafka_2.13-3.7.0.jar"
 fi
 
 # Ensure Kafka KRaft storage is formatted
@@ -88,7 +99,12 @@ pip install -q -e .
 # Pre-download SAM ViT-B checkpoint
 if [ ! -f "sam_vit_b_01ec64.pth" ]; then
     echo "Downloading SAM ViT-B checkpoint..."
-    curl -fsSL "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth" -o sam_vit_b_01ec64.pth || true
+    SAM_URL="https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth"
+    if command -v aria2c &>/dev/null; then
+        aria2c -x 16 -s 16 -k 1M --allow-overwrite=true --auto-file-renaming=false -o sam_vit_b_01ec64.pth "$SAM_URL" || curl -fsSL "$SAM_URL" -o sam_vit_b_01ec64.pth || true
+    else
+        curl -fsSL "$SAM_URL" -o sam_vit_b_01ec64.pth || true
+    fi
 fi
 
 echo "=== Setup complete! Next run: bash scripts/start_services.sh ==="
