@@ -23,6 +23,7 @@ export KAFKA_BOOTSTRAP_SERVERS="${KAFKA_BOOTSTRAP_SERVERS:-localhost:9092}"
 
 echo "=== [1/5] Starting PostgreSQL ==="
 service postgresql start
+sudo -u postgres psql -d fashion_db -c "GRANT ALL ON SCHEMA public TO fashion_user; GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO fashion_user; GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO fashion_user; ALTER TABLE jobs OWNER TO fashion_user;" >/dev/null 2>&1 || true
 
 echo "=== [2/5] Starting MinIO Server ==="
 if curl -fsS http://localhost:9000/minio/health/live >/dev/null 2>&1; then

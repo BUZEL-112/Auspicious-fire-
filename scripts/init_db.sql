@@ -36,3 +36,14 @@ CREATE TRIGGER trg_notify_job_update
 AFTER UPDATE ON jobs
 FOR EACH ROW
 EXECUTE FUNCTION notify_job_update();
+
+-- Grant full permissions to fashion_user
+DO $$
+BEGIN
+    IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'fashion_user') THEN
+        ALTER TABLE jobs OWNER TO fashion_user;
+        GRANT ALL PRIVILEGES ON TABLE jobs TO fashion_user;
+        GRANT ALL ON SCHEMA public TO fashion_user;
+    END IF;
+END
+$$;

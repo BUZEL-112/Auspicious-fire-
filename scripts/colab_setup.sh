@@ -23,10 +23,12 @@ sudo -u postgres psql -tc "SELECT 1 FROM pg_database WHERE datname='fashion_db'"
     sudo -u postgres psql -c "CREATE DATABASE fashion_db OWNER fashion_user;"
 
 sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE fashion_db TO fashion_user;"
+sudo -u postgres psql -d fashion_db -c "GRANT ALL ON SCHEMA public TO fashion_user;" 2>/dev/null || true
 
 # Run schema initialization
 if [ -f "scripts/init_db.sql" ]; then
     sudo -u postgres psql -d fashion_db -f scripts/init_db.sql
+    sudo -u postgres psql -d fashion_db -c "ALTER TABLE jobs OWNER TO fashion_user; GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO fashion_user; GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO fashion_user;" 2>/dev/null || true
     echo "PostgreSQL schema and triggers initialized."
 fi
 
