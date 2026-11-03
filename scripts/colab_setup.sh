@@ -56,11 +56,19 @@ KAFKA_DIR="/opt/kafka"
 if [ ! -d "$KAFKA_DIR" ]; then
     echo "Downloading Apache Kafka 3.7.0..."
     mkdir -p /opt
+
+    # Primary download from Apache Archive (Default)
     KAFKA_URL="https://archive.apache.org/dist/kafka/3.7.0/kafka_2.13-3.7.0.tgz"
     curl -fsSL "$KAFKA_URL" -o /tmp/kafka.tgz
     tar -xzf /tmp/kafka.tgz -C /opt/
     mv /opt/kafka_2.13-3.7.0 "$KAFKA_DIR"
     rm -f /tmp/kafka.tgz
+
+    # Maven repository fallback option (uncomment below and comment out archive.apache.org above if archive is slow):
+    # KAFKA_MAVEN_REPO="https://repo1.maven.org/maven2/org/apache/kafka/kafka_2.13/3.7.0"
+    # KAFKA_JAR_URL="${KAFKA_MAVEN_REPO}/kafka_2.13-3.7.0.jar"
+    # mkdir -p "$KAFKA_DIR/libs"
+    # curl -fsSL "$KAFKA_JAR_URL" -o "$KAFKA_DIR/libs/kafka_2.13-3.7.0.jar"
 fi
 
 # Ensure Kafka KRaft storage is formatted
