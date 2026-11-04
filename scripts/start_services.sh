@@ -134,7 +134,7 @@ fi
 
 echo "Waiting for API endpoint readiness..."
 API_READY=false
-for i in {1..20}; do
+for i in {1..60}; do
     if curl -fsS http://localhost:8000/healthz >/dev/null 2>&1; then
         echo "API endpoint is healthy: http://localhost:8000/healthz"
         API_READY=true
