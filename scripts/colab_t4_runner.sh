@@ -9,6 +9,8 @@ SESSION_NAME="${1:-fashion-pipeline-t4}"
 REPO_URL="https://github.com/BUZEL-112/Auspicious-fire-.git"
 BRANCH="feat/colab-local-runner"
 
+export PATH="$HOME/.local/bin:$PATH"
+
 echo "=== [1/4] Ensuring google-colab-cli is installed ==="
 if ! command -v colab &>/dev/null; then
     echo "Installing google-colab-cli..."
