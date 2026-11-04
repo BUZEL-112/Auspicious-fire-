@@ -1,9 +1,10 @@
-"""Interactive Terminal Agent for Fashion Vision Pipeline.
+"""Interactive Terminal Agent for Fashion Vision Pipeline and Wardrobe Recommendations.
 
 Allows the user to speak directly to the agent in the terminal to inspect,
-start, test, and control the pipeline.
+start, test, and control the pipeline and recommendation engine.
 """
 
+import json
 import os
 import subprocess
 import sys
@@ -34,33 +35,47 @@ class FashionTerminalAgent:
             if not user_input:
                 continue
 
-            cmd_lower = user_input.lower()
-            if cmd_lower in ("exit", "quit", "q"):
+            parts = user_input.split()
+            cmd = parts[0].lower()
+            args = parts[1:]
+
+            if cmd in ("exit", "quit", "q"):
                 print("Goodbye.")
                 break
-            elif cmd_lower in ("help", "?"):
+            elif cmd in ("help", "?"):
                 self.handle_help()
-            elif cmd_lower == "status":
+            elif cmd == "status":
                 self.handle_status()
-            elif cmd_lower == "start":
+            elif cmd == "start":
                 self.handle_start()
-            elif cmd_lower == "stop":
+            elif cmd == "stop":
                 self.handle_stop()
-            elif cmd_lower == "test":
+            elif cmd == "test":
                 self.handle_test()
-            elif cmd_lower == "logs":
+            elif cmd in ("test-wardrobe", "test_wardrobe"):
+                self.handle_test_wardrobe()
+            elif cmd == "wardrobe":
+                user_id = args[0] if args else "user_001"
+                self.handle_wardrobe(user_id)
+            elif cmd == "recommend":
+                user_id = args[0] if args else "user_001"
+                self.handle_recommend(user_id)
+            elif cmd == "logs":
                 self.handle_logs()
             else:
                 self.handle_general_query(user_input)
 
     def handle_help(self):
         print("\nAvailable Commands:")
-        print("  status  - Check health of PostgreSQL, MinIO, Kafka, and API")
-        print("  start   - Launch all background services without Docker")
-        print("  stop    - Terminate all running services")
-        print("  test    - Run end-to-end pipeline verification test")
-        print("  logs    - View recent service logs")
-        print("  exit    - Exit the agent terminal\n")
+        print("  status              - Check health of PostgreSQL, MinIO, Kafka, and API")
+        print("  start               - Launch all background services without Docker")
+        print("  stop                - Terminate all running background services")
+        print("  test                - Run Stage 1 and Stage 2 pipeline verification test")
+        print("  test-wardrobe       - Run Phase 2 wardrobe and recommendation test suite")
+        print("  wardrobe [user_id]  - View all stored garments for a user (default: user_001)")
+        print("  recommend [user_id] - Request outfit recommendations interactively")
+        print("  logs                - View recent service log outputs")
+        print("  exit                - Exit the agent terminal\n")
 
     def handle_status(self):
         print("\nChecking pipeline service status...")
@@ -83,8 +98,67 @@ class FashionTerminalAgent:
         subprocess.run(["bash", "scripts/stop_services.sh"])
 
     def handle_test(self):
-        print("\nExecuting end-to-end pipeline verification test...")
+        print("\nExecuting Phase 1 pipeline verification test...")
         subprocess.run([sys.executable, "scripts/test_pipeline_e2e.py"])
+
+    def handle_test_wardrobe(self):
+        print("\nExecuting Phase 2 wardrobe and recommendation test suite...")
+        subprocess.run([sys.executable, "scripts/test_wardrobe_recommendations_e2e.py"])
+
+    def handle_wardrobe(self, user_id: str):
+        print(f"\nFetching wardrobe for user '{user_id}'...")
+        try:
+            resp = httpx.get(f"{self.api_url}/api/v1/users/{user_id}/wardrobe", timeout=5.0)
+            if resp.status_code != 200:
+                print(f"Failed to fetch wardrobe: {resp.status_code} - {resp.text}")
+                return
+            data = resp.json()
+            total = data.get("total_items", 0)
+            items = data.get("items", [])
+            print(f"User {user_id} has {total} registered garments:")
+            for itm in items:
+                print(
+                    f" - [{itm.get('item_id')}] Slot: {itm.get('slot')}, "
+                    f"Category: {itm.get('category')}, Color: {itm.get('color')}, "
+                    f"Fabric: {itm.get('fabric')}, Status: {itm.get('status')}"
+                )
+        except Exception as e:
+            print(f"Error connecting to API gateway: {e}")
+
+    def handle_recommend(self, user_id: str):
+        print(f"\nRequesting outfit recommendations for user '{user_id}'...")
+        print("Select occasion: [casual_daily, work_office, date_night, formal_event, party_social]")
+        occasion = input("Occasion (default: casual_daily): ").strip() or "casual_daily"
+        print("Select weather: [hot, warm, mild, cold, freezing, rainy]")
+        weather = input("Weather (default: mild): ").strip() or "mild"
+        print("Select formality: [ultra_casual, smart_casual, business_casual, semi_formal]")
+        formality = input("Formality (optional): ").strip() or None
+
+        payload = {"occasion": occasion, "weather": weather}
+        if formality:
+            payload["formality"] = formality
+
+        try:
+            resp = httpx.post(
+                f"{self.api_url}/api/v1/users/{user_id}/recommendations?top_k=3",
+                json=payload,
+                timeout=10.0,
+            )
+            if resp.status_code != 200:
+                print(f"Recommendation request failed: {resp.status_code} - {resp.text}")
+                return
+            result = resp.json()
+            outfits = result.get("outfits", [])
+            print(f"\nReceived {len(outfits)} recommended outfits:")
+            for idx, outfit in enumerate(outfits, 1):
+                score = outfit.get("total_score")
+                score_str = f"{score:.2f}" if score is not None else "N/A"
+                print(f"\n--- Outfit {idx} (Score: {score_str} / 100) ---")
+                print(f" Rationale: {outfit.get('rationale')}")
+                for slot, g in outfit.get("items", {}).items():
+                    print(f"  * {slot.upper()}: {g.get('category')} ({g.get('color')}, {g.get('fabric')})")
+        except Exception as e:
+            print(f"Error querying recommendation service: {e}")
 
     def handle_logs(self):
         log_files = ["logs/api.log", "logs/worker.log", "logs/kafka.log", "logs/minio.log"]
@@ -96,7 +170,6 @@ class FashionTerminalAgent:
                     print("".join(lines))
 
     def handle_general_query(self, query: str):
-        # Fallback assistant response
         q_lower = query.lower()
         if "stage 1" in q_lower or "stage1" in q_lower:
             print("\nStage 1 performs single-garment tagging using FashionCLIP embeddings and Grouped Softmax.")
@@ -104,14 +177,17 @@ class FashionTerminalAgent:
         elif "stage 2" in q_lower or "stage2" in q_lower:
             print("\nStage 2 performs SegFormer outfit segmentation, isolates pieces, and extracts multi-garment attributes.")
             print("Use command 'test' to run Stage 2 verification.")
-        elif "colab" in q_lower or "t4" in q_lower:
-            print("\nTo run in Google Colab T4:")
-            print("1. Use google-colab-cli: colab new --gpu T4 -s fashion-test")
-            print("2. Pull origin branch feat/colab-local-runner")
-            print("3. Run: bash scripts/colab_setup.sh && bash scripts/start_services.sh")
+        elif "wardrobe" in q_lower or "recommend" in q_lower:
+            print("\nPhase 2 provides Wardrobe Ingestion and Heuristic Outfit Recommendations.")
+            print("Use command 'wardrobe <user_id>' to inspect garments or 'recommend <user_id>' to generate outfits.")
+        elif "colab" in q_lower:
+            print("\nTo operate on Google Colab:")
+            print("1. Run CPU test: bash scripts/colab_cpu_runner.sh fashion-cpu")
+            print("2. Run GPU test: bash scripts/colab_t4_runner.sh fashion-gpu")
+            print("3. Terminate instance: colab stop -s fashion-cpu")
         else:
             print(f"\nReceived instruction: '{query}'")
-            print("You can run 'test', 'status', 'start', 'stop', or 'logs'.")
+            print("You can run 'test', 'test-wardrobe', 'wardrobe', 'recommend', 'status', 'start', 'stop', or 'logs'.")
 
 
 if __name__ == "__main__":
