@@ -20,20 +20,52 @@ echo "Creating session '$SESSION_NAME' with GPU T4..."
 colab new --gpu T4 -s "$SESSION_NAME"
 
 echo "=== [3/4] Pulling repository on the remote Colab server ==="
-colab exec -s "$SESSION_NAME" "
-if [ ! -d Auspicious-fire- ]; then
-    git clone -b $BRANCH $REPO_URL Auspicious-fire-
-else
-    cd Auspicious-fire- && git fetch origin && git checkout $BRANCH && git pull origin $BRANCH
-fi
+python3 -c "
+import subprocess, sys
+
+script = '''
+import os, subprocess
+
+repo = \"$REPO_URL\"
+branch = \"$BRANCH\"
+target = \"/content/Auspicious-fire-\"
+
+if not os.path.exists(target):
+    subprocess.run([\"git\", \"clone\", \"-b\", branch, repo, target], check=True)
+else:
+    subprocess.run([\"git\", \"fetch\", \"origin\"], cwd=target, check=True)
+    subprocess.run([\"git\", \"checkout\", branch], cwd=target, check=True)
+    subprocess.run([\"git\", \"pull\", \"origin\", branch], cwd=target, check=True)
+'''
+p = subprocess.Popen([\"colab\", \"exec\", \"-s\", \"$SESSION_NAME\"], stdin=subprocess.PIPE, text=True)
+p.communicate(input=script)
+sys.exit(p.returncode)
 "
 
 echo "=== [4/4] Setting up services and running pipeline tests on Colab ==="
-colab exec -s "$SESSION_NAME" "
-cd Auspicious-fire-
-bash scripts/colab_setup.sh
-bash scripts/start_services.sh
-python scripts/test_pipeline_e2e.py
+python3 -c "
+import subprocess, sys
+
+script = '''
+import subprocess, sys
+
+def run(cmd, cwd=\"/content/Auspicious-fire-\"):
+    print(f\"\\n>>> Running: {cmd}\", flush=True)
+    p = subprocess.Popen(cmd, shell=True, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    for line in iter(p.stdout.readline, ''):
+        sys.stdout.write(line)
+        sys.stdout.flush()
+    p.wait()
+    if p.returncode != 0:
+        raise RuntimeError(f\"Failed: {cmd}\")
+
+run(\"bash scripts/colab_setup.sh\")
+run(\"bash scripts/start_services.sh\")
+run(\"python scripts/test_pipeline_e2e.py\")
+'''
+p = subprocess.Popen([\"colab\", \"exec\", \"-s\", \"$SESSION_NAME\", \"--timeout\", \"1800\"], stdin=subprocess.PIPE, text=True)
+p.communicate(input=script)
+sys.exit(p.returncode)
 "
 
 echo "================================================================="
