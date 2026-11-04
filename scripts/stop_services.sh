@@ -50,8 +50,10 @@ fuser -k 9092/tcp 2>/dev/null || true
 stop_process_from_pid_file ".pids/minio.pid" "MinIO"
 pkill -9 -f "minio server" 2>/dev/null || true
 pkill -9 -x "minio" 2>/dev/null || true
-fuser -k 9000/tcp 2>/dev/null || true
-fuser -k 9001/tcp 2>/dev/null || true
+MINIO_PORT="${MINIO_PORT:-9020}"
+MINIO_CONSOLE_PORT="${MINIO_CONSOLE_PORT:-9021}"
+fuser -k "${MINIO_PORT}/tcp" 2>/dev/null || true
+fuser -k "${MINIO_CONSOLE_PORT}/tcp" 2>/dev/null || true
 
 echo "=== Stopping PostgreSQL ==="
 service postgresql stop 2>/dev/null || true

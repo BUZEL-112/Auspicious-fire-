@@ -43,7 +43,8 @@ if (echo > /dev/tcp/localhost/5432) >/dev/null 2>&1; then
 fi
 printf "%-18s | %-28s | %s\n" "PostgreSQL" "$pg_status" "$pg_port"
 
-check_service "MinIO" ".pids/minio.pid" "9000"
+MINIO_PORT="${MINIO_PORT:-9020}"
+check_service "MinIO" ".pids/minio.pid" "$MINIO_PORT"
 check_service "Kafka KRaft" ".pids/kafka.pid" "9092"
 check_service "FastAPI Gateway" ".pids/api.pid" "8000"
 check_service "Fashion Worker" ".pids/worker.pid" "N/A"

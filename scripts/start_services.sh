@@ -13,7 +13,9 @@ export KAFKA_JVM_PERFORMANCE_OPTS="${KAFKA_JVM_PERFORMANCE_OPTS:--server -XX:+Us
 
 # Export environment defaults
 export DATABASE_URL="${DATABASE_URL:-postgresql+asyncpg://fashion_user:fashion_pass@localhost:5432/fashion_db}"
-export MINIO_ENDPOINT="${MINIO_ENDPOINT:-localhost:9000}"
+export MINIO_PORT="${MINIO_PORT:-9020}"
+export MINIO_CONSOLE_PORT="${MINIO_CONSOLE_PORT:-9021}"
+export MINIO_ENDPOINT="${MINIO_ENDPOINT:-localhost:${MINIO_PORT}}"
 export MINIO_ACCESS_KEY="${MINIO_ACCESS_KEY:-minioadmin}"
 export MINIO_SECRET_KEY="${MINIO_SECRET_KEY:-minioadmin}"
 export MINIO_ROOT_USER="${MINIO_ACCESS_KEY}"
@@ -26,17 +28,17 @@ service postgresql start
 sudo -u postgres psql -d fashion_db -c "GRANT ALL ON SCHEMA public TO fashion_user; GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO fashion_user; GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO fashion_user; ALTER TABLE jobs OWNER TO fashion_user;" >/dev/null 2>&1 || true
 
 echo "=== [2/5] Starting MinIO Server ==="
-if curl -fsS http://localhost:9000/minio/health/live >/dev/null 2>&1; then
+if curl -fsS "http://${MINIO_ENDPOINT}/minio/health/live" >/dev/null 2>&1; then
     echo "MinIO is already running and healthy."
 else
-    # Release any stale processes on port 9000 and 9001
-    fuser -k 9000/tcp 2>/dev/null || true
-    fuser -k 9001/tcp 2>/dev/null || true
+    # Release any stale processes on MinIO ports
+    fuser -k "${MINIO_PORT}/tcp" 2>/dev/null || true
+    fuser -k "${MINIO_CONSOLE_PORT}/tcp" 2>/dev/null || true
     pkill -9 -x minio 2>/dev/null || true
     pkill -9 -f "minio server" 2>/dev/null || true
     sleep 1
 
-    nohup minio server /data/minio --address ":9000" --console-address ":9001" > logs/minio.log 2>&1 < /dev/null &
+    nohup minio server /data/minio --address ":${MINIO_PORT}" --console-address ":${MINIO_CONSOLE_PORT}" > logs/minio.log 2>&1 < /dev/null &
     echo $! > .pids/minio.pid
     echo "MinIO started with PID $(cat .pids/minio.pid)"
 fi
@@ -61,7 +63,7 @@ echo "Waiting for PostgreSQL, MinIO, and Kafka to become ready..."
 INFRA_READY=false
 for i in {1..30}; do
     if pg_isready -h localhost -p 5432 -U fashion_user -d fashion_db >/dev/null 2>&1 && \
-       curl -fsS http://localhost:9000/minio/health/live >/dev/null 2>&1 && \
+       curl -fsS "http://${MINIO_ENDPOINT}/minio/health/live" >/dev/null 2>&1 && \
        (echo > /dev/tcp/localhost/9092) >/dev/null 2>&1; then
         echo "PostgreSQL, MinIO, and Kafka are ready."
         INFRA_READY=true
@@ -78,7 +80,7 @@ fi
 
 # Initialize MinIO Buckets
 if command -v mc &>/dev/null; then
-    mc alias set local http://localhost:9000 "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY" --api s3v4 >/dev/null 2>&1 || true
+    mc alias set local "http://${MINIO_ENDPOINT}" "$MINIO_ACCESS_KEY" "$MINIO_SECRET_KEY" --api s3v4 >/dev/null 2>&1 || true
     mc mb --ignore-existing local/raw-images >/dev/null 2>&1 || true
     mc mb --ignore-existing local/crops >/dev/null 2>&1 || true
     echo "MinIO buckets 'raw-images' and 'crops' verified with mc."
@@ -87,7 +89,7 @@ else
 from minio import Minio
 import os
 
-endpoint = os.getenv('MINIO_ENDPOINT', 'localhost:9000')
+endpoint = os.getenv('MINIO_ENDPOINT', 'localhost:9020')
 access_key = os.getenv('MINIO_ACCESS_KEY', 'minioadmin')
 secret_key = os.getenv('MINIO_SECRET_KEY', 'minioadmin')
 secure = os.getenv('MINIO_SECURE', 'false').lower() == 'true'
