@@ -151,11 +151,12 @@ def test_recommendation_scenarios(client: httpx.Client) -> None:
         print(f"Received {len(outfits)} recommended outfits:")
 
         for o_idx, outfit in enumerate(outfits, 1):
-            score = outfit.get("overall_score")
+            score = outfit.get("total_score")
+            score_val = f"{score:.3f}" if score is not None else "N/A"
             items = outfit.get("items", {})
-            explanation = outfit.get("explanation", "")
-            print(f"  [Outfit {o_idx}] Overall Score: {score:.3f}")
-            print(f"   Explanation: {explanation}")
+            rationale = outfit.get("rationale", "")
+            print(f"  [Outfit {o_idx}] Total Score: {score_val}")
+            print(f"   Rationale: {rationale}")
             for slot, g in items.items():
                 print(
                     f"     * {slot.upper()}: {g.get('category')} "
