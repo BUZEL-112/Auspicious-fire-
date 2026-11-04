@@ -27,7 +27,7 @@ def run(cmd: str, cwd: str = "/content") -> None:
 
 def main() -> None:
     repo = "https://github.com/BUZEL-112/Auspicious-fire-.git"
-    branch = "feat/colab-local-runner"
+    branch = os.environ.get("COLAB_BRANCH", "feat/phase2-wardrobe-recommendation")
     target = "/content/Auspicious-fire-"
 
     # 1. Clone or pull repository
@@ -42,13 +42,19 @@ def main() -> None:
     # 3. Start services
     run("bash scripts/start_services.sh", cwd=target)
 
-    # 4. Check status
+    # 4. Check initial service status
     run("bash scripts/status_services.sh", cwd=target)
 
-    # 5. Execute end-to-end pipeline test suite
+    # 5. Execute Stage 1 and Stage 2 pipeline verification
     run("python scripts/test_pipeline_e2e.py", cwd=target)
 
-    print("\n>>> End-to-end pipeline verification completed successfully.", flush=True)
+    # 6. Execute Dummy Wardrobe Ingestion and Outfit Recommendations verification
+    run("python scripts/test_wardrobe_recommendations_e2e.py", cwd=target)
+
+    # 7. Final service inspection
+    run("bash scripts/status_services.sh", cwd=target)
+
+    print("\n>>> All verification steps completed successfully on Google Colab.", flush=True)
 
 
 if __name__ == "__main__":
