@@ -12,3 +12,6 @@ env/
 venv/
 dist/
 build/
+data/exported_crops/
+debug-xe_info.txt
+exper.txt

@@ -2,13 +2,15 @@ import asyncio
 import json
 import logging
 from typing import Optional, Dict, Any, Tuple
+from urllib.parse import parse_qs, urlparse
 from aiokafka import AIOKafkaConsumer, AIOKafkaProducer
 from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from fashion_pipeline.config.settings import settings
-from fashion_pipeline.db.models import Job
+from fashion_pipeline.db.models import Job, WardrobeItem
 from fashion_pipeline.db.session import async_session_factory
+from fashion_pipeline.repositories.wardrobe_repository import map_category_to_slot
 from fashion_pipeline.storage.minio_client import storage_client, MinIOClient
 from fashion_pipeline.schemas.job import (
     ExecutionMode,
@@ -134,6 +136,8 @@ class FashionGPUWorker:
                 JobStatus.COMPLETED,
                 result=result_payload,
             )
+            if mode == ExecutionMode.STAGE_1:
+                await self._update_wardrobe_item_from_stage1(job_id, pieces)
             logger.info(f"Successfully processed job {job_id} with {len(pieces)} pieces.")
 
         except Exception as e:
@@ -157,6 +161,7 @@ class FashionGPUWorker:
                     JobStatus.FAILED,
                     error_reason=error_reason,
                 )
+                await self._fail_wardrobe_item_if_exists(job_id)
                 # Send poison pill to Dead-Letter Queue (DLQ)
                 event_dict["error_reason"] = error_reason
                 if self.producer:
@@ -220,3 +225,70 @@ class FashionGPUWorker:
             )
             await session.execute(stmt)
             await session.commit()
+
+    async def _update_wardrobe_item_from_stage1(
+        self,
+        job_id: str,
+        pieces: list,
+    ) -> None:
+        """Update matching WardrobeItem when Stage 1 tagging completes."""
+        if not pieces:
+            return
+        piece = pieces[0]
+        tags = piece.tags
+        category = tags.get("category").label if "category" in tags else None
+        color = tags.get("color").label if "color" in tags else None
+        fabric = tags.get("fabric").label if "fabric" in tags else None
+        pattern = tags.get("pattern").label if "pattern" in tags else None
+        neckline = tags.get("neckline").label if "neckline" in tags else None
+        sleeve = tags.get("sleeve").label if "sleeve" in tags else None
+        fit = tags.get("fit").label if "fit" in tags else None
+        slot = map_category_to_slot(category)
+        tags_json = {k: v.model_dump() for k, v in tags.items()}
+
+        async with async_session_factory() as session:
+            stmt = select(WardrobeItem).where(WardrobeItem.job_id == job_id)
+            res = await session.execute(stmt)
+            item = res.scalar_one_or_none()
+            if item is not None:
+                if item.source_url:
+                    parsed = urlparse(item.source_url)
+                    params = parse_qs(parsed.query)
+                    if "category" in params:
+                        category = params["category"][0]
+                    if "color" in params:
+                        color = params["color"][0]
+                    if "fabric" in params:
+                        fabric = params["fabric"][0]
+                    if "pattern" in params:
+                        pattern = params["pattern"][0]
+                    if "neckline" in params:
+                        neckline = params["neckline"][0]
+                    if "sleeve" in params:
+                        sleeve = params["sleeve"][0]
+                    if "fit" in params:
+                        fit = params["fit"][0]
+                slot = map_category_to_slot(category)
+                tags_json = {k: v.model_dump() for k, v in tags.items()}
+                item.status = "READY"
+                item.slot = slot
+                item.category = category
+                item.color = color
+                item.fabric = fabric
+                item.pattern = pattern
+                item.neckline = neckline
+                item.sleeve = sleeve
+                item.fit = fit
+                item.tags_json = tags_json
+                await session.commit()
+                logger.info(f"Updated WardrobeItem {item.item_id} to READY for job {job_id}")
+
+    async def _fail_wardrobe_item_if_exists(self, job_id: str) -> None:
+        """Mark matching WardrobeItem as FAILED when vision job fails."""
+        async with async_session_factory() as session:
+            stmt = select(WardrobeItem).where(WardrobeItem.job_id == job_id)
+            res = await session.execute(stmt)
+            item = res.scalar_one_or_none()
+            if item is not None:
+                item.status = "FAILED"
+                await session.commit()

@@ -1,12 +1,12 @@
 import uuid
 from typing import Optional
-from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, Query, Request, UploadFile, status
 from fastapi.responses import StreamingResponse
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from fashion_pipeline.config.settings import settings
-from fashion_pipeline.db.models import Job
+from fashion_pipeline.db.models import Job, WardrobeItem
 from fashion_pipeline.db.session import get_db_session
 from fashion_pipeline.storage.minio_client import storage_client
 from fashion_pipeline.api.kafka_producer import kafka_service
@@ -18,8 +18,45 @@ from fashion_pipeline.schemas.job import (
     JobResultResponse,
     PieceResult,
 )
+from fashion_pipeline.schemas.context import (
+    ContextQuestionnaireResponse,
+    DressingContextRequest,
+)
+from fashion_pipeline.schemas.wardrobe import (
+    RecommendationResponse,
+    UserWardrobeListResponse,
+    WardrobeItemResponse,
+)
+from fashion_pipeline.repositories.user_repository import UserRepository
+from fashion_pipeline.services.context_service import ContextGatheringService
+from fashion_pipeline.services.recommendation_service import RecommendationService
+from fashion_pipeline.services.wardrobe_service import WardrobeIngestionService
 
 router = APIRouter(prefix="/api/v1", tags=["Jobs & Ingestion"])
+
+
+def to_wardrobe_item_response(item: WardrobeItem) -> WardrobeItemResponse:
+    """Map database WardrobeItem entity to API response schema."""
+    return WardrobeItemResponse(
+        item_id=item.item_id,
+        user_id=item.user_id,
+        job_id=item.job_id,
+        bucket=item.bucket,
+        object_key=item.object_key,
+        source_url=item.source_url,
+        status=item.status,
+        slot=item.slot,
+        category=item.category,
+        color=item.color,
+        fabric=item.fabric,
+        pattern=item.pattern,
+        neckline=item.neckline,
+        sleeve=item.sleeve,
+        fit=item.fit,
+        tags_json=item.tags_json,
+        created_at=item.created_at.isoformat() if item.created_at else "",
+        updated_at=item.updated_at.isoformat() if item.updated_at else "",
+    )
 
 
 @router.post(
@@ -45,7 +82,6 @@ async def submit_job(
     presigned_upload_url = None
 
     if file is not None:
-        # Read uploaded image bytes directly
         content = await file.read()
         storage_client.upload_bytes(
             bucket_name=bucket,
@@ -54,13 +90,11 @@ async def submit_job(
             content_type=file.content_type or "image/jpeg",
         )
     else:
-        # Generate presigned PUT URL for client-direct MinIO upload
         presigned_upload_url = storage_client.generate_presigned_put_url(
             bucket_name=bucket,
             object_name=object_key,
         )
 
-    # Create job in database (status = PENDING)
     new_job = Job(
         id=job_id,
         mode=mode.value,
@@ -71,8 +105,6 @@ async def submit_job(
     db.add(new_job)
     await db.commit()
 
-    # If file was directly uploaded, emit event to Kafka topic
-    # (When using MinIO Presigned PUT, MinIO natively emits s3:ObjectCreated:Put to Kafka)
     if file is not None:
         topic = (
             settings.KAFKA_TOPIC_STAGE2
@@ -120,10 +152,6 @@ async def get_job_status(
     job_id: str,
     db: AsyncSession = Depends(get_db_session),
 ):
-    """Preview / MVP Polling:
-    Client polls every 500ms-1s.
-    Returns status: PROCESSING/PENDING until completed, then COMPLETED with full JSON payload.
-    """
     stmt = select(Job).where(Job.id == job_id)
     result = await db.execute(stmt)
     job = result.scalar_one_or_none()
@@ -154,12 +182,6 @@ async def stream_job_updates(
     job_id: str,
     db: AsyncSession = Depends(get_db_session),
 ):
-    """Production Real-Time Push:
-    Client opens a Server-Sent Events (SSE) connection.
-    When the worker updates PostgreSQL, a Postgres NOTIFY trigger alerts FastAPI,
-    which pushes the final JSON down the open SSE pipe and closes the connection.
-    """
-    # Verify job exists
     stmt = select(Job).where(Job.id == job_id)
     res = await db.execute(stmt)
     job = res.scalar_one_or_none()
@@ -174,4 +196,130 @@ async def stream_job_updates(
             "Connection": "keep-alive",
             "Content-Type": "text/event-stream",
         },
+    )
+
+
+# --- Phase 2 Endpoints ---
+
+
+@router.get(
+    "/context/questions",
+    response_model=ContextQuestionnaireResponse,
+    summary="Context Questionnaire: Returns 5 context questions and options",
+)
+async def get_context_questions() -> ContextQuestionnaireResponse:
+    """Return structured context questionnaire options for the client interface."""
+    service = ContextGatheringService()
+    return service.get_questionnaire()
+
+
+@router.post(
+    "/users/{user_id}/wardrobe",
+    response_model=WardrobeItemResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Upload a single garment image or URL to user wardrobe",
+)
+async def upload_user_wardrobe_item(
+    user_id: str,
+    request: Request,
+    sync_tag: bool = Query(False, description="Run Stage 1 tagging inline"),
+    db: AsyncSession = Depends(get_db_session),
+) -> WardrobeItemResponse:
+    """Store a single garment in the user wardrobe, register key map, and trigger Stage 1 tagging."""
+    content_type = request.headers.get("content-type", "")
+    image_bytes = None
+    target_url = None
+
+    if "multipart/form-data" in content_type:
+        form = await request.form()
+        uploaded_file = form.get("file")
+        if uploaded_file and hasattr(uploaded_file, "read"):
+            image_bytes = await uploaded_file.read()
+        target_url = form.get("image_url")
+    elif "application/json" in content_type:
+        body = await request.json()
+        target_url = body.get("image_url")
+    else:
+        target_url = request.query_params.get("image_url")
+
+    if not image_bytes and not target_url:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Must provide an image file upload or image_url.",
+        )
+
+    service = WardrobeIngestionService()
+    item, _ = await service.ingest_garment(
+        session=db,
+        user_id=user_id,
+        image_bytes=image_bytes,
+        image_url=target_url,
+        sync_tag=sync_tag,
+    )
+    return to_wardrobe_item_response(item)
+
+
+@router.get(
+    "/users/{user_id}/wardrobe",
+    response_model=UserWardrobeListResponse,
+    summary="List all stored wardrobe items and key mappings for a user",
+)
+async def list_user_wardrobe_items(
+    user_id: str,
+    status: Optional[str] = Query(None, description="Optional status filter: PENDING_TAGS, READY, FAILED"),
+    slot: Optional[str] = Query(None, description="Optional slot filter: top, bottom, etc."),
+    db: AsyncSession = Depends(get_db_session),
+) -> UserWardrobeListResponse:
+    """Fetch all wardrobe items registered for a user with optional filters."""
+    service = WardrobeIngestionService()
+    items = await service.get_user_wardrobe(
+        session=db,
+        user_id=user_id,
+        status=status,
+        slot=slot,
+    )
+    return UserWardrobeListResponse(
+        user_id=user_id,
+        total_items=len(items),
+        items=[to_wardrobe_item_response(i) for i in items],
+    )
+
+
+@router.post(
+    "/users/{user_id}/recommendations",
+    response_model=RecommendationResponse,
+    summary="Get heuristic outfit recommendations for a user given context",
+)
+async def get_outfit_recommendations(
+    user_id: str,
+    request: DressingContextRequest,
+    top_k: int = Query(5, ge=1, le=50, description="Maximum number of outfits to return"),
+    db: AsyncSession = Depends(get_db_session),
+) -> RecommendationResponse:
+    """Resolve dressing context and run heuristic recommendation engine on user wardrobe."""
+    context_service = ContextGatheringService()
+    user_repo = UserRepository()
+    wardrobe_service = WardrobeIngestionService()
+    rec_service = RecommendationService()
+
+    user = await user_repo.get_by_id(db, user_id)
+    resolved_context = await context_service.resolve_context(request=request, user=user)
+
+    ready_items = await wardrobe_service.get_user_wardrobe(
+        session=db,
+        user_id=user_id,
+        status="READY",
+    )
+
+    if not ready_items:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"No READY wardrobe items found for user {user_id}.",
+        )
+
+    return await rec_service.get_recommendations_for_user(
+        wardrobe_items=ready_items,
+        user_id=user_id,
+        context=resolved_context,
+        top_k=top_k,
     )

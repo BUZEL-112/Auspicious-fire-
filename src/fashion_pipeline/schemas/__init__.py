@@ -9,6 +9,27 @@ from fashion_pipeline.schemas.job import (
     JobResultResponse,
     KafkaJobEvent,
 )
+from fashion_pipeline.schemas.context import (
+    OccasionType,
+    FormalityLevel,
+    WeatherCondition,
+    TimeSetting,
+    StyleMood,
+    QuestionOption,
+    ContextQuestion,
+    ContextQuestionnaireResponse,
+    DressingContextRequest,
+    DressingContext,
+)
+from fashion_pipeline.schemas.wardrobe import (
+    WardrobeItemStatus,
+    GarmentSlot,
+    WardrobeItemCreateRequest,
+    WardrobeItemResponse,
+    UserWardrobeListResponse,
+    OutfitCombination,
+    RecommendationResponse,
+)
 
 __all__ = [
     "ExecutionMode",
@@ -20,4 +41,21 @@ __all__ = [
     "JobCreateResponse",
     "JobResultResponse",
     "KafkaJobEvent",
+    "OccasionType",
+    "FormalityLevel",
+    "WeatherCondition",
+    "TimeSetting",
+    "StyleMood",
+    "QuestionOption",
+    "ContextQuestion",
+    "ContextQuestionnaireResponse",
+    "DressingContextRequest",
+    "DressingContext",
+    "WardrobeItemStatus",
+    "GarmentSlot",
+    "WardrobeItemCreateRequest",
+    "WardrobeItemResponse",
+    "UserWardrobeListResponse",
+    "OutfitCombination",
+    "RecommendationResponse",
 ]

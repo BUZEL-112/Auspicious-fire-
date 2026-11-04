@@ -2,13 +2,19 @@ import pytest
 import io
 from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
+from sqlalchemy.pool import StaticPool
 from fashion_pipeline.api.main import app
 from fashion_pipeline.db.models import Base, Job
 from fashion_pipeline.db.session import get_db_session
 from fashion_pipeline.storage.minio_client import storage_client
 
-# In-memory SQLite async test engine
-test_async_engine = create_async_engine("sqlite+aiosqlite:///:memory:", echo=False)
+# In-memory SQLite async test engine with StaticPool
+test_async_engine = create_async_engine(
+    "sqlite+aiosqlite:///:memory:",
+    connect_args={"check_same_thread": False},
+    poolclass=StaticPool,
+    echo=False,
+)
 test_session_factory = async_sessionmaker(test_async_engine, class_=AsyncSession, expire_on_commit=False)
 
 
@@ -16,17 +22,16 @@ test_session_factory = async_sessionmaker(test_async_engine, class_=AsyncSession
 async def setup_test_db():
     async with test_async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+
+    async def override_get_db_session():
+        async with test_session_factory() as session:
+            yield session
+
+    app.dependency_overrides[get_db_session] = override_get_db_session
     yield
+    app.dependency_overrides.pop(get_db_session, None)
     async with test_async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
-
-
-async def override_get_db_session():
-    async with test_session_factory() as session:
-        yield session
-
-
-app.dependency_overrides[get_db_session] = override_get_db_session
 
 
 def test_healthz_endpoint():
