@@ -7,6 +7,17 @@ set -euo pipefail
 echo "=== [1/5] Creating runtime directories ==="
 mkdir -p logs .pids /data/minio
 
+# Configure 4GB swap file to prevent container eviction from memory spikes
+if [ ! -f /swapfile ] && [ -w / ]; then
+    echo "Enabling 4GB swap space to prevent container eviction..."
+    (fallocate -l 4G /swapfile 2>/dev/null || dd if=/dev/zero of=/swapfile bs=1M count=4096 2>/dev/null) || true
+    if [ -f /swapfile ]; then
+        chmod 600 /swapfile
+        mkswap /swapfile >/dev/null 2>&1 || true
+        swapon /swapfile >/dev/null 2>&1 || true
+    fi
+fi
+
 echo "=== [2/5] Installing and configuring PostgreSQL ==="
 if ! command -v psql &>/dev/null; then
     apt-get update -qq
