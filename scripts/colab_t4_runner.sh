@@ -24,7 +24,7 @@ colab new --gpu T4 -s "$SESSION_NAME"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "=== [3/4] Executing bootstrap and pipeline test suite on T4 GPU ==="
-colab exec -s "$SESSION_NAME" --timeout 1800 -f "$SCRIPT_DIR/t4_bootstrap.py"
+colab exec -s "$SESSION_NAME" --timeout 1800 -f "$SCRIPT_DIR/colab_bootstrap.py"
 
 echo "================================================================="
 echo "Colab T4 testing completed successfully."
