@@ -2,13 +2,32 @@
 
 Allows the user to speak directly to the agent in the terminal to inspect,
 start, test, and control the pipeline and recommendation engine.
+Works with zero third-party dependencies using standard Python libraries.
 """
 
 import json
 import os
 import subprocess
 import sys
-import httpx
+import urllib.error
+import urllib.request
+
+
+def _http_get(url: str, timeout: float = 5.0):
+    req = urllib.request.Request(url, headers={"User-Agent": "FashionAgent/1.0"})
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.status, json.loads(resp.read().decode("utf-8"))
+
+
+def _http_post(url: str, payload: dict, timeout: float = 10.0):
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={"Content-Type": "application/json", "User-Agent": "FashionAgent/1.0"},
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.status, json.loads(resp.read().decode("utf-8"))
 
 
 class FashionTerminalAgent:
@@ -84,8 +103,8 @@ class FashionTerminalAgent:
             subprocess.run(["bash", script_path])
         else:
             try:
-                resp = httpx.get(f"{self.api_url}/healthz", timeout=3.0)
-                print(f"API Healthz: {resp.status_code} - {resp.json()}")
+                status, data = _http_get(f"{self.api_url}/healthz", timeout=3.0)
+                print(f"API Healthz: {status} - {data}")
             except Exception as e:
                 print(f"API not reachable: {e}")
 
@@ -108,11 +127,10 @@ class FashionTerminalAgent:
     def handle_wardrobe(self, user_id: str):
         print(f"\nFetching wardrobe for user '{user_id}'...")
         try:
-            resp = httpx.get(f"{self.api_url}/api/v1/users/{user_id}/wardrobe", timeout=5.0)
-            if resp.status_code != 200:
-                print(f"Failed to fetch wardrobe: {resp.status_code} - {resp.text}")
+            status, data = _http_get(f"{self.api_url}/api/v1/users/{user_id}/wardrobe", timeout=5.0)
+            if status != 200:
+                print(f"Failed to fetch wardrobe: HTTP {status}")
                 return
-            data = resp.json()
             total = data.get("total_items", 0)
             items = data.get("items", [])
             print(f"User {user_id} has {total} registered garments:")
@@ -139,15 +157,14 @@ class FashionTerminalAgent:
             payload["formality"] = formality
 
         try:
-            resp = httpx.post(
+            status, result = _http_post(
                 f"{self.api_url}/api/v1/users/{user_id}/recommendations?top_k=3",
-                json=payload,
+                payload=payload,
                 timeout=10.0,
             )
-            if resp.status_code != 200:
-                print(f"Recommendation request failed: {resp.status_code} - {resp.text}")
+            if status != 200:
+                print(f"Recommendation request failed: HTTP {status}")
                 return
-            result = resp.json()
             outfits = result.get("outfits", [])
             print(f"\nReceived {len(outfits)} recommended outfits:")
             for idx, outfit in enumerate(outfits, 1):
