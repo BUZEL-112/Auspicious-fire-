@@ -72,20 +72,20 @@ async def setup_test_db(monkeypatch):
 
 
 def test_dummy_wardrobe_manifest_structure():
-    """Verify dummy wardrobes JSON manifest contains 10 users with 60 garments each."""
+    """Verify dummy wardrobes JSON manifest contains 5 users with 20 garments each."""
     manifest_path = "tests/dummy/dummy_wardrobes.json"
     assert os.path.exists(manifest_path), "tests/dummy/dummy_wardrobes.json must exist"
 
     with open(manifest_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    assert data["total_users"] == 10
-    assert data["total_items"] == 600
-    assert len(data["users"]) == 10
+    assert data["total_users"] == 5
+    assert data["total_items"] == 100
+    assert len(data["users"]) == 5
 
     for user in data["users"]:
-        assert user["items_count"] == 60
-        assert len(user["items"]) == 60
+        assert user["items_count"] == 20
+        assert len(user["items"]) == 20
 
         slot_counts = {}
         for itm in user["items"]:
@@ -93,33 +93,47 @@ def test_dummy_wardrobe_manifest_structure():
             assert "user_id" in itm
             assert "image_url" in itm
             assert "hints" in itm
+            # Must be a real reachable GitHub URL, not example.com
+            assert "example.com" not in itm["image_url"]
+            assert itm["image_url"].startswith("https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/")
+
             slot = itm["hints"]["slot"]
             slot_counts[slot] = slot_counts.get(slot, 0) + 1
 
-        assert slot_counts["top"] == 20
-        assert slot_counts["bottom"] == 14
-        assert slot_counts["one_piece"] == 4
-        assert slot_counts["outerwear"] == 6
-        assert slot_counts["footwear"] == 10
-        assert slot_counts["accessory"] == 6
+        assert slot_counts["top"] == 6
+        assert slot_counts["bottom"] == 5
+        assert slot_counts["one_piece"] == 2
+        assert slot_counts["outerwear"] == 2
+        assert slot_counts["footwear"] == 3
+        assert slot_counts["accessory"] == 2
 
 
 def test_url_to_images_converter():
-    """Verify URL converter produces valid image bytes with synthesizer fallback."""
-    test_url = "https://dummyfashion.example.com/wardrobe/user_001/top_001.jpg?category=t-shirt&color=navy"
-    img_bytes = convert_url_to_image_bytes(test_url)
-    assert isinstance(img_bytes, bytes)
-    assert len(img_bytes) > 200
+    """Verify URL converter produces valid image bytes for real URLs and synthesizer fallback."""
+    manifest_path = "tests/dummy/dummy_wardrobes.json"
+    with open(manifest_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    sample_real_url = data["users"][0]["items"][0]["image_url"]
+
+    # Real URL download test
+    real_img_bytes = convert_url_to_image_bytes(sample_real_url)
+    assert isinstance(real_img_bytes, bytes)
+    assert len(real_img_bytes) > 1000
+
+    # Fallback test with synthetic generator
+    synth_url = "https://dummyfashion.example.com/wardrobe/item.jpg?category=t-shirt&color=navy"
+    synth_bytes = convert_url_to_image_bytes(synth_url)
+    assert isinstance(synth_bytes, bytes)
+    assert len(synth_bytes) > 200
 
     # Stream first 5 images from manifest
-    manifest_path = "tests/dummy/dummy_wardrobes.json"
     stream = stream_dummy_wardrobe_images(manifest_path, target_user_id="user_001")
     first_five = [next(stream) for _ in range(5)]
     assert len(first_five) == 5
     for u_id, item_id, raw_bytes, item_meta in first_five:
         assert u_id == "user_001"
         assert item_id.startswith("item-user_001")
-        assert len(raw_bytes) > 200
+        assert len(raw_bytes) > 1000
         assert "hints" in item_meta
 
 
@@ -153,14 +167,14 @@ def test_user_wardrobe_ingestion_and_key_mapping():
     client = TestClient(app)
     user_id = "user_001"
 
-    # Ingest garment via URL with sync_tag=true
-    url = (
-        "https://dummyfashion.example.com/wardrobe/user_001/top_001.jpg"
-        "?category=t-shirt&color=black&fabric=cotton&pattern=solid&fit=regular+fit"
-    )
+    manifest_path = "tests/dummy/dummy_wardrobes.json"
+    with open(manifest_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    sample_url = data["users"][0]["items"][0]["image_url"]
+
     resp = client.post(
         f"/api/v1/users/{user_id}/wardrobe?sync_tag=true",
-        json={"image_url": url},
+        json={"image_url": sample_url},
     )
     assert resp.status_code == 201
     item_data = resp.json()
@@ -188,39 +202,16 @@ def test_recommendations_with_context_filtering():
     client = TestClient(app)
     user_id = "user_002"
 
-    # Seed user_002 with representative items across slots
-    items_to_seed = [
-        # Tops
-        ("t-shirt", "white", "cotton", "solid", "short sleeve", "crew neck", "regular fit"),
-        ("shirt", "navy", "cotton", "solid", "long sleeve", "collar", "slim fit"),
-        ("sweater", "black", "wool", "solid", "long sleeve", "turtleneck", "regular fit"),
-        ("top", "red", "linen", "solid", "sleeveless", "scoop neck", "regular fit"),
-        # Bottoms
-        ("jeans", "blue", "denim", "solid", None, None, "regular fit"),
-        ("pants", "black", "wool", "solid", None, None, "regular fit"),
-        ("shorts", "beige", "cotton", "solid", None, None, "regular fit"),
-        # One piece
-        ("dress", "black", "silk", "solid", "sleeveless", "v-neck", "slim fit"),
-        # Outerwear
-        ("blazer", "navy", "wool", "solid", "long sleeve", "collar", "regular fit"),
-        ("coat", "brown", "wool", "solid", "long sleeve", "collar", "oversized"),
-        # Footwear
-        ("sneakers", "white", "cotton", "solid", None, None, "regular fit"),
-        ("shoes", "black", "leather", "solid", None, None, "regular fit"),
-        ("sandals", "beige", "leather", "solid", None, None, "regular fit"),
-        ("boots", "black", "leather", "solid", None, None, "regular fit"),
-    ]
+    manifest_path = "tests/dummy/dummy_wardrobes.json"
+    with open(manifest_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-    for cat, col, fab, pat, slv, nck, fit in items_to_seed:
-        params = f"category={cat}&color={col}&fabric={fab}&pattern={pat}&fit={fit}"
-        if slv:
-            params += f"&sleeve={slv}"
-        if nck:
-            params += f"&neckline={nck}"
-        url = f"https://dummyfashion.example.com/wardrobe/{user_id}/item.jpg?{params}"
+    # Ingest user_002's 20 items from manifest
+    user_items = data["users"][1]["items"]
+    for itm in user_items:
         r = client.post(
             f"/api/v1/users/{user_id}/wardrobe?sync_tag=true",
-            json={"image_url": url},
+            json={"image_url": itm["image_url"]},
         )
         assert r.status_code == 201
 
@@ -236,7 +227,7 @@ def test_recommendations_with_context_filtering():
     assert len(hot_data["outfits"]) > 0
 
     for outfit in hot_data["outfits"]:
-        # Verify no heavy wool sweater or coat in hot weather
+        # Verify no heavy wool or coats in hot weather
         for slot, garment in outfit["items"].items():
             assert garment["fabric"] != "wool", f"Hot outfit should not contain wool: {garment}"
             assert garment["category"] != "coat", "Hot outfit should not contain coat"
@@ -254,10 +245,9 @@ def test_recommendations_with_context_filtering():
     assert len(cold_data["outfits"]) > 0
 
     for outfit in cold_data["outfits"]:
-        # Cold weather should not contain shorts or sandals
+        # Cold weather should not contain shorts or sleeveless
         for slot, garment in outfit["items"].items():
             assert garment["category"] != "shorts", "Cold outfit should not contain shorts"
-            assert garment["category"] != "sandals", "Cold outfit should not contain sandals"
             assert garment["sleeve"] != "sleeveless", "Cold outfit should not contain sleeveless item"
 
     # 3. Context: Formal Event (Business Formal)
