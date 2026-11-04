@@ -47,7 +47,8 @@ def test_questionnaire_endpoint(client: httpx.Client) -> None:
     print(f"Received {len(questions)} context questions.")
     assert len(questions) == 5, f"Expected 5 questions, got {len(questions)}"
     for q in questions:
-        print(f" - Question [{q.get('id')}]: {q.get('text')} ({len(q.get('options', []))} options)")
+        prompt_text = q.get("prompt") or q.get("title") or q.get("text")
+        print(f" - Question [{q.get('id')}]: {prompt_text} ({len(q.get('options', []))} options)")
 
 
 def ingest_dummy_wardrobe(client: httpx.Client) -> List[Dict[str, Any]]:
