@@ -24,6 +24,20 @@ check_service() {
         fi
     fi
 
+    if [ "$pid_status" = "STOPPED" ]; then
+        case "$name" in
+            "MinIO") pid=$(pgrep -f "minio server" | head -n1 || true) ;;
+            "Kafka KRaft") pid=$(pgrep -f "kafka.Kafka" | head -n1 || true) ;;
+            "FastAPI Gateway") pid=$(pgrep -f "uvicorn.*fashion_pipeline" | head -n1 || true) ;;
+            "Fashion Worker") pid=$(pgrep -f "fashion_pipeline.worker.main" | head -n1 || true) ;;
+        esac
+        if [ -n "$pid" ]; then
+            pid_status="RUNNING (PID: $pid)"
+            mkdir -p .pids
+            echo "$pid" > "$pid_file"
+        fi
+    fi
+
     local port_status="PORT $port CLOSED"
     if (echo > "/dev/tcp/localhost/$port") >/dev/null 2>&1; then
         port_status="PORT $port OPEN"

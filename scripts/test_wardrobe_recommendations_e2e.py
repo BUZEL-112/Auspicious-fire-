@@ -122,15 +122,15 @@ def test_recommendation_scenarios(client: httpx.Client) -> None:
             "context": {
                 "occasion": "date_night",
                 "weather": "mild",
-                "formality": "dressy",
+                "formality": "semi_formal",
             },
         },
         {
             "name": "Scenario D: Streetwear Daily (Cool Weather)",
             "context": {
                 "occasion": "casual_daily",
-                "weather": "cool",
-                "style_mood": "edgy_streetwear",
+                "weather": "cold",
+                "style_mood": "bold_expressive",
             },
         },
     ]
