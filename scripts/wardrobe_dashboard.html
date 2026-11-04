@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Vision Pipeline - Wardrobe & Recommendation Dashboard</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+    .header {
+      max-width: 1200px;
+      margin: 0 auto 24px auto;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header h1 { font-size: 24px; font-weight: 700; color: #fff; }
+    .header p { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+    }
+    .sidebar {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      height: fit-content;
+    }
+    .sidebar h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; }
+    .form-group select, .form-group input {
+      width: 100%;
+      padding: 8px 12px;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .btn:hover { background: var(--accent-hover); }
+    .main-content { display: flex; flex-direction: column; gap: 24px; }
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      background: #334155;
+      color: #cbd5e1;
+    }
+    .badge-top { background: #1e3a8a; color: #93c5fd; }
+    .badge-bottom { background: #14532d; color: #86efac; }
+    .badge-one_piece { background: #581c87; color: #d8b4fe; }
+    .badge-outerwear { background: #713f12; color: #fde047; }
+    .badge-footwear { background: #374151; color: #d1d5db; }
+    .badge-accessory { background: #831843; color: #f472b6; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background: #1e293b;
+    }
+    .card-body { padding: 10px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .card-title { font-size: 13px; font-weight: 600; text-transform: capitalize; }
+    .card-meta { font-size: 12px; color: var(--text-muted); }
+    .outfits-list { display: flex; flex-direction: column; gap: 16px; }
+    .outfit-card {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+    }
+    .outfit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .outfit-score { font-size: 18px; font-weight: 700; color: var(--success); }
+    .outfit-rationale { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+    .outfit-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+    .outfit-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 8px;
+      text-align: center;
+    }
+    .outfit-item-slot { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .outfit-item-name { font-size: 12px; font-weight: 600; margin-top: 4px; }
+    .outfit-item-meta { font-size: 11px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Fashion Vision Pipeline - Wardrobe & Recommendation Dashboard</h1>
+    <p>Interactive dashboard for persona wardrobe inspection and heuristic outfit generation.</p>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <h2>Context Settings</h2>
+      <div class="form-group">
+        <label for="userSelect">User Persona</label>
+        <select id="userSelect">
+          <option value="user_001">user_001 (Fashion User 001)</option>
+          <option value="user_002" selected>user_002 (Fashion User 002)</option>
+          <option value="user_003">user_003 (Fashion User 003)</option>
+          <option value="user_004">user_004 (Fashion User 004)</option>
+          <option value="user_005">user_005 (Fashion User 005)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="occasionSelect">Occasion</label>
+        <select id="occasionSelect">
+          <option value="casual_daily">Casual Daily</option>
+          <option value="work_office" selected>Work & Office</option>
+          <option value="date_night">Date Night</option>
+          <option value="formal_event">Formal Event</option>
+          <option value="party_social">Party & Social</option>
+          <option value="outdoor_travel">Outdoor Travel</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="weatherSelect">Weather Condition</label>
+        <select id="weatherSelect">
+          <option value="hot">Hot (Summer)</option>
+          <option value="warm">Warm</option>
+          <option value="mild">Mild (Spring / Fall)</option>
+          <option value="cold" selected>Cold (Winter)</option>
+          <option value="freezing">Freezing</option>
+          <option value="rainy">Rainy</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="formalitySelect">Formality Level</label>
+        <select id="formalitySelect">
+          <option value="ultra_casual">Ultra Casual</option>
+          <option value="smart_casual">Smart Casual</option>
+          <option value="business_casual" selected>Business Casual</option>
+          <option value="semi_formal">Semi-Formal</option>
+          <option value="business_formal">Business Formal</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="moodSelect">Style Mood</label>
+        <select id="moodSelect">
+          <option value="clean_minimalist">Clean Minimalist</option>
+          <option value="bold_expressive">Bold Expressive</option>
+          <option value="relaxed_comfort">Relaxed Comfort</option>
+          <option value="sharp_tailored">Sharp Tailored</option>
+        </select>
+      </div>
+
+      <button id="generateBtn" class="btn">Generate Outfits</button>
+    </div>
+
+    <div class="main-content">
+      <div class="section">
+        <div class="section-title">
+          <span>Recommended Outfits</span>
+          <span id="recCount" class="badge">0 Results</span>
+        </div>
+        <div id="outfitsContainer" class="outfits-list">
+          <p style="color: var(--text-muted); font-size: 13px;">Click "Generate Outfits" to calculate ranked combinations.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span>User Wardrobe Inventory</span>
+          <span id="wardrobeCount" class="badge">Loading...</span>
+        </div>
+        <div id="wardrobeGrid" class="grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = "http://localhost:8000";
+    let manifestData = null;
+
+    async function loadManifest() {
+      try {
+        const resp = await fetch("../tests/dummy/dummy_wardrobes.json");
+        manifestData = await resp.json();
+      } catch (e) {
+        console.warn("Local manifest fetch failed; loading fallback items.");
+      }
+      renderWardrobe();
+    }
+
+    function renderWardrobe() {
+      const userId = document.getElementById("userSelect").value;
+      const grid = document.getElementById("wardrobeGrid");
+      grid.innerHTML = "";
+
+      if (!manifestData || !manifestData.users) {
+        grid.innerHTML = "<p style='color: var(--text-muted)'>Manifest dataset not loaded.</p>";
+        return;
+      }
+
+      const user = manifestData.users.find(u => u.user_id === userId);
+      if (!user) return;
+
+      document.getElementById("wardrobeCount").textContent = `${user.items.length} Items`;
+
+      user.items.forEach(itm => {
+        const card = document.createElement("div");
+        card.className = "card";
+        const slot = itm.hints ? itm.hints.slot : "top";
+        const cat = itm.hints ? itm.hints.category : "item";
+        const color = itm.hints ? itm.hints.color : "";
+        const fabric = itm.hints ? itm.hints.fabric : "";
+
+        card.innerHTML = `
+          <img src="${itm.image_url}" alt="${cat}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'160\\' height=\\'160\\' fill=\\'%231e293b\\'><rect width=\\'160\\' height=\\'160\\' fill=\\'%231e293b\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2394a3b8\\' font-size=\\'12\\' text-anchor=\\'middle\\' dy=\\'.3em\\'>Image</text></svg>'">
+          <div class="card-body">
+            <span class="badge badge-${slot}">${slot}</span>
+            <div class="card-title">${cat}</div>
+            <div class="card-meta">${color} · ${fabric}</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    async function generateOutfits() {
+      const userId = document.getElementById("userSelect").value;
+      const occasion = document.getElementById("occasionSelect").value;
+      const weather = document.getElementById("weatherSelect").value;
+      const formality = document.getElementById("formalitySelect").value;
+      const mood = document.getElementById("moodSelect").value;
+      const container = document.getElementById("outfitsContainer");
+
+      container.innerHTML = "<p style='color: var(--text-muted); font-size: 13px;'>Evaluating context and scoring outfits...</p>";
+
+      const payload = { occasion, weather, formality, style_mood: mood };
+
+      try {
+        const resp = await fetch(`${API_BASE}/api/v1/users/${userId}/recommendations?top_k=3`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (resp.ok) {
+          const data = await resp.json();
+          renderOutfits(data.outfits);
+          return;
+        }
+      } catch (e) {
+        console.warn("API query failed; rendering client fallback evaluation.", e);
+      }
+
+      // Offline heuristic fallback simulation
+      renderSimulatedOutfits(userId, payload);
+    }
+
+    function renderOutfits(outfits) {
+      const container = document.getElementById("outfitsContainer");
+      container.innerHTML = "";
+      document.getElementById("recCount").textContent = `${outfits.length} Outfits`;
+
+      if (!outfits || outfits.length === 0) {
+        container.innerHTML = "<p style='color: var(--text-muted); font-size: 13px;'>No outfits satisfied the context filters.</p>";
+        return;
+      }
+
+      outfits.forEach((outfit, idx) => {
+        const card = document.createElement("div");
+        card.className = "outfit-card";
+        const score = outfit.total_score ? outfit.total_score.toFixed(1) : "N/A";
+
+        let itemsHtml = "";
+        for (const [slot, item] of Object.entries(outfit.items)) {
+          itemsHtml += `
+            <div class="outfit-item">
+              <div class="outfit-item-slot">${slot}</div>
+              <div class="outfit-item-name">${item.category}</div>
+              <div class="outfit-item-meta">${item.color} · ${item.fabric}</div>
+            </div>
+          `;
+        }
+
+        card.innerHTML = `
+          <div class="outfit-header">
+            <strong>Outfit #${idx + 1}</strong>
+            <span class="outfit-score">${score} / 100</span>
+          </div>
+          <div class="outfit-rationale">${outfit.rationale || "Calculated with color harmony and context compliance."}</div>
+          <div class="outfit-items">${itemsHtml}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderSimulatedOutfits(userId, payload) {
+      const simulated = [
+        {
+          total_score: 89.2,
+          rationale: `Simulated outfit evaluated for ${payload.occasion} in ${payload.weather} weather. High color harmony.`,
+          items: {
+            top: { category: "hoodie", color: "green", fabric: "cotton" },
+            bottom: { category: "jeans", color: "navy", fabric: "denim" },
+            footwear: { category: "boots", color: "brown", fabric: "leather" },
+            outerwear: { category: "jacket", color: "navy", fabric: "denim" }
+          }
+        },
+        {
+          total_score: 87.5,
+          rationale: `Alternative combination with complementary neutral base tones for ${payload.formality}.`,
+          items: {
+            top: { category: "shirt", color: "grey", fabric: "cotton" },
+            bottom: { category: "pants", color: "grey", fabric: "wool" },
+            footwear: { category: "boots", color: "brown", fabric: "leather" }
+          }
+        }
+      ];
+      renderOutfits(simulated);
+    }
+
+    document.getElementById("userSelect").addEventListener("change", renderWardrobe);
+    document.getElementById("generateBtn").addEventListener("click", generateOutfits);
+
+    loadManifest();
+  </script>
+</body>
+</html>
