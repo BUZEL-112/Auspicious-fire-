@@ -56,6 +56,10 @@ CLASHING_COLOR_PAIRS: Set[Tuple[str, str]] = {
 class HeuristicRecommendationEngine:
     """Heuristic engine implementing Stage 2 Hard Context Filters and Stage 3 Compatibility Scoring."""
 
+    def _filter_items(self, items: List[WardrobeItem], context: DressingContext) -> List[WardrobeItem]:
+        """Filter items using context-based thermal and formality rules."""
+        return [item for item in items if self.filter_item_for_context(item, context)]
+
     def filter_item_for_context(self, item: WardrobeItem, context: DressingContext) -> bool:
         """Evaluate whether a single garment satisfies hard thermal and formality rules."""
         category = (item.category or "").lower()
@@ -381,6 +385,15 @@ class HeuristicRecommendationEngine:
         # Sort descending by total heuristic score
         outfits.sort(key=lambda x: x.total_score, reverse=True)
         return outfits[:top_k]
+
+    def recommend(
+        self,
+        wardrobe: List[WardrobeItem],
+        context: DressingContext,
+        top_k: int = 25,
+    ) -> List[OutfitCombination]:
+        """Generate ranked outfit recommendations for candidate wardrobe items."""
+        return self.generate_recommendations(wardrobe=wardrobe, context=context, top_k=top_k)
 
 
 class RecommendationService:

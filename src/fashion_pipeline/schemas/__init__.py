@@ -30,6 +30,11 @@ from fashion_pipeline.schemas.wardrobe import (
     OutfitCombination,
     RecommendationResponse,
 )
+from fashion_pipeline.schemas.shopping import (
+    StoreItemResponse,
+    ShoppingRecommendationItem,
+    ShoppingRecommendationResponse,
+)
 
 __all__ = [
     "ExecutionMode",
@@ -58,4 +63,7 @@ __all__ = [
     "UserWardrobeListResponse",
     "OutfitCombination",
     "RecommendationResponse",
+    "StoreItemResponse",
+    "ShoppingRecommendationItem",
+    "ShoppingRecommendationResponse",
 ]

@@ -22,14 +22,14 @@ from tests.dummy.url_to_images import (
 )
 
 # In-memory SQLite async test engine with StaticPool
-test_async_engine = create_async_engine(
+_test_async_engine = create_async_engine(
     "sqlite+aiosqlite:///:memory:",
     connect_args={"check_same_thread": False},
     poolclass=StaticPool,
     echo=False,
 )
-test_session_factory = async_sessionmaker(
-    test_async_engine,
+_test_session_factory = async_sessionmaker(
+    _test_async_engine,
     class_=AsyncSession,
     expire_on_commit=False,
 )
@@ -38,7 +38,7 @@ test_session_factory = async_sessionmaker(
 @pytest.fixture(autouse=True)
 async def setup_test_db(monkeypatch):
     """Set up in-memory SQLite tables and mock MinIO client."""
-    async with test_async_engine.begin() as conn:
+    async with _test_async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
     # Mock MinIO methods
@@ -59,7 +59,7 @@ async def setup_test_db(monkeypatch):
     )
 
     async def override_get_db_session():
-        async with test_session_factory() as session:
+        async with _test_session_factory() as session:
             yield session
 
     app.dependency_overrides[get_db_session] = override_get_db_session
@@ -67,7 +67,7 @@ async def setup_test_db(monkeypatch):
     yield
 
     app.dependency_overrides.pop(get_db_session, None)
-    async with test_async_engine.begin() as conn:
+    async with _test_async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
 
 

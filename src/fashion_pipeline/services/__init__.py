@@ -4,10 +4,12 @@ from fashion_pipeline.services.recommendation_service import (
     HeuristicRecommendationEngine,
     RecommendationService,
 )
+from fashion_pipeline.services.shopping_service import ShoppingService
 
 __all__ = [
     "ContextGatheringService",
     "WardrobeIngestionService",
     "HeuristicRecommendationEngine",
     "RecommendationService",
+    "ShoppingService",
 ]

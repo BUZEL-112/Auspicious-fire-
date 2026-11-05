@@ -30,6 +30,7 @@ class Settings(BaseSettings):
     # ML & Inference
     DEVICE: str = "cuda"  # fallback to 'cpu' if cuda unavailable
     TAXONOMY_PATH: str = "data/deepfashion_taxonomy.json"
+    STORE_CATALOG_PATH: str = "data/store_catalog.json"
     MIN_MASK_PIXELS: int = 500
     MAX_RETRIES: int = 3
     YOLO_MODEL_PATH: str = "yolov8n.pt"

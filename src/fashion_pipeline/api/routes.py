@@ -1,5 +1,5 @@
 import uuid
-from typing import Optional
+from typing import List, Optional
 from fastapi import APIRouter, Depends, File, HTTPException, Query, Request, UploadFile, status
 from fastapi.responses import StreamingResponse
 from sqlalchemy import select
@@ -27,9 +27,14 @@ from fashion_pipeline.schemas.wardrobe import (
     UserWardrobeListResponse,
     WardrobeItemResponse,
 )
+from fashion_pipeline.schemas.shopping import (
+    ShoppingRecommendationResponse,
+    StoreItemResponse,
+)
 from fashion_pipeline.repositories.user_repository import UserRepository
 from fashion_pipeline.services.context_service import ContextGatheringService
 from fashion_pipeline.services.recommendation_service import RecommendationService
+from fashion_pipeline.services.shopping_service import ShoppingService
 from fashion_pipeline.services.wardrobe_service import WardrobeIngestionService
 
 router = APIRouter(prefix="/api/v1", tags=["Jobs & Ingestion"])
@@ -323,3 +328,66 @@ async def get_outfit_recommendations(
         context=resolved_context,
         top_k=top_k,
     )
+
+
+# --- Curated Store and Shopping Endpoints ---
+
+
+@router.get(
+    "/store/items",
+    response_model=List[StoreItemResponse],
+    summary="List curated store items available for purchase",
+)
+async def list_store_items(
+    slot: Optional[str] = Query(None, description="Optional slot filter"),
+) -> List[StoreItemResponse]:
+    """List curated store items with optional slot filter."""
+    service = ShoppingService()
+    return service.list_store_items(slot=slot)
+
+
+@router.post(
+    "/users/{user_id}/shopping/recommendations",
+    response_model=ShoppingRecommendationResponse,
+    summary="Get store purchase recommendations that unlock new outfits",
+)
+async def get_shopping_recommendations(
+    user_id: str,
+    request: DressingContextRequest,
+    top_k: int = Query(5, ge=1, le=50, description="Maximum number of recommendations to return"),
+    db: AsyncSession = Depends(get_db_session),
+) -> ShoppingRecommendationResponse:
+    """Evaluate store items against user wardrobe and rank items by outfit unlocks."""
+    service = ShoppingService()
+    return await service.recommend_purchases(
+        user_id=user_id,
+        context_req=request,
+        top_k=top_k,
+        session=db,
+    )
+
+
+@router.post(
+    "/users/{user_id}/wardrobe/from-store/{sku_id}",
+    response_model=WardrobeItemResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Add a curated store item directly to user wardrobe",
+)
+async def add_store_item_to_wardrobe(
+    user_id: str,
+    sku_id: str,
+    db: AsyncSession = Depends(get_db_session),
+) -> WardrobeItemResponse:
+    """Add a selected store garment directly to user wardrobe with READY status."""
+    service = ShoppingService()
+    try:
+        return await service.add_store_item_to_wardrobe(
+            user_id=user_id,
+            sku_id=sku_id,
+            session=db,
+        )
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=str(exc),
+        )
