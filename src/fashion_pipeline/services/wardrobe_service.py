@@ -23,6 +23,8 @@ logger = logging.getLogger(__name__)
 class WardrobeIngestionService:
     """Service handling garment image ingestion, key mapping, and Stage 1 tagging."""
 
+    _shared_engine: Optional[FashionVisionEngine] = None
+
     def __init__(
         self,
         user_repo: Optional[UserRepository] = None,
@@ -41,9 +43,13 @@ class WardrobeIngestionService:
 
     def _get_engine(self) -> FashionVisionEngine:
         """Lazy load or return existing vision engine for synchronous tagging."""
-        if self._engine is None:
-            self._engine = FashionVisionEngine()
-            self._engine.cold_start_init()
+        if self._engine is not None:
+            return self._engine
+        if WardrobeIngestionService._shared_engine is None:
+            engine = FashionVisionEngine()
+            engine.cold_start_init()
+            WardrobeIngestionService._shared_engine = engine
+        self._engine = WardrobeIngestionService._shared_engine
         return self._engine
 
     async def ingest_garment(
