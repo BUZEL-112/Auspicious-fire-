@@ -7,8 +7,8 @@
     {
       "user_id": "user_001",
       "display_name": "Fashion User 001",
-      "default_city": "New York",
-      "default_style": "smart_casual",
+      "default_city": "Copenhagen",
+      "default_style": "clean_minimalist",
       "items_count": 20,
       "items": [
         {
@@ -29,11 +29,56 @@
         {
           "item_id": "item-user_001-top-002",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/05d01bf9-6ff5-4c5e-b946-b4ca004a125b.jpg?user_id=user_001&item_id=item-user_001-top-002&slot=top&category=shirt&color=grey&fabric=cotton&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/05d01bf9-6ff5-4c5e-b946-b4ca004a125b.jpg?user_id=user_001&item_id=item-user_001-top-002&slot=top&category=shirt&color=white&fabric=cotton&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "shirt",
+            "color": "white",
+            "fabric": "cotton",
+            "pattern": "solid",
+            "fit": "regular fit",
+            "neckline": "collar",
+            "sleeve": "long sleeve"
+          }
+        },
+        {
+          "item_id": "item-user_001-top-003",
+          "user_id": "user_001",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/0af4203f-8998-4719-92fe-65c14a6b6093.jpg?user_id=user_001&item_id=item-user_001-top-003&slot=top&category=sweater&color=grey&fabric=wool&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=long+sleeve",
+          "hints": {
+            "slot": "top",
+            "category": "sweater",
             "color": "grey",
+            "fabric": "wool",
+            "pattern": "solid",
+            "fit": "regular fit",
+            "neckline": "crew neck",
+            "sleeve": "long sleeve"
+          }
+        },
+        {
+          "item_id": "item-user_001-top-004",
+          "user_id": "user_001",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/0c024616-1289-4747-91da-71a4aedd4ced.jpg?user_id=user_001&item_id=item-user_001-top-004&slot=top&category=top&color=black&fabric=linen&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
+          "hints": {
+            "slot": "top",
+            "category": "top",
+            "color": "black",
+            "fabric": "linen",
+            "pattern": "solid",
+            "fit": "regular fit",
+            "neckline": "crew neck",
+            "sleeve": "short sleeve"
+          }
+        },
+        {
+          "item_id": "item-user_001-top-005",
+          "user_id": "user_001",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/172950bd-f639-4ce5-bc55-d17cea7b9705.jpg?user_id=user_001&item_id=item-user_001-top-005&slot=top&category=shirt&color=navy&fabric=cotton&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
+          "hints": {
+            "slot": "top",
+            "category": "shirt",
+            "color": "navy",
             "fabric": "cotton",
             "pattern": "solid",
             "fit": "slim fit",
@@ -42,74 +87,29 @@
           }
         },
         {
-          "item_id": "item-user_001-top-003",
+          "item_id": "item-user_001-top-006",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/0af4203f-8998-4719-92fe-65c14a6b6093.jpg?user_id=user_001&item_id=item-user_001-top-003&slot=top&category=blouse&color=navy&fabric=silk&pattern=floral&fit=regular+fit&neckline=v-neck&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/18b6e35b-e8a0-4d9b-b3f5-bb96021ed9fb.jpg?user_id=user_001&item_id=item-user_001-top-006&slot=top&category=blouse&color=beige&fabric=silk&pattern=solid&fit=regular+fit&neckline=v-neck&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "blouse",
-            "color": "navy",
+            "color": "beige",
             "fabric": "silk",
-            "pattern": "floral",
+            "pattern": "solid",
             "fit": "regular fit",
             "neckline": "v-neck",
             "sleeve": "long sleeve"
           }
         },
         {
-          "item_id": "item-user_001-top-004",
-          "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/0c024616-1289-4747-91da-71a4aedd4ced.jpg?user_id=user_001&item_id=item-user_001-top-004&slot=top&category=sweater&color=blue&fabric=wool&pattern=solid&fit=regular+fit&neckline=turtleneck&sleeve=long+sleeve",
-          "hints": {
-            "slot": "top",
-            "category": "sweater",
-            "color": "blue",
-            "fabric": "wool",
-            "pattern": "solid",
-            "fit": "regular fit",
-            "neckline": "turtleneck",
-            "sleeve": "long sleeve"
-          }
-        },
-        {
-          "item_id": "item-user_001-top-005",
-          "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/172950bd-f639-4ce5-bc55-d17cea7b9705.jpg?user_id=user_001&item_id=item-user_001-top-005&slot=top&category=hoodie&color=red&fabric=cotton&pattern=solid&fit=oversized&neckline=hooded&sleeve=long+sleeve",
-          "hints": {
-            "slot": "top",
-            "category": "hoodie",
-            "color": "red",
-            "fabric": "cotton",
-            "pattern": "solid",
-            "fit": "oversized",
-            "neckline": "hooded",
-            "sleeve": "long sleeve"
-          }
-        },
-        {
-          "item_id": "item-user_001-top-006",
-          "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/18b6e35b-e8a0-4d9b-b3f5-bb96021ed9fb.jpg?user_id=user_001&item_id=item-user_001-top-006&slot=top&category=top&color=green&fabric=linen&pattern=solid&fit=regular+fit&neckline=scoop+neck&sleeve=sleeveless",
-          "hints": {
-            "slot": "top",
-            "category": "top",
-            "color": "green",
-            "fabric": "linen",
-            "pattern": "solid",
-            "fit": "regular fit",
-            "neckline": "scoop neck",
-            "sleeve": "sleeveless"
-          }
-        },
-        {
           "item_id": "item-user_001-bottom-007",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/01033304-f9a4-48c4-af65-677512880fae.jpg?user_id=user_001&item_id=item-user_001-bottom-007&slot=bottom&category=pants&color=white&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/01033304-f9a4-48c4-af65-677512880fae.jpg?user_id=user_001&item_id=item-user_001-bottom-007&slot=bottom&category=pants&color=black&fabric=wool&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
             "category": "pants",
-            "color": "white",
-            "fabric": "cotton",
+            "color": "black",
+            "fabric": "wool",
             "pattern": "solid",
             "fit": "regular fit"
           }
@@ -117,63 +117,63 @@
         {
           "item_id": "item-user_001-bottom-008",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/046d0a65-f5a6-47f6-afaf-e692bfcfcb00.jpg?user_id=user_001&item_id=item-user_001-bottom-008&slot=bottom&category=jeans&color=grey&fabric=denim&pattern=solid&fit=slim+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/046d0a65-f5a6-47f6-afaf-e692bfcfcb00.jpg?user_id=user_001&item_id=item-user_001-bottom-008&slot=bottom&category=pants&color=grey&fabric=cotton&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
-            "category": "jeans",
+            "category": "pants",
             "color": "grey",
-            "fabric": "denim",
-            "pattern": "solid",
-            "fit": "slim fit"
-          }
-        },
-        {
-          "item_id": "item-user_001-bottom-009",
-          "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/05814dc4-0520-47e6-91e0-402a971ba40a.jpg?user_id=user_001&item_id=item-user_001-bottom-009&slot=bottom&category=shorts&color=navy&fabric=cotton&pattern=solid&fit=regular+fit",
-          "hints": {
-            "slot": "bottom",
-            "category": "shorts",
-            "color": "navy",
             "fabric": "cotton",
             "pattern": "solid",
             "fit": "regular fit"
           }
         },
         {
+          "item_id": "item-user_001-bottom-009",
+          "user_id": "user_001",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/05814dc4-0520-47e6-91e0-402a971ba40a.jpg?user_id=user_001&item_id=item-user_001-bottom-009&slot=bottom&category=jeans&color=black&fabric=denim&pattern=solid&fit=slim+fit",
+          "hints": {
+            "slot": "bottom",
+            "category": "jeans",
+            "color": "black",
+            "fabric": "denim",
+            "pattern": "solid",
+            "fit": "slim fit"
+          }
+        },
+        {
           "item_id": "item-user_001-bottom-010",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/0dfec862-c49f-430b-a6ef-c7ceb187225e.jpg?user_id=user_001&item_id=item-user_001-bottom-010&slot=bottom&category=skirt&color=blue&fabric=linen&pattern=floral&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/0dfec862-c49f-430b-a6ef-c7ceb187225e.jpg?user_id=user_001&item_id=item-user_001-bottom-010&slot=bottom&category=skirt&color=black&fabric=linen&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
             "category": "skirt",
-            "color": "blue",
+            "color": "black",
             "fabric": "linen",
-            "pattern": "floral",
+            "pattern": "solid",
             "fit": "regular fit"
           }
         },
         {
           "item_id": "item-user_001-bottom-011",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/122f0c94-4f37-4010-8c43-06d79bdf4433.jpg?user_id=user_001&item_id=item-user_001-bottom-011&slot=bottom&category=pants&color=red&fabric=wool&pattern=plaid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/122f0c94-4f37-4010-8c43-06d79bdf4433.jpg?user_id=user_001&item_id=item-user_001-bottom-011&slot=bottom&category=shorts&color=beige&fabric=cotton&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
-            "category": "pants",
-            "color": "red",
-            "fabric": "wool",
-            "pattern": "plaid",
+            "category": "shorts",
+            "color": "beige",
+            "fabric": "cotton",
+            "pattern": "solid",
             "fit": "regular fit"
           }
         },
         {
           "item_id": "item-user_001-one_piece-012",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/06a00c0f-5f9a-410d-a7da-3881a9df3a71.jpg?user_id=user_001&item_id=item-user_001-one_piece-012&slot=one_piece&category=dress&color=white&fabric=silk&pattern=solid&fit=slim+fit&neckline=v-neck&sleeve=sleeveless",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/06a00c0f-5f9a-410d-a7da-3881a9df3a71.jpg?user_id=user_001&item_id=item-user_001-one_piece-012&slot=one_piece&category=dress&color=black&fabric=silk&pattern=solid&fit=slim+fit&neckline=v-neck&sleeve=sleeveless",
           "hints": {
             "slot": "one_piece",
             "category": "dress",
-            "color": "white",
+            "color": "black",
             "fabric": "silk",
             "pattern": "solid",
             "fit": "slim fit",
@@ -184,13 +184,13 @@
         {
           "item_id": "item-user_001-one_piece-013",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/28b09463-6bbb-491d-9ffc-f36df5c6b211.jpg?user_id=user_001&item_id=item-user_001-one_piece-013&slot=one_piece&category=dress&color=grey&fabric=cotton&pattern=floral&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/28b09463-6bbb-491d-9ffc-f36df5c6b211.jpg?user_id=user_001&item_id=item-user_001-one_piece-013&slot=one_piece&category=dress&color=navy&fabric=cotton&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
           "hints": {
             "slot": "one_piece",
             "category": "dress",
-            "color": "grey",
+            "color": "navy",
             "fabric": "cotton",
-            "pattern": "floral",
+            "pattern": "solid",
             "fit": "regular fit",
             "neckline": "crew neck",
             "sleeve": "short sleeve"
@@ -199,11 +199,11 @@
         {
           "item_id": "item-user_001-outerwear-014",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/0028956e-9962-46f0-ad45-2c42f8a59d94.jpg?user_id=user_001&item_id=item-user_001-outerwear-014&slot=outerwear&category=blazer&color=white&fabric=wool&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/0028956e-9962-46f0-ad45-2c42f8a59d94.jpg?user_id=user_001&item_id=item-user_001-outerwear-014&slot=outerwear&category=blazer&color=black&fabric=wool&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
             "category": "blazer",
-            "color": "white",
+            "color": "black",
             "fabric": "wool",
             "pattern": "solid",
             "fit": "regular fit",
@@ -214,12 +214,12 @@
         {
           "item_id": "item-user_001-outerwear-015",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/01e4ab4f-6148-4dd7-9a43-df7681fbc71d.jpg?user_id=user_001&item_id=item-user_001-outerwear-015&slot=outerwear&category=jacket&color=grey&fabric=denim&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/01e4ab4f-6148-4dd7-9a43-df7681fbc71d.jpg?user_id=user_001&item_id=item-user_001-outerwear-015&slot=outerwear&category=jacket&color=grey&fabric=cotton&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
             "category": "jacket",
             "color": "grey",
-            "fabric": "denim",
+            "fabric": "cotton",
             "pattern": "solid",
             "fit": "regular fit",
             "neckline": "collar",
@@ -229,12 +229,12 @@
         {
           "item_id": "item-user_001-footwear-016",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/07d88b75-85a4-407b-aa73-12294a2ff9a8.jpg?user_id=user_001&item_id=item-user_001-footwear-016&slot=footwear&category=sneakers&color=white&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/07d88b75-85a4-407b-aa73-12294a2ff9a8.jpg?user_id=user_001&item_id=item-user_001-footwear-016&slot=footwear&category=sneakers&color=white&fabric=leather&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "footwear",
             "category": "sneakers",
             "color": "white",
-            "fabric": "cotton",
+            "fabric": "leather",
             "pattern": "solid",
             "fit": "regular fit"
           }
@@ -255,11 +255,11 @@
         {
           "item_id": "item-user_001-footwear-018",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/132e5fa5-ed38-4293-8dff-20727b6b5ac2.jpg?user_id=user_001&item_id=item-user_001-footwear-018&slot=footwear&category=boots&color=brown&fabric=leather&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/132e5fa5-ed38-4293-8dff-20727b6b5ac2.jpg?user_id=user_001&item_id=item-user_001-footwear-018&slot=footwear&category=boots&color=black&fabric=leather&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "footwear",
             "category": "boots",
-            "color": "brown",
+            "color": "black",
             "fabric": "leather",
             "pattern": "solid",
             "fit": "regular fit"
@@ -268,12 +268,12 @@
         {
           "item_id": "item-user_001-accessory-019",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/2a12baab-f020-42e3-8e6b-5d82e3ed0b55.jpg?user_id=user_001&item_id=item-user_001-accessory-019&slot=accessory&category=hat&color=beige&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/2a12baab-f020-42e3-8e6b-5d82e3ed0b55.jpg?user_id=user_001&item_id=item-user_001-accessory-019&slot=accessory&category=hat&color=black&fabric=wool&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "accessory",
             "category": "hat",
-            "color": "beige",
-            "fabric": "cotton",
+            "color": "black",
+            "fabric": "wool",
             "pattern": "solid",
             "fit": "regular fit"
           }
@@ -281,12 +281,12 @@
         {
           "item_id": "item-user_001-accessory-020",
           "user_id": "user_001",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/31ae3916-c352-45fe-9866-a8947fc74991.jpg?user_id=user_001&item_id=item-user_001-accessory-020&slot=accessory&category=hat&color=black&fabric=wool&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/31ae3916-c352-45fe-9866-a8947fc74991.jpg?user_id=user_001&item_id=item-user_001-accessory-020&slot=accessory&category=hat&color=grey&fabric=cotton&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "accessory",
             "category": "hat",
-            "color": "black",
-            "fabric": "wool",
+            "color": "grey",
+            "fabric": "cotton",
             "pattern": "solid",
             "fit": "regular fit"
           }
@@ -296,18 +296,18 @@
     {
       "user_id": "user_002",
       "display_name": "Fashion User 002",
-      "default_city": "Paris",
+      "default_city": "London",
       "default_style": "smart_casual",
       "items_count": 20,
       "items": [
         {
           "item_id": "item-user_002-top-001",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/1f2ba16d-c9a7-4ab9-bbb1-d13114078685.jpg?user_id=user_002&item_id=item-user_002-top-001&slot=top&category=t-shirt&color=grey&fabric=cotton&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/1f2ba16d-c9a7-4ab9-bbb1-d13114078685.jpg?user_id=user_002&item_id=item-user_002-top-001&slot=top&category=t-shirt&color=white&fabric=cotton&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
           "hints": {
             "slot": "top",
             "category": "t-shirt",
-            "color": "grey",
+            "color": "white",
             "fabric": "cotton",
             "pattern": "solid",
             "fit": "regular fit",
@@ -318,11 +318,11 @@
         {
           "item_id": "item-user_002-top-002",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/259f2358-fb94-4e7e-bd05-864e28071c17.jpg?user_id=user_002&item_id=item-user_002-top-002&slot=top&category=shirt&color=navy&fabric=cotton&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/259f2358-fb94-4e7e-bd05-864e28071c17.jpg?user_id=user_002&item_id=item-user_002-top-002&slot=top&category=shirt&color=blue&fabric=cotton&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "shirt",
-            "color": "navy",
+            "color": "blue",
             "fabric": "cotton",
             "pattern": "solid",
             "fit": "slim fit",
@@ -333,13 +333,13 @@
         {
           "item_id": "item-user_002-top-003",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/29cffc8e-5e72-4b73-bbc0-20b9f1251bc2.jpg?user_id=user_002&item_id=item-user_002-top-003&slot=top&category=blouse&color=blue&fabric=silk&pattern=floral&fit=regular+fit&neckline=v-neck&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/29cffc8e-5e72-4b73-bbc0-20b9f1251bc2.jpg?user_id=user_002&item_id=item-user_002-top-003&slot=top&category=blouse&color=navy&fabric=silk&pattern=solid&fit=regular+fit&neckline=v-neck&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "blouse",
-            "color": "blue",
+            "color": "navy",
             "fabric": "silk",
-            "pattern": "floral",
+            "pattern": "solid",
             "fit": "regular fit",
             "neckline": "v-neck",
             "sleeve": "long sleeve"
@@ -348,29 +348,29 @@
         {
           "item_id": "item-user_002-top-004",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/2cc6e505-1a89-42e0-8177-017118117027.jpg?user_id=user_002&item_id=item-user_002-top-004&slot=top&category=sweater&color=red&fabric=wool&pattern=solid&fit=regular+fit&neckline=turtleneck&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/2cc6e505-1a89-42e0-8177-017118117027.jpg?user_id=user_002&item_id=item-user_002-top-004&slot=top&category=sweater&color=grey&fabric=wool&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "sweater",
-            "color": "red",
+            "color": "grey",
             "fabric": "wool",
             "pattern": "solid",
             "fit": "regular fit",
-            "neckline": "turtleneck",
+            "neckline": "crew neck",
             "sleeve": "long sleeve"
           }
         },
         {
           "item_id": "item-user_002-top-005",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/39262aa5-eb53-4d26-879a-c0bdb560d7fe.jpg?user_id=user_002&item_id=item-user_002-top-005&slot=top&category=hoodie&color=green&fabric=cotton&pattern=solid&fit=oversized&neckline=hooded&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/39262aa5-eb53-4d26-879a-c0bdb560d7fe.jpg?user_id=user_002&item_id=item-user_002-top-005&slot=top&category=hoodie&color=black&fabric=cotton&pattern=solid&fit=regular+fit&neckline=hooded&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "hoodie",
-            "color": "green",
+            "color": "black",
             "fabric": "cotton",
             "pattern": "solid",
-            "fit": "oversized",
+            "fit": "regular fit",
             "neckline": "hooded",
             "sleeve": "long sleeve"
           }
@@ -378,7 +378,7 @@
         {
           "item_id": "item-user_002-top-006",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/3ce2017c-8365-4236-a7a7-f3d03639c583.jpg?user_id=user_002&item_id=item-user_002-top-006&slot=top&category=top&color=beige&fabric=linen&pattern=solid&fit=regular+fit&neckline=scoop+neck&sleeve=sleeveless",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/3ce2017c-8365-4236-a7a7-f3d03639c583.jpg?user_id=user_002&item_id=item-user_002-top-006&slot=top&category=top&color=beige&fabric=linen&pattern=solid&fit=regular+fit&neckline=scoop+neck&sleeve=short+sleeve",
           "hints": {
             "slot": "top",
             "category": "top",
@@ -387,17 +387,17 @@
             "pattern": "solid",
             "fit": "regular fit",
             "neckline": "scoop neck",
-            "sleeve": "sleeveless"
+            "sleeve": "short sleeve"
           }
         },
         {
           "item_id": "item-user_002-bottom-007",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/15a1e02b-ad2a-4b9f-9d44-0e4d260594a8.jpg?user_id=user_002&item_id=item-user_002-bottom-007&slot=bottom&category=pants&color=grey&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/15a1e02b-ad2a-4b9f-9d44-0e4d260594a8.jpg?user_id=user_002&item_id=item-user_002-bottom-007&slot=bottom&category=pants&color=navy&fabric=cotton&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
             "category": "pants",
-            "color": "grey",
+            "color": "navy",
             "fabric": "cotton",
             "pattern": "solid",
             "fit": "regular fit"
@@ -406,11 +406,11 @@
         {
           "item_id": "item-user_002-bottom-008",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/1b5f2882-e33e-4efc-b469-bcf87b9f53ed.jpg?user_id=user_002&item_id=item-user_002-bottom-008&slot=bottom&category=jeans&color=navy&fabric=denim&pattern=solid&fit=slim+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/1b5f2882-e33e-4efc-b469-bcf87b9f53ed.jpg?user_id=user_002&item_id=item-user_002-bottom-008&slot=bottom&category=jeans&color=blue&fabric=denim&pattern=solid&fit=slim+fit",
           "hints": {
             "slot": "bottom",
             "category": "jeans",
-            "color": "navy",
+            "color": "blue",
             "fabric": "denim",
             "pattern": "solid",
             "fit": "slim fit"
@@ -419,11 +419,11 @@
         {
           "item_id": "item-user_002-bottom-009",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/241836fb-0adb-402a-8417-9825051f8912.jpg?user_id=user_002&item_id=item-user_002-bottom-009&slot=bottom&category=shorts&color=blue&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/241836fb-0adb-402a-8417-9825051f8912.jpg?user_id=user_002&item_id=item-user_002-bottom-009&slot=bottom&category=shorts&color=black&fabric=cotton&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
             "category": "shorts",
-            "color": "blue",
+            "color": "black",
             "fabric": "cotton",
             "pattern": "solid",
             "fit": "regular fit"
@@ -432,54 +432,54 @@
         {
           "item_id": "item-user_002-bottom-010",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/25e7d73a-cd9a-4c2b-ab36-594ee2827745.jpg?user_id=user_002&item_id=item-user_002-bottom-010&slot=bottom&category=skirt&color=red&fabric=linen&pattern=floral&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/25e7d73a-cd9a-4c2b-ab36-594ee2827745.jpg?user_id=user_002&item_id=item-user_002-bottom-010&slot=bottom&category=skirt&color=grey&fabric=cotton&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
             "category": "skirt",
-            "color": "red",
-            "fabric": "linen",
-            "pattern": "floral",
+            "color": "grey",
+            "fabric": "cotton",
+            "pattern": "solid",
             "fit": "regular fit"
           }
         },
         {
           "item_id": "item-user_002-bottom-011",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/2884d941-ccc9-4eac-b7d7-b9996126a9c8.jpg?user_id=user_002&item_id=item-user_002-bottom-011&slot=bottom&category=pants&color=green&fabric=wool&pattern=plaid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/2884d941-ccc9-4eac-b7d7-b9996126a9c8.jpg?user_id=user_002&item_id=item-user_002-bottom-011&slot=bottom&category=pants&color=black&fabric=wool&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
             "category": "pants",
-            "color": "green",
+            "color": "black",
             "fabric": "wool",
-            "pattern": "plaid",
+            "pattern": "solid",
             "fit": "regular fit"
           }
         },
         {
           "item_id": "item-user_002-one_piece-012",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/35f157d0-53e4-4496-b087-da4ad63edd47.jpg?user_id=user_002&item_id=item-user_002-one_piece-012&slot=one_piece&category=dress&color=grey&fabric=silk&pattern=solid&fit=slim+fit&neckline=v-neck&sleeve=sleeveless",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/35f157d0-53e4-4496-b087-da4ad63edd47.jpg?user_id=user_002&item_id=item-user_002-one_piece-012&slot=one_piece&category=dress&color=navy&fabric=silk&pattern=solid&fit=slim+fit&neckline=v-neck&sleeve=short+sleeve",
           "hints": {
             "slot": "one_piece",
             "category": "dress",
-            "color": "grey",
+            "color": "navy",
             "fabric": "silk",
             "pattern": "solid",
             "fit": "slim fit",
             "neckline": "v-neck",
-            "sleeve": "sleeveless"
+            "sleeve": "short sleeve"
           }
         },
         {
           "item_id": "item-user_002-one_piece-013",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/3f844e1e-4a00-4b64-8c1d-3b847191bf11.jpg?user_id=user_002&item_id=item-user_002-one_piece-013&slot=one_piece&category=dress&color=navy&fabric=cotton&pattern=floral&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/3f844e1e-4a00-4b64-8c1d-3b847191bf11.jpg?user_id=user_002&item_id=item-user_002-one_piece-013&slot=one_piece&category=dress&color=black&fabric=cotton&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
           "hints": {
             "slot": "one_piece",
             "category": "dress",
-            "color": "navy",
+            "color": "black",
             "fabric": "cotton",
-            "pattern": "floral",
+            "pattern": "solid",
             "fit": "regular fit",
             "neckline": "crew neck",
             "sleeve": "short sleeve"
@@ -488,11 +488,11 @@
         {
           "item_id": "item-user_002-outerwear-014",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/0a86d893-93f1-4a52-8c42-07bb9f439833.jpg?user_id=user_002&item_id=item-user_002-outerwear-014&slot=outerwear&category=blazer&color=grey&fabric=wool&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/0a86d893-93f1-4a52-8c42-07bb9f439833.jpg?user_id=user_002&item_id=item-user_002-outerwear-014&slot=outerwear&category=blazer&color=navy&fabric=wool&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
             "category": "blazer",
-            "color": "grey",
+            "color": "navy",
             "fabric": "wool",
             "pattern": "solid",
             "fit": "regular fit",
@@ -503,11 +503,11 @@
         {
           "item_id": "item-user_002-outerwear-015",
           "user_id": "user_002",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/0d73e759-eeaa-43ab-98d4-196b6974c41e.jpg?user_id=user_002&item_id=item-user_002-outerwear-015&slot=outerwear&category=jacket&color=navy&fabric=denim&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/0d73e759-eeaa-43ab-98d4-196b6974c41e.jpg?user_id=user_002&item_id=item-user_002-outerwear-015&slot=outerwear&category=jacket&color=blue&fabric=denim&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
             "category": "jacket",
-            "color": "navy",
+            "color": "blue",
             "fabric": "denim",
             "pattern": "solid",
             "fit": "regular fit",
@@ -585,78 +585,18 @@
     {
       "user_id": "user_003",
       "display_name": "Fashion User 003",
-      "default_city": "New York",
-      "default_style": "clean_minimalist",
+      "default_city": "Tokyo",
+      "default_style": "streetwear",
       "items_count": 20,
       "items": [
         {
           "item_id": "item-user_003-top-001",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/3e88a1d2-832b-49bd-b471-53f03b1b66ff.jpg?user_id=user_003&item_id=item-user_003-top-001&slot=top&category=t-shirt&color=navy&fabric=cotton&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
-          "hints": {
-            "slot": "top",
-            "category": "t-shirt",
-            "color": "navy",
-            "fabric": "cotton",
-            "pattern": "solid",
-            "fit": "regular fit",
-            "neckline": "crew neck",
-            "sleeve": "short sleeve"
-          }
-        },
-        {
-          "item_id": "item-user_003-top-002",
-          "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/4503dd0b-bd55-42bc-a533-4b7462c346be.jpg?user_id=user_003&item_id=item-user_003-top-002&slot=top&category=shirt&color=blue&fabric=cotton&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
-          "hints": {
-            "slot": "top",
-            "category": "shirt",
-            "color": "blue",
-            "fabric": "cotton",
-            "pattern": "solid",
-            "fit": "slim fit",
-            "neckline": "collar",
-            "sleeve": "long sleeve"
-          }
-        },
-        {
-          "item_id": "item-user_003-top-003",
-          "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/4a9835a4-f5f4-43aa-882a-0fe494e61137.jpg?user_id=user_003&item_id=item-user_003-top-003&slot=top&category=blouse&color=red&fabric=silk&pattern=floral&fit=regular+fit&neckline=v-neck&sleeve=long+sleeve",
-          "hints": {
-            "slot": "top",
-            "category": "blouse",
-            "color": "red",
-            "fabric": "silk",
-            "pattern": "floral",
-            "fit": "regular fit",
-            "neckline": "v-neck",
-            "sleeve": "long sleeve"
-          }
-        },
-        {
-          "item_id": "item-user_003-top-004",
-          "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/01b3083f-4387-4753-8ae2-a2470dc53f19.jpg?user_id=user_003&item_id=item-user_003-top-004&slot=top&category=sweater&color=green&fabric=wool&pattern=solid&fit=regular+fit&neckline=turtleneck&sleeve=long+sleeve",
-          "hints": {
-            "slot": "top",
-            "category": "sweater",
-            "color": "green",
-            "fabric": "wool",
-            "pattern": "solid",
-            "fit": "regular fit",
-            "neckline": "turtleneck",
-            "sleeve": "long sleeve"
-          }
-        },
-        {
-          "item_id": "item-user_003-top-005",
-          "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/0e99edde-0ed8-4c8c-a405-0517c1b801a4.jpg?user_id=user_003&item_id=item-user_003-top-005&slot=top&category=hoodie&color=beige&fabric=cotton&pattern=solid&fit=oversized&neckline=hooded&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/3e88a1d2-832b-49bd-b471-53f03b1b66ff.jpg?user_id=user_003&item_id=item-user_003-top-001&slot=top&category=hoodie&color=black&fabric=cotton&pattern=solid&fit=oversized&neckline=hooded&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "hoodie",
-            "color": "beige",
+            "color": "black",
             "fabric": "cotton",
             "pattern": "solid",
             "fit": "oversized",
@@ -665,126 +605,186 @@
           }
         },
         {
+          "item_id": "item-user_003-top-002",
+          "user_id": "user_003",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/4503dd0b-bd55-42bc-a533-4b7462c346be.jpg?user_id=user_003&item_id=item-user_003-top-002&slot=top&category=t-shirt&color=white&fabric=cotton&pattern=graphic&fit=oversized&neckline=crew+neck&sleeve=short+sleeve",
+          "hints": {
+            "slot": "top",
+            "category": "t-shirt",
+            "color": "white",
+            "fabric": "cotton",
+            "pattern": "graphic",
+            "fit": "oversized",
+            "neckline": "crew neck",
+            "sleeve": "short sleeve"
+          }
+        },
+        {
+          "item_id": "item-user_003-top-003",
+          "user_id": "user_003",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/4a9835a4-f5f4-43aa-882a-0fe494e61137.jpg?user_id=user_003&item_id=item-user_003-top-003&slot=top&category=shirt&color=red&fabric=flannel&pattern=plaid&fit=oversized&neckline=collar&sleeve=long+sleeve",
+          "hints": {
+            "slot": "top",
+            "category": "shirt",
+            "color": "red",
+            "fabric": "flannel",
+            "pattern": "plaid",
+            "fit": "oversized",
+            "neckline": "collar",
+            "sleeve": "long sleeve"
+          }
+        },
+        {
+          "item_id": "item-user_003-top-004",
+          "user_id": "user_003",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/01b3083f-4387-4753-8ae2-a2470dc53f19.jpg?user_id=user_003&item_id=item-user_003-top-004&slot=top&category=sweater&color=grey&fabric=cotton&pattern=solid&fit=oversized&neckline=crew+neck&sleeve=long+sleeve",
+          "hints": {
+            "slot": "top",
+            "category": "sweater",
+            "color": "grey",
+            "fabric": "cotton",
+            "pattern": "solid",
+            "fit": "oversized",
+            "neckline": "crew neck",
+            "sleeve": "long sleeve"
+          }
+        },
+        {
+          "item_id": "item-user_003-top-005",
+          "user_id": "user_003",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/0e99edde-0ed8-4c8c-a405-0517c1b801a4.jpg?user_id=user_003&item_id=item-user_003-top-005&slot=top&category=t-shirt&color=black&fabric=cotton&pattern=solid&fit=oversized&neckline=crew+neck&sleeve=short+sleeve",
+          "hints": {
+            "slot": "top",
+            "category": "t-shirt",
+            "color": "black",
+            "fabric": "cotton",
+            "pattern": "solid",
+            "fit": "oversized",
+            "neckline": "crew neck",
+            "sleeve": "short sleeve"
+          }
+        },
+        {
           "item_id": "item-user_003-top-006",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/161b57e7-ed65-429a-a795-099b8ce44d08.jpg?user_id=user_003&item_id=item-user_003-top-006&slot=top&category=top&color=brown&fabric=linen&pattern=solid&fit=regular+fit&neckline=scoop+neck&sleeve=sleeveless",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/161b57e7-ed65-429a-a795-099b8ce44d08.jpg?user_id=user_003&item_id=item-user_003-top-006&slot=top&category=top&color=orange&fabric=polyester&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=sleeveless",
           "hints": {
             "slot": "top",
             "category": "top",
-            "color": "brown",
-            "fabric": "linen",
+            "color": "orange",
+            "fabric": "polyester",
             "pattern": "solid",
             "fit": "regular fit",
-            "neckline": "scoop neck",
+            "neckline": "crew neck",
             "sleeve": "sleeveless"
           }
         },
         {
           "item_id": "item-user_003-bottom-007",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/361cbb64-95f4-4be3-a01c-3aba98fa509f.jpg?user_id=user_003&item_id=item-user_003-bottom-007&slot=bottom&category=pants&color=navy&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/361cbb64-95f4-4be3-a01c-3aba98fa509f.jpg?user_id=user_003&item_id=item-user_003-bottom-007&slot=bottom&category=pants&color=black&fabric=cotton&pattern=solid&fit=oversized",
           "hints": {
             "slot": "bottom",
             "category": "pants",
-            "color": "navy",
+            "color": "black",
             "fabric": "cotton",
             "pattern": "solid",
-            "fit": "regular fit"
+            "fit": "oversized"
           }
         },
         {
           "item_id": "item-user_003-bottom-008",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/40584096-ab8a-4a68-8d10-f6d94aa6f4b3.jpg?user_id=user_003&item_id=item-user_003-bottom-008&slot=bottom&category=jeans&color=blue&fabric=denim&pattern=solid&fit=slim+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/40584096-ab8a-4a68-8d10-f6d94aa6f4b3.jpg?user_id=user_003&item_id=item-user_003-bottom-008&slot=bottom&category=jeans&color=blue&fabric=denim&pattern=solid&fit=oversized",
           "hints": {
             "slot": "bottom",
             "category": "jeans",
             "color": "blue",
             "fabric": "denim",
             "pattern": "solid",
-            "fit": "slim fit"
+            "fit": "oversized"
           }
         },
         {
           "item_id": "item-user_003-bottom-009",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/06248e28-9e26-4036-8a8f-40cc605c83fb.jpg?user_id=user_003&item_id=item-user_003-bottom-009&slot=bottom&category=shorts&color=red&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/442b93ee-a08b-4bba-8a89-35d8453cf2f5.jpg?user_id=user_003&item_id=item-user_003-bottom-009&slot=bottom&category=shorts&color=grey&fabric=cotton&pattern=solid&fit=oversized",
           "hints": {
             "slot": "bottom",
             "category": "shorts",
-            "color": "red",
+            "color": "grey",
             "fabric": "cotton",
             "pattern": "solid",
-            "fit": "regular fit"
+            "fit": "oversized"
           }
         },
         {
           "item_id": "item-user_003-bottom-010",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/15ce3cc0-4803-428f-8a4b-fb76cf30f297.jpg?user_id=user_003&item_id=item-user_003-bottom-010&slot=bottom&category=skirt&color=green&fabric=linen&pattern=floral&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/4aabd82c-82e1-4181-a84d-d0c6e550d26d.jpg?user_id=user_003&item_id=item-user_003-bottom-010&slot=bottom&category=pants&color=green&fabric=cotton&pattern=camo&fit=oversized",
           "hints": {
             "slot": "bottom",
-            "category": "skirt",
+            "category": "pants",
             "color": "green",
-            "fabric": "linen",
-            "pattern": "floral",
-            "fit": "regular fit"
+            "fabric": "cotton",
+            "pattern": "camo",
+            "fit": "oversized"
           }
         },
         {
           "item_id": "item-user_003-bottom-011",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/18260a42-3e2a-4bc6-b530-69135bf90434.jpg?user_id=user_003&item_id=item-user_003-bottom-011&slot=bottom&category=pants&color=beige&fabric=wool&pattern=plaid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/52f73c9e-93da-47ae-bf67-f0e7b8216fe1.jpg?user_id=user_003&item_id=item-user_003-bottom-011&slot=bottom&category=skirt&color=black&fabric=denim&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
-            "category": "pants",
-            "color": "beige",
-            "fabric": "wool",
-            "pattern": "plaid",
+            "category": "skirt",
+            "color": "black",
+            "fabric": "denim",
+            "pattern": "solid",
             "fit": "regular fit"
           }
         },
         {
           "item_id": "item-user_003-one_piece-012",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/4ceed2f1-8e20-4439-9c27-cceb8d2257a4.jpg?user_id=user_003&item_id=item-user_003-one_piece-012&slot=one_piece&category=dress&color=navy&fabric=silk&pattern=solid&fit=slim+fit&neckline=v-neck&sleeve=sleeveless",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/4ceed2f1-8e20-4439-9c27-cceb8d2257a4.jpg?user_id=user_003&item_id=item-user_003-one_piece-012&slot=one_piece&category=dress&color=black&fabric=cotton&pattern=graphic&fit=oversized&neckline=crew+neck&sleeve=short+sleeve",
           "hints": {
             "slot": "one_piece",
             "category": "dress",
-            "color": "navy",
-            "fabric": "silk",
-            "pattern": "solid",
-            "fit": "slim fit",
-            "neckline": "v-neck",
-            "sleeve": "sleeveless"
-          }
-        },
-        {
-          "item_id": "item-user_003-one_piece-013",
-          "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/50d248fe-de40-4bb6-9bff-3e8babecba31.jpg?user_id=user_003&item_id=item-user_003-one_piece-013&slot=one_piece&category=dress&color=blue&fabric=cotton&pattern=floral&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
-          "hints": {
-            "slot": "one_piece",
-            "category": "dress",
-            "color": "blue",
+            "color": "black",
             "fabric": "cotton",
-            "pattern": "floral",
-            "fit": "regular fit",
+            "pattern": "graphic",
+            "fit": "oversized",
             "neckline": "crew neck",
             "sleeve": "short sleeve"
           }
         },
         {
+          "item_id": "item-user_003-one_piece-013",
+          "user_id": "user_003",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/50d248fe-de40-4bb6-9bff-3e8babecba31.jpg?user_id=user_003&item_id=item-user_003-one_piece-013&slot=one_piece&category=dress&color=grey&fabric=cotton&pattern=solid&fit=oversized&neckline=hooded&sleeve=long+sleeve",
+          "hints": {
+            "slot": "one_piece",
+            "category": "dress",
+            "color": "grey",
+            "fabric": "cotton",
+            "pattern": "solid",
+            "fit": "oversized",
+            "neckline": "hooded",
+            "sleeve": "long sleeve"
+          }
+        },
+        {
           "item_id": "item-user_003-outerwear-014",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/105c3674-f1d0-4fc6-8131-e53001670352.jpg?user_id=user_003&item_id=item-user_003-outerwear-014&slot=outerwear&category=blazer&color=navy&fabric=wool&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/105c3674-f1d0-4fc6-8131-e53001670352.jpg?user_id=user_003&item_id=item-user_003-outerwear-014&slot=outerwear&category=jacket&color=black&fabric=nylon&pattern=solid&fit=oversized&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
-            "category": "blazer",
-            "color": "navy",
-            "fabric": "wool",
+            "category": "jacket",
+            "color": "black",
+            "fabric": "nylon",
             "pattern": "solid",
-            "fit": "regular fit",
+            "fit": "oversized",
             "neckline": "collar",
             "sleeve": "long sleeve"
           }
@@ -792,14 +792,14 @@
         {
           "item_id": "item-user_003-outerwear-015",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/1dcf0cd4-ca7e-46ac-90c7-ce465153a7f0.jpg?user_id=user_003&item_id=item-user_003-outerwear-015&slot=outerwear&category=jacket&color=blue&fabric=denim&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/1dcf0cd4-ca7e-46ac-90c7-ce465153a7f0.jpg?user_id=user_003&item_id=item-user_003-outerwear-015&slot=outerwear&category=jacket&color=green&fabric=cotton&pattern=solid&fit=oversized&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
             "category": "jacket",
-            "color": "blue",
-            "fabric": "denim",
+            "color": "green",
+            "fabric": "cotton",
             "pattern": "solid",
-            "fit": "regular fit",
+            "fit": "oversized",
             "neckline": "collar",
             "sleeve": "long sleeve"
           }
@@ -807,12 +807,12 @@
         {
           "item_id": "item-user_003-footwear-016",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/1e170a9f-9437-4eae-bd67-389c48b93ff9.jpg?user_id=user_003&item_id=item-user_003-footwear-016&slot=footwear&category=sneakers&color=white&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/1e170a9f-9437-4eae-bd67-389c48b93ff9.jpg?user_id=user_003&item_id=item-user_003-footwear-016&slot=footwear&category=sneakers&color=black&fabric=leather&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "footwear",
             "category": "sneakers",
-            "color": "white",
-            "fabric": "cotton",
+            "color": "black",
+            "fabric": "leather",
             "pattern": "solid",
             "fit": "regular fit"
           }
@@ -820,11 +820,11 @@
         {
           "item_id": "item-user_003-footwear-017",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/20209905-0830-4a6d-a1cf-7382051f8f18.jpg?user_id=user_003&item_id=item-user_003-footwear-017&slot=footwear&category=shoes&color=black&fabric=leather&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/20209905-0830-4a6d-a1cf-7382051f8f18.jpg?user_id=user_003&item_id=item-user_003-footwear-017&slot=footwear&category=sneakers&color=red&fabric=leather&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "footwear",
-            "category": "shoes",
-            "color": "black",
+            "category": "sneakers",
+            "color": "red",
             "fabric": "leather",
             "pattern": "solid",
             "fit": "regular fit"
@@ -833,11 +833,11 @@
         {
           "item_id": "item-user_003-footwear-018",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2174d585-e8cf-43ce-bb61-de1567c74fd5.jpg?user_id=user_003&item_id=item-user_003-footwear-018&slot=footwear&category=boots&color=brown&fabric=leather&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2174d585-e8cf-43ce-bb61-de1567c74fd5.jpg?user_id=user_003&item_id=item-user_003-footwear-018&slot=footwear&category=boots&color=black&fabric=leather&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "footwear",
             "category": "boots",
-            "color": "brown",
+            "color": "black",
             "fabric": "leather",
             "pattern": "solid",
             "fit": "regular fit"
@@ -846,11 +846,11 @@
         {
           "item_id": "item-user_003-accessory-019",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/78a07855-5a8e-496f-a516-a69e3784bbf1.jpg?user_id=user_003&item_id=item-user_003-accessory-019&slot=accessory&category=hat&color=beige&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/78a07855-5a8e-496f-a516-a69e3784bbf1.jpg?user_id=user_003&item_id=item-user_003-accessory-019&slot=accessory&category=hat&color=black&fabric=cotton&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "accessory",
             "category": "hat",
-            "color": "beige",
+            "color": "black",
             "fabric": "cotton",
             "pattern": "solid",
             "fit": "regular fit"
@@ -859,11 +859,11 @@
         {
           "item_id": "item-user_003-accessory-020",
           "user_id": "user_003",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/7b5181d5-253f-4936-9207-60e3368bf9e1.jpg?user_id=user_003&item_id=item-user_003-accessory-020&slot=accessory&category=hat&color=black&fabric=wool&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/7b5181d5-253f-4936-9207-60e3368bf9e1.jpg?user_id=user_003&item_id=item-user_003-accessory-020&slot=accessory&category=hat&color=orange&fabric=wool&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "accessory",
             "category": "hat",
-            "color": "black",
+            "color": "orange",
             "fabric": "wool",
             "pattern": "solid",
             "fit": "regular fit"
@@ -874,33 +874,18 @@
     {
       "user_id": "user_004",
       "display_name": "Fashion User 004",
-      "default_city": "Paris",
-      "default_style": "smart_casual",
+      "default_city": "New York",
+      "default_style": "office_formal",
       "items_count": 20,
       "items": [
         {
           "item_id": "item-user_004-top-001",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/36ad54ae-3450-4264-9655-4de51e6a1a32.jpg?user_id=user_004&item_id=item-user_004-top-001&slot=top&category=t-shirt&color=blue&fabric=cotton&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
-          "hints": {
-            "slot": "top",
-            "category": "t-shirt",
-            "color": "blue",
-            "fabric": "cotton",
-            "pattern": "solid",
-            "fit": "regular fit",
-            "neckline": "crew neck",
-            "sleeve": "short sleeve"
-          }
-        },
-        {
-          "item_id": "item-user_004-top-002",
-          "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/3a3a16c8-942d-4541-867b-e97d5a793ea0.jpg?user_id=user_004&item_id=item-user_004-top-002&slot=top&category=shirt&color=red&fabric=cotton&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/36ad54ae-3450-4264-9655-4de51e6a1a32.jpg?user_id=user_004&item_id=item-user_004-top-001&slot=top&category=shirt&color=white&fabric=cotton&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "shirt",
-            "color": "red",
+            "color": "white",
             "fabric": "cotton",
             "pattern": "solid",
             "fit": "slim fit",
@@ -909,31 +894,46 @@
           }
         },
         {
-          "item_id": "item-user_004-top-003",
+          "item_id": "item-user_004-top-002",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/45814191-3d17-486c-8883-8ddd97b3e7f7.jpg?user_id=user_004&item_id=item-user_004-top-003&slot=top&category=blouse&color=green&fabric=silk&pattern=floral&fit=regular+fit&neckline=v-neck&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/3a3a16c8-942d-4541-867b-e97d5a793ea0.jpg?user_id=user_004&item_id=item-user_004-top-002&slot=top&category=blouse&color=navy&fabric=silk&pattern=solid&fit=regular+fit&neckline=v-neck&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "blouse",
-            "color": "green",
+            "color": "navy",
             "fabric": "silk",
-            "pattern": "floral",
+            "pattern": "solid",
             "fit": "regular fit",
             "neckline": "v-neck",
             "sleeve": "long sleeve"
           }
         },
         {
+          "item_id": "item-user_004-top-003",
+          "user_id": "user_004",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/45814191-3d17-486c-8883-8ddd97b3e7f7.jpg?user_id=user_004&item_id=item-user_004-top-003&slot=top&category=shirt&color=blue&fabric=cotton&pattern=striped&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
+          "hints": {
+            "slot": "top",
+            "category": "shirt",
+            "color": "blue",
+            "fabric": "cotton",
+            "pattern": "striped",
+            "fit": "slim fit",
+            "neckline": "collar",
+            "sleeve": "long sleeve"
+          }
+        },
+        {
           "item_id": "item-user_004-top-004",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/4758e641-df13-4b3a-93a2-a9e232561c95.jpg?user_id=user_004&item_id=item-user_004-top-004&slot=top&category=sweater&color=beige&fabric=wool&pattern=solid&fit=regular+fit&neckline=turtleneck&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/4758e641-df13-4b3a-93a2-a9e232561c95.jpg?user_id=user_004&item_id=item-user_004-top-004&slot=top&category=sweater&color=black&fabric=wool&pattern=solid&fit=slim+fit&neckline=turtleneck&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
             "category": "sweater",
-            "color": "beige",
+            "color": "black",
             "fabric": "wool",
             "pattern": "solid",
-            "fit": "regular fit",
+            "fit": "slim fit",
             "neckline": "turtleneck",
             "sleeve": "long sleeve"
           }
@@ -941,139 +941,139 @@
         {
           "item_id": "item-user_004-top-005",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/4cfe336a-6f8c-4f87-a88d-ae4e3897215f.jpg?user_id=user_004&item_id=item-user_004-top-005&slot=top&category=hoodie&color=brown&fabric=cotton&pattern=solid&fit=oversized&neckline=hooded&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/4cfe336a-6f8c-4f87-a88d-ae4e3897215f.jpg?user_id=user_004&item_id=item-user_004-top-005&slot=top&category=blouse&color=white&fabric=silk&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
-            "category": "hoodie",
-            "color": "brown",
-            "fabric": "cotton",
+            "category": "blouse",
+            "color": "white",
+            "fabric": "silk",
             "pattern": "solid",
-            "fit": "oversized",
-            "neckline": "hooded",
+            "fit": "regular fit",
+            "neckline": "collar",
             "sleeve": "long sleeve"
           }
         },
         {
           "item_id": "item-user_004-top-006",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/5089843a-ecf8-4cb6-8f35-587f19125046.jpg?user_id=user_004&item_id=item-user_004-top-006&slot=top&category=top&color=pink&fabric=linen&pattern=solid&fit=regular+fit&neckline=scoop+neck&sleeve=sleeveless",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/5089843a-ecf8-4cb6-8f35-587f19125046.jpg?user_id=user_004&item_id=item-user_004-top-006&slot=top&category=t-shirt&color=navy&fabric=cotton&pattern=solid&fit=slim+fit&neckline=crew+neck&sleeve=short+sleeve",
           "hints": {
             "slot": "top",
-            "category": "top",
-            "color": "pink",
-            "fabric": "linen",
+            "category": "t-shirt",
+            "color": "navy",
+            "fabric": "cotton",
             "pattern": "solid",
-            "fit": "regular fit",
-            "neckline": "scoop neck",
-            "sleeve": "sleeveless"
+            "fit": "slim fit",
+            "neckline": "crew neck",
+            "sleeve": "short sleeve"
           }
         },
         {
           "item_id": "item-user_004-bottom-007",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/1e302085-eeb2-46ff-a4f6-e9bb5cfa44b1.jpg?user_id=user_004&item_id=item-user_004-bottom-007&slot=bottom&category=pants&color=blue&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/06248e28-9e26-4036-8a8f-40cc605c83fb.jpg?user_id=user_004&item_id=item-user_004-bottom-007&slot=bottom&category=pants&color=charcoal&fabric=wool&pattern=solid&fit=slim+fit",
           "hints": {
             "slot": "bottom",
             "category": "pants",
-            "color": "blue",
-            "fabric": "cotton",
-            "pattern": "solid",
-            "fit": "regular fit"
-          }
-        },
-        {
-          "item_id": "item-user_004-bottom-008",
-          "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/2e6303c5-e8ef-4bb3-9ebc-ac97f3ab68d0.jpg?user_id=user_004&item_id=item-user_004-bottom-008&slot=bottom&category=jeans&color=red&fabric=denim&pattern=solid&fit=slim+fit",
-          "hints": {
-            "slot": "bottom",
-            "category": "jeans",
-            "color": "red",
-            "fabric": "denim",
+            "color": "charcoal",
+            "fabric": "wool",
             "pattern": "solid",
             "fit": "slim fit"
           }
         },
         {
-          "item_id": "item-user_004-bottom-009",
+          "item_id": "item-user_004-bottom-008",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/39a1562b-9f9f-4e70-b593-79cdd63ac707.jpg?user_id=user_004&item_id=item-user_004-bottom-009&slot=bottom&category=shorts&color=green&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/15ce3cc0-4803-428f-8a4b-fb76cf30f297.jpg?user_id=user_004&item_id=item-user_004-bottom-008&slot=bottom&category=pants&color=black&fabric=wool&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
-            "category": "shorts",
-            "color": "green",
-            "fabric": "cotton",
+            "category": "pants",
+            "color": "black",
+            "fabric": "wool",
             "pattern": "solid",
             "fit": "regular fit"
           }
         },
         {
-          "item_id": "item-user_004-bottom-010",
+          "item_id": "item-user_004-bottom-009",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/3bf0d767-b78d-44e4-8b25-740aeb870b06.jpg?user_id=user_004&item_id=item-user_004-bottom-010&slot=bottom&category=skirt&color=beige&fabric=linen&pattern=floral&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/18260a42-3e2a-4bc6-b530-69135bf90434.jpg?user_id=user_004&item_id=item-user_004-bottom-009&slot=bottom&category=skirt&color=navy&fabric=wool&pattern=solid&fit=slim+fit",
           "hints": {
             "slot": "bottom",
             "category": "skirt",
-            "color": "beige",
-            "fabric": "linen",
-            "pattern": "floral",
-            "fit": "regular fit"
+            "color": "navy",
+            "fabric": "wool",
+            "pattern": "solid",
+            "fit": "slim fit"
+          }
+        },
+        {
+          "item_id": "item-user_004-bottom-010",
+          "user_id": "user_004",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/1e302085-eeb2-46ff-a4f6-e9bb5cfa44b1.jpg?user_id=user_004&item_id=item-user_004-bottom-010&slot=bottom&category=pants&color=navy&fabric=wool&pattern=pinstripe&fit=slim+fit",
+          "hints": {
+            "slot": "bottom",
+            "category": "pants",
+            "color": "navy",
+            "fabric": "wool",
+            "pattern": "pinstripe",
+            "fit": "slim fit"
           }
         },
         {
           "item_id": "item-user_004-bottom-011",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/40b704ca-eaa5-4cf9-a98d-0e3e2b0294ac.jpg?user_id=user_004&item_id=item-user_004-bottom-011&slot=bottom&category=pants&color=brown&fabric=wool&pattern=plaid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/2e6303c5-e8ef-4bb3-9ebc-ac97f3ab68d0.jpg?user_id=user_004&item_id=item-user_004-bottom-011&slot=bottom&category=shorts&color=black&fabric=linen&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
-            "category": "pants",
-            "color": "brown",
-            "fabric": "wool",
-            "pattern": "plaid",
+            "category": "shorts",
+            "color": "black",
+            "fabric": "linen",
+            "pattern": "solid",
             "fit": "regular fit"
           }
         },
         {
           "item_id": "item-user_004-one_piece-012",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/5a2b4bbf-d9fe-45a2-aa0d-295a86804cb6.jpg?user_id=user_004&item_id=item-user_004-one_piece-012&slot=one_piece&category=dress&color=blue&fabric=silk&pattern=solid&fit=slim+fit&neckline=v-neck&sleeve=sleeveless",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/5a2b4bbf-d9fe-45a2-aa0d-295a86804cb6.jpg?user_id=user_004&item_id=item-user_004-one_piece-012&slot=one_piece&category=dress&color=navy&fabric=wool&pattern=solid&fit=slim+fit&neckline=crew+neck&sleeve=short+sleeve",
           "hints": {
             "slot": "one_piece",
             "category": "dress",
-            "color": "blue",
-            "fabric": "silk",
+            "color": "navy",
+            "fabric": "wool",
             "pattern": "solid",
             "fit": "slim fit",
-            "neckline": "v-neck",
-            "sleeve": "sleeveless"
-          }
-        },
-        {
-          "item_id": "item-user_004-one_piece-013",
-          "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/7f60d367-31dd-49ad-80ae-b5223364f386.jpg?user_id=user_004&item_id=item-user_004-one_piece-013&slot=one_piece&category=dress&color=red&fabric=cotton&pattern=floral&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
-          "hints": {
-            "slot": "one_piece",
-            "category": "dress",
-            "color": "red",
-            "fabric": "cotton",
-            "pattern": "floral",
-            "fit": "regular fit",
             "neckline": "crew neck",
             "sleeve": "short sleeve"
           }
         },
         {
+          "item_id": "item-user_004-one_piece-013",
+          "user_id": "user_004",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/7f60d367-31dd-49ad-80ae-b5223364f386.jpg?user_id=user_004&item_id=item-user_004-one_piece-013&slot=one_piece&category=dress&color=black&fabric=silk&pattern=solid&fit=slim+fit&neckline=v-neck&sleeve=long+sleeve",
+          "hints": {
+            "slot": "one_piece",
+            "category": "dress",
+            "color": "black",
+            "fabric": "silk",
+            "pattern": "solid",
+            "fit": "slim fit",
+            "neckline": "v-neck",
+            "sleeve": "long sleeve"
+          }
+        },
+        {
           "item_id": "item-user_004-outerwear-014",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/26d61cdc-a947-45f1-a16c-bf3eb23a67ed.jpg?user_id=user_004&item_id=item-user_004-outerwear-014&slot=outerwear&category=blazer&color=blue&fabric=wool&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/26d61cdc-a947-45f1-a16c-bf3eb23a67ed.jpg?user_id=user_004&item_id=item-user_004-outerwear-014&slot=outerwear&category=blazer&color=charcoal&fabric=wool&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
             "category": "blazer",
-            "color": "blue",
+            "color": "charcoal",
             "fabric": "wool",
             "pattern": "solid",
-            "fit": "regular fit",
+            "fit": "slim fit",
             "neckline": "collar",
             "sleeve": "long sleeve"
           }
@@ -1081,14 +1081,14 @@
         {
           "item_id": "item-user_004-outerwear-015",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/2edb1db6-cd17-41d2-88e0-ba34801b656d.jpg?user_id=user_004&item_id=item-user_004-outerwear-015&slot=outerwear&category=jacket&color=red&fabric=denim&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/2edb1db6-cd17-41d2-88e0-ba34801b656d.jpg?user_id=user_004&item_id=item-user_004-outerwear-015&slot=outerwear&category=blazer&color=navy&fabric=wool&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
-            "category": "jacket",
-            "color": "red",
-            "fabric": "denim",
+            "category": "blazer",
+            "color": "navy",
+            "fabric": "wool",
             "pattern": "solid",
-            "fit": "regular fit",
+            "fit": "slim fit",
             "neckline": "collar",
             "sleeve": "long sleeve"
           }
@@ -1096,20 +1096,7 @@
         {
           "item_id": "item-user_004-footwear-016",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2329e4c9-1172-4379-94de-091621a56a40.jpg?user_id=user_004&item_id=item-user_004-footwear-016&slot=footwear&category=sneakers&color=white&fabric=cotton&pattern=solid&fit=regular+fit",
-          "hints": {
-            "slot": "footwear",
-            "category": "sneakers",
-            "color": "white",
-            "fabric": "cotton",
-            "pattern": "solid",
-            "fit": "regular fit"
-          }
-        },
-        {
-          "item_id": "item-user_004-footwear-017",
-          "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/264f8d64-c5f0-45ab-9361-8ea9d8e0f5db.jpg?user_id=user_004&item_id=item-user_004-footwear-017&slot=footwear&category=shoes&color=black&fabric=leather&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2329e4c9-1172-4379-94de-091621a56a40.jpg?user_id=user_004&item_id=item-user_004-footwear-016&slot=footwear&category=shoes&color=black&fabric=leather&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "footwear",
             "category": "shoes",
@@ -1120,13 +1107,26 @@
           }
         },
         {
+          "item_id": "item-user_004-footwear-017",
+          "user_id": "user_004",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/264f8d64-c5f0-45ab-9361-8ea9d8e0f5db.jpg?user_id=user_004&item_id=item-user_004-footwear-017&slot=footwear&category=shoes&color=burgundy&fabric=leather&pattern=solid&fit=regular+fit",
+          "hints": {
+            "slot": "footwear",
+            "category": "shoes",
+            "color": "burgundy",
+            "fabric": "leather",
+            "pattern": "solid",
+            "fit": "regular fit"
+          }
+        },
+        {
           "item_id": "item-user_004-footwear-018",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/29003421-15e6-41f1-9c65-c0abdfcfaa6e.jpg?user_id=user_004&item_id=item-user_004-footwear-018&slot=footwear&category=boots&color=brown&fabric=leather&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/29003421-15e6-41f1-9c65-c0abdfcfaa6e.jpg?user_id=user_004&item_id=item-user_004-footwear-018&slot=footwear&category=boots&color=black&fabric=leather&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "footwear",
             "category": "boots",
-            "color": "brown",
+            "color": "black",
             "fabric": "leather",
             "pattern": "solid",
             "fit": "regular fit"
@@ -1135,12 +1135,12 @@
         {
           "item_id": "item-user_004-accessory-019",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/a762dfc0-8da7-46d4-9ef1-3c7a085142da.jpg?user_id=user_004&item_id=item-user_004-accessory-019&slot=accessory&category=hat&color=beige&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/a762dfc0-8da7-46d4-9ef1-3c7a085142da.jpg?user_id=user_004&item_id=item-user_004-accessory-019&slot=accessory&category=hat&color=black&fabric=wool&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "accessory",
             "category": "hat",
-            "color": "beige",
-            "fabric": "cotton",
+            "color": "black",
+            "fabric": "wool",
             "pattern": "solid",
             "fit": "regular fit"
           }
@@ -1148,11 +1148,11 @@
         {
           "item_id": "item-user_004-accessory-020",
           "user_id": "user_004",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/bade5af9-c62c-4f10-9b52-c31f50211d48.jpg?user_id=user_004&item_id=item-user_004-accessory-020&slot=accessory&category=hat&color=black&fabric=wool&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/bade5af9-c62c-4f10-9b52-c31f50211d48.jpg?user_id=user_004&item_id=item-user_004-accessory-020&slot=accessory&category=hat&color=navy&fabric=wool&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "accessory",
             "category": "hat",
-            "color": "black",
+            "color": "navy",
             "fabric": "wool",
             "pattern": "solid",
             "fit": "regular fit"
@@ -1163,176 +1163,176 @@
     {
       "user_id": "user_005",
       "display_name": "Fashion User 005",
-      "default_city": "New York",
-      "default_style": "smart_casual",
+      "default_city": "Nice",
+      "default_style": "summer_resort",
       "items_count": 20,
       "items": [
         {
           "item_id": "item-user_005-top-001",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/575fc7c5-aa65-46c6-a343-35113c150129.jpg?user_id=user_005&item_id=item-user_005-top-001&slot=top&category=t-shirt&color=red&fabric=cotton&pattern=solid&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/575fc7c5-aa65-46c6-a343-35113c150129.jpg?user_id=user_005&item_id=item-user_005-top-001&slot=top&category=shirt&color=white&fabric=linen&pattern=solid&fit=relaxed&neckline=collar&sleeve=short+sleeve",
           "hints": {
             "slot": "top",
-            "category": "t-shirt",
-            "color": "red",
-            "fabric": "cotton",
+            "category": "shirt",
+            "color": "white",
+            "fabric": "linen",
             "pattern": "solid",
-            "fit": "regular fit",
-            "neckline": "crew neck",
+            "fit": "relaxed",
+            "neckline": "collar",
             "sleeve": "short sleeve"
           }
         },
         {
           "item_id": "item-user_005-top-002",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/03a33083-e7bf-414d-bd35-c56273ae779c.jpg?user_id=user_005&item_id=item-user_005-top-002&slot=top&category=shirt&color=green&fabric=cotton&pattern=solid&fit=slim+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/5ec1221f-a52f-4602-9c2c-ed4c81a26708.jpg?user_id=user_005&item_id=item-user_005-top-002&slot=top&category=t-shirt&color=blue&fabric=cotton&pattern=striped&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
           "hints": {
             "slot": "top",
-            "category": "shirt",
-            "color": "green",
+            "category": "t-shirt",
+            "color": "blue",
             "fabric": "cotton",
-            "pattern": "solid",
-            "fit": "slim fit",
-            "neckline": "collar",
-            "sleeve": "long sleeve"
+            "pattern": "striped",
+            "fit": "regular fit",
+            "neckline": "crew neck",
+            "sleeve": "short sleeve"
           }
         },
         {
           "item_id": "item-user_005-top-003",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/0df1efc7-34ba-4e11-b027-21ec8fa5a35e.jpg?user_id=user_005&item_id=item-user_005-top-003&slot=top&category=blouse&color=beige&fabric=silk&pattern=floral&fit=regular+fit&neckline=v-neck&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/61086848-70bf-462f-87e0-0f756adbd03d.jpg?user_id=user_005&item_id=item-user_005-top-003&slot=top&category=top&color=yellow&fabric=linen&pattern=solid&fit=relaxed&neckline=scoop+neck&sleeve=sleeveless",
           "hints": {
             "slot": "top",
-            "category": "blouse",
-            "color": "beige",
-            "fabric": "silk",
-            "pattern": "floral",
-            "fit": "regular fit",
-            "neckline": "v-neck",
-            "sleeve": "long sleeve"
+            "category": "top",
+            "color": "yellow",
+            "fabric": "linen",
+            "pattern": "solid",
+            "fit": "relaxed",
+            "neckline": "scoop neck",
+            "sleeve": "sleeveless"
           }
         },
         {
           "item_id": "item-user_005-top-004",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/0f4d9494-612a-48f8-be05-e47f4fc54d54.jpg?user_id=user_005&item_id=item-user_005-top-004&slot=top&category=sweater&color=brown&fabric=wool&pattern=solid&fit=regular+fit&neckline=turtleneck&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/03a33083-e7bf-414d-bd35-c56273ae779c.jpg?user_id=user_005&item_id=item-user_005-top-004&slot=top&category=blouse&color=pink&fabric=silk&pattern=floral&fit=regular+fit&neckline=v-neck&sleeve=short+sleeve",
           "hints": {
             "slot": "top",
-            "category": "sweater",
-            "color": "brown",
-            "fabric": "wool",
-            "pattern": "solid",
+            "category": "blouse",
+            "color": "pink",
+            "fabric": "silk",
+            "pattern": "floral",
             "fit": "regular fit",
-            "neckline": "turtleneck",
-            "sleeve": "long sleeve"
+            "neckline": "v-neck",
+            "sleeve": "short sleeve"
           }
         },
         {
           "item_id": "item-user_005-top-005",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/11f2ff4e-6b43-4071-b5b1-2036ec0fe8fe.jpg?user_id=user_005&item_id=item-user_005-top-005&slot=top&category=hoodie&color=pink&fabric=cotton&pattern=solid&fit=oversized&neckline=hooded&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/0df1efc7-34ba-4e11-b027-21ec8fa5a35e.jpg?user_id=user_005&item_id=item-user_005-top-005&slot=top&category=shirt&color=beige&fabric=linen&pattern=solid&fit=relaxed&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
-            "category": "hoodie",
-            "color": "pink",
-            "fabric": "cotton",
+            "category": "shirt",
+            "color": "beige",
+            "fabric": "linen",
             "pattern": "solid",
-            "fit": "oversized",
-            "neckline": "hooded",
+            "fit": "relaxed",
+            "neckline": "collar",
             "sleeve": "long sleeve"
           }
         },
         {
           "item_id": "item-user_005-top-006",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/1789bd08-1ac8-46d6-bf28-0919e083ef56.jpg?user_id=user_005&item_id=item-user_005-top-006&slot=top&category=top&color=black&fabric=linen&pattern=solid&fit=regular+fit&neckline=scoop+neck&sleeve=sleeveless",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/0f4d9494-612a-48f8-be05-e47f4fc54d54.jpg?user_id=user_005&item_id=item-user_005-top-006&slot=top&category=sweater&color=white&fabric=cotton&pattern=solid&fit=relaxed&neckline=crew+neck&sleeve=long+sleeve",
           "hints": {
             "slot": "top",
-            "category": "top",
-            "color": "black",
-            "fabric": "linen",
+            "category": "sweater",
+            "color": "white",
+            "fabric": "cotton",
             "pattern": "solid",
-            "fit": "regular fit",
-            "neckline": "scoop neck",
-            "sleeve": "sleeveless"
+            "fit": "relaxed",
+            "neckline": "crew neck",
+            "sleeve": "long sleeve"
           }
         },
         {
           "item_id": "item-user_005-bottom-007",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/skirt/0558b2c5-be00-49de-b27f-8c88114ac36f.jpg?user_id=user_005&item_id=item-user_005-bottom-007&slot=bottom&category=pants&color=red&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/39a1562b-9f9f-4e70-b593-79cdd63ac707.jpg?user_id=user_005&item_id=item-user_005-bottom-007&slot=bottom&category=shorts&color=white&fabric=linen&pattern=solid&fit=relaxed",
           "hints": {
             "slot": "bottom",
-            "category": "pants",
-            "color": "red",
-            "fabric": "cotton",
+            "category": "shorts",
+            "color": "white",
+            "fabric": "linen",
             "pattern": "solid",
-            "fit": "regular fit"
+            "fit": "relaxed"
           }
         },
         {
           "item_id": "item-user_005-bottom-008",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/skirt/2001dec1-1e0a-4c11-9d15-120b019b3dea.jpg?user_id=user_005&item_id=item-user_005-bottom-008&slot=bottom&category=jeans&color=green&fabric=denim&pattern=solid&fit=slim+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/3bf0d767-b78d-44e4-8b25-740aeb870b06.jpg?user_id=user_005&item_id=item-user_005-bottom-008&slot=bottom&category=pants&color=beige&fabric=linen&pattern=solid&fit=relaxed",
           "hints": {
             "slot": "bottom",
-            "category": "jeans",
-            "color": "green",
-            "fabric": "denim",
+            "category": "pants",
+            "color": "beige",
+            "fabric": "linen",
             "pattern": "solid",
-            "fit": "slim fit"
+            "fit": "relaxed"
           }
         },
         {
           "item_id": "item-user_005-bottom-009",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/skirt/24963db3-649c-4f04-8da3-0375ede8e0a6.jpg?user_id=user_005&item_id=item-user_005-bottom-009&slot=bottom&category=shorts&color=beige&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/40b704ca-eaa5-4cf9-a98d-0e3e2b0294ac.jpg?user_id=user_005&item_id=item-user_005-bottom-009&slot=bottom&category=skirt&color=blue&fabric=cotton&pattern=floral&fit=relaxed",
           "hints": {
             "slot": "bottom",
-            "category": "shorts",
-            "color": "beige",
+            "category": "skirt",
+            "color": "blue",
             "fabric": "cotton",
-            "pattern": "solid",
-            "fit": "regular fit"
+            "pattern": "floral",
+            "fit": "relaxed"
           }
         },
         {
           "item_id": "item-user_005-bottom-010",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/skirt/309829b2-6d1a-4173-8d46-2dbdd10aad90.jpg?user_id=user_005&item_id=item-user_005-bottom-010&slot=bottom&category=skirt&color=brown&fabric=linen&pattern=floral&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/42862c34-640f-40e1-9187-f2f7749523cd.jpg?user_id=user_005&item_id=item-user_005-bottom-010&slot=bottom&category=shorts&color=blue&fabric=cotton&pattern=striped&fit=regular+fit",
           "hints": {
             "slot": "bottom",
-            "category": "skirt",
-            "color": "brown",
-            "fabric": "linen",
-            "pattern": "floral",
+            "category": "shorts",
+            "color": "blue",
+            "fabric": "cotton",
+            "pattern": "striped",
             "fit": "regular fit"
           }
         },
         {
           "item_id": "item-user_005-bottom-011",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/skirt/32b99302-cec7-4dec-adfa-3d4029674209.jpg?user_id=user_005&item_id=item-user_005-bottom-011&slot=bottom&category=pants&color=pink&fabric=wool&pattern=plaid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/5176fdc6-3c9b-4291-854e-487861248b4b.jpg?user_id=user_005&item_id=item-user_005-bottom-011&slot=bottom&category=jeans&color=white&fabric=denim&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "bottom",
-            "category": "pants",
-            "color": "pink",
-            "fabric": "wool",
-            "pattern": "plaid",
+            "category": "jeans",
+            "color": "white",
+            "fabric": "denim",
+            "pattern": "solid",
             "fit": "regular fit"
           }
         },
         {
           "item_id": "item-user_005-one_piece-012",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/8c6b26f9-e3d4-483b-99bd-db4f6beff442.jpg?user_id=user_005&item_id=item-user_005-one_piece-012&slot=one_piece&category=dress&color=red&fabric=silk&pattern=solid&fit=slim+fit&neckline=v-neck&sleeve=sleeveless",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/8c6b26f9-e3d4-483b-99bd-db4f6beff442.jpg?user_id=user_005&item_id=item-user_005-one_piece-012&slot=one_piece&category=dress&color=yellow&fabric=linen&pattern=solid&fit=relaxed&neckline=v-neck&sleeve=sleeveless",
           "hints": {
             "slot": "one_piece",
             "category": "dress",
-            "color": "red",
-            "fabric": "silk",
+            "color": "yellow",
+            "fabric": "linen",
             "pattern": "solid",
-            "fit": "slim fit",
+            "fit": "relaxed",
             "neckline": "v-neck",
             "sleeve": "sleeveless"
           }
@@ -1340,29 +1340,29 @@
         {
           "item_id": "item-user_005-one_piece-013",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/bac70656-a50a-4a13-8c3f-63e3a0a28338.jpg?user_id=user_005&item_id=item-user_005-one_piece-013&slot=one_piece&category=dress&color=green&fabric=cotton&pattern=floral&fit=regular+fit&neckline=crew+neck&sleeve=short+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/bac70656-a50a-4a13-8c3f-63e3a0a28338.jpg?user_id=user_005&item_id=item-user_005-one_piece-013&slot=one_piece&category=dress&color=pink&fabric=silk&pattern=floral&fit=relaxed&neckline=v-neck&sleeve=short+sleeve",
           "hints": {
             "slot": "one_piece",
             "category": "dress",
-            "color": "green",
-            "fabric": "cotton",
+            "color": "pink",
+            "fabric": "silk",
             "pattern": "floral",
-            "fit": "regular fit",
-            "neckline": "crew neck",
+            "fit": "relaxed",
+            "neckline": "v-neck",
             "sleeve": "short sleeve"
           }
         },
         {
           "item_id": "item-user_005-outerwear-014",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/463bbfd1-880b-4537-abb8-8ef98c2894c5.jpg?user_id=user_005&item_id=item-user_005-outerwear-014&slot=outerwear&category=blazer&color=red&fabric=wool&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/463bbfd1-880b-4537-abb8-8ef98c2894c5.jpg?user_id=user_005&item_id=item-user_005-outerwear-014&slot=outerwear&category=jacket&color=beige&fabric=linen&pattern=solid&fit=relaxed&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
-            "category": "blazer",
-            "color": "red",
-            "fabric": "wool",
+            "category": "jacket",
+            "color": "beige",
+            "fabric": "linen",
             "pattern": "solid",
-            "fit": "regular fit",
+            "fit": "relaxed",
             "neckline": "collar",
             "sleeve": "long sleeve"
           }
@@ -1370,11 +1370,11 @@
         {
           "item_id": "item-user_005-outerwear-015",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/4b319ef4-36eb-431f-8627-dba90b8b3bed.jpg?user_id=user_005&item_id=item-user_005-outerwear-015&slot=outerwear&category=jacket&color=green&fabric=denim&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/4b319ef4-36eb-431f-8627-dba90b8b3bed.jpg?user_id=user_005&item_id=item-user_005-outerwear-015&slot=outerwear&category=jacket&color=white&fabric=denim&pattern=solid&fit=regular+fit&neckline=collar&sleeve=long+sleeve",
           "hints": {
             "slot": "outerwear",
             "category": "jacket",
-            "color": "green",
+            "color": "white",
             "fabric": "denim",
             "pattern": "solid",
             "fit": "regular fit",
@@ -1385,7 +1385,20 @@
         {
           "item_id": "item-user_005-footwear-016",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2b54e651-5d43-4f24-9e9e-a58ce16d7c88.jpg?user_id=user_005&item_id=item-user_005-footwear-016&slot=footwear&category=sneakers&color=white&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2b54e651-5d43-4f24-9e9e-a58ce16d7c88.jpg?user_id=user_005&item_id=item-user_005-footwear-016&slot=footwear&category=shoes&color=beige&fabric=leather&pattern=solid&fit=regular+fit",
+          "hints": {
+            "slot": "footwear",
+            "category": "shoes",
+            "color": "beige",
+            "fabric": "leather",
+            "pattern": "solid",
+            "fit": "regular fit"
+          }
+        },
+        {
+          "item_id": "item-user_005-footwear-017",
+          "user_id": "user_005",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2be8cf7a-5b2e-400f-a826-785997af532a.jpg?user_id=user_005&item_id=item-user_005-footwear-017&slot=footwear&category=sneakers&color=white&fabric=cotton&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "footwear",
             "category": "sneakers",
@@ -1396,25 +1409,12 @@
           }
         },
         {
-          "item_id": "item-user_005-footwear-017",
+          "item_id": "item-user_005-footwear-018",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2be8cf7a-5b2e-400f-a826-785997af532a.jpg?user_id=user_005&item_id=item-user_005-footwear-017&slot=footwear&category=shoes&color=black&fabric=leather&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2d986f3f-de01-498a-9657-68e28c84a6be.jpg?user_id=user_005&item_id=item-user_005-footwear-018&slot=footwear&category=shoes&color=brown&fabric=leather&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "footwear",
             "category": "shoes",
-            "color": "black",
-            "fabric": "leather",
-            "pattern": "solid",
-            "fit": "regular fit"
-          }
-        },
-        {
-          "item_id": "item-user_005-footwear-018",
-          "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/2d986f3f-de01-498a-9657-68e28c84a6be.jpg?user_id=user_005&item_id=item-user_005-footwear-018&slot=footwear&category=boots&color=brown&fabric=leather&pattern=solid&fit=regular+fit",
-          "hints": {
-            "slot": "footwear",
-            "category": "boots",
             "color": "brown",
             "fabric": "leather",
             "pattern": "solid",
@@ -1424,12 +1424,12 @@
         {
           "item_id": "item-user_005-accessory-019",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/bcc1aec3-9913-4a2d-b6a0-8f4d97e58b0c.jpg?user_id=user_005&item_id=item-user_005-accessory-019&slot=accessory&category=hat&color=beige&fabric=cotton&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/bcc1aec3-9913-4a2d-b6a0-8f4d97e58b0c.jpg?user_id=user_005&item_id=item-user_005-accessory-019&slot=accessory&category=hat&color=beige&fabric=straw&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "accessory",
             "category": "hat",
             "color": "beige",
-            "fabric": "cotton",
+            "fabric": "straw",
             "pattern": "solid",
             "fit": "regular fit"
           }
@@ -1437,12 +1437,12 @@
         {
           "item_id": "item-user_005-accessory-020",
           "user_id": "user_005",
-          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/c399e385-258a-465c-95d1-ba216c16d7d1.jpg?user_id=user_005&item_id=item-user_005-accessory-020&slot=accessory&category=hat&color=black&fabric=wool&pattern=solid&fit=regular+fit",
+          "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/c399e385-258a-465c-95d1-ba216c16d7d1.jpg?user_id=user_005&item_id=item-user_005-accessory-020&slot=accessory&category=hat&color=white&fabric=cotton&pattern=solid&fit=regular+fit",
           "hints": {
             "slot": "accessory",
             "category": "hat",
-            "color": "black",
-            "fabric": "wool",
+            "color": "white",
+            "fabric": "cotton",
             "pattern": "solid",
             "fit": "regular fit"
           }

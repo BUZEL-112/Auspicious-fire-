@@ -25,11 +25,18 @@
     "test/shirt/4cfe336a-6f8c-4f87-a88d-ae4e3897215f.jpg",
     "test/shirt/5089843a-ecf8-4cb6-8f35-587f19125046.jpg",
     "test/shirt/575fc7c5-aa65-46c6-a343-35113c150129.jpg",
+    "test/shirt/5ec1221f-a52f-4602-9c2c-ed4c81a26708.jpg",
+    "test/shirt/61086848-70bf-462f-87e0-0f756adbd03d.jpg",
     "test/longsleeve/03a33083-e7bf-414d-bd35-c56273ae779c.jpg",
     "test/longsleeve/0df1efc7-34ba-4e11-b027-21ec8fa5a35e.jpg",
     "test/longsleeve/0f4d9494-612a-48f8-be05-e47f4fc54d54.jpg",
     "test/longsleeve/11f2ff4e-6b43-4071-b5b1-2036ec0fe8fe.jpg",
-    "test/longsleeve/1789bd08-1ac8-46d6-bf28-0919e083ef56.jpg"
+    "test/longsleeve/1789bd08-1ac8-46d6-bf28-0919e083ef56.jpg",
+    "test/longsleeve/1b93822d-09f4-41e6-b31b-964cc104ba71.jpg",
+    "test/longsleeve/1f2c3551-4c76-433e-8c9f-8093b94f02bf.jpg",
+    "test/longsleeve/24c1d77c-5ce2-4b5c-be2c-1aeccae3efe2.jpg",
+    "test/longsleeve/28fc3fad-5363-4c70-9c5d-ee739d2e21a8.jpg",
+    "test/longsleeve/2c050ddf-2681-4a03-9d0f-3b96b9cd5fe5.jpg"
   ],
   "bottom": [
     "test/pants/01033304-f9a4-48c4-af65-677512880fae.jpg",
@@ -44,6 +51,9 @@
     "test/pants/2884d941-ccc9-4eac-b7d7-b9996126a9c8.jpg",
     "test/pants/361cbb64-95f4-4be3-a01c-3aba98fa509f.jpg",
     "test/pants/40584096-ab8a-4a68-8d10-f6d94aa6f4b3.jpg",
+    "test/pants/442b93ee-a08b-4bba-8a89-35d8453cf2f5.jpg",
+    "test/pants/4aabd82c-82e1-4181-a84d-d0c6e550d26d.jpg",
+    "test/pants/52f73c9e-93da-47ae-bf67-f0e7b8216fe1.jpg",
     "test/shorts/06248e28-9e26-4036-8a8f-40cc605c83fb.jpg",
     "test/shorts/15ce3cc0-4803-428f-8a4b-fb76cf30f297.jpg",
     "test/shorts/18260a42-3e2a-4bc6-b530-69135bf90434.jpg",
@@ -52,11 +62,18 @@
     "test/shorts/39a1562b-9f9f-4e70-b593-79cdd63ac707.jpg",
     "test/shorts/3bf0d767-b78d-44e4-8b25-740aeb870b06.jpg",
     "test/shorts/40b704ca-eaa5-4cf9-a98d-0e3e2b0294ac.jpg",
+    "test/shorts/42862c34-640f-40e1-9187-f2f7749523cd.jpg",
+    "test/shorts/5176fdc6-3c9b-4291-854e-487861248b4b.jpg",
+    "test/shorts/5379356a-40ee-4890-b416-2336a7d84061.jpg",
+    "test/shorts/56fda6ba-1ee9-4f97-a0fd-55f01f1e2512.jpg",
     "test/skirt/0558b2c5-be00-49de-b27f-8c88114ac36f.jpg",
     "test/skirt/2001dec1-1e0a-4c11-9d15-120b019b3dea.jpg",
     "test/skirt/24963db3-649c-4f04-8da3-0375ede8e0a6.jpg",
     "test/skirt/309829b2-6d1a-4173-8d46-2dbdd10aad90.jpg",
-    "test/skirt/32b99302-cec7-4dec-adfa-3d4029674209.jpg"
+    "test/skirt/32b99302-cec7-4dec-adfa-3d4029674209.jpg",
+    "test/skirt/491982c3-3e90-431e-99e6-b14ecea36384.jpg",
+    "test/skirt/5144499e-7848-4441-8873-7daab5386eec.jpg",
+    "test/skirt/84b4da94-65c0-471e-a7ad-2ba6360f45bb.jpg"
   ],
   "one_piece": [
     "test/dress/06a00c0f-5f9a-410d-a7da-3881a9df3a71.jpg",
@@ -68,7 +85,9 @@
     "test/dress/5a2b4bbf-d9fe-45a2-aa0d-295a86804cb6.jpg",
     "test/dress/7f60d367-31dd-49ad-80ae-b5223364f386.jpg",
     "test/dress/8c6b26f9-e3d4-483b-99bd-db4f6beff442.jpg",
-    "test/dress/bac70656-a50a-4a13-8c3f-63e3a0a28338.jpg"
+    "test/dress/bac70656-a50a-4a13-8c3f-63e3a0a28338.jpg",
+    "test/dress/c6bc821e-631a-4221-9d92-7c7685edebd0.jpg",
+    "test/dress/cbf45350-1a65-4cec-abad-0f64a4a459eb.jpg"
   ],
   "outerwear": [
     "test/outwear/0028956e-9962-46f0-ad45-2c42f8a59d94.jpg",
@@ -80,7 +99,12 @@
     "test/outwear/26d61cdc-a947-45f1-a16c-bf3eb23a67ed.jpg",
     "test/outwear/2edb1db6-cd17-41d2-88e0-ba34801b656d.jpg",
     "test/outwear/463bbfd1-880b-4537-abb8-8ef98c2894c5.jpg",
-    "test/outwear/4b319ef4-36eb-431f-8627-dba90b8b3bed.jpg"
+    "test/outwear/4b319ef4-36eb-431f-8627-dba90b8b3bed.jpg",
+    "test/outwear/5272341c-6438-491d-ab64-44db18de7e28.jpg",
+    "test/outwear/5641733d-73ff-4ba6-9cfe-5212b1f190be.jpg",
+    "test/outwear/5a9be8ea-9c5c-459b-9b5b-7adb4a0e2867.jpg",
+    "test/outwear/610bc298-714b-4a48-bffe-aedd8863cba8.jpg",
+    "test/outwear/66d29c71-268b-45b8-9ee9-67b280d5f52e.jpg"
   ],
   "footwear": [
     "test/shoes/07d88b75-85a4-407b-aa73-12294a2ff9a8.jpg",
@@ -97,7 +121,12 @@
     "test/shoes/29003421-15e6-41f1-9c65-c0abdfcfaa6e.jpg",
     "test/shoes/2b54e651-5d43-4f24-9e9e-a58ce16d7c88.jpg",
     "test/shoes/2be8cf7a-5b2e-400f-a826-785997af532a.jpg",
-    "test/shoes/2d986f3f-de01-498a-9657-68e28c84a6be.jpg"
+    "test/shoes/2d986f3f-de01-498a-9657-68e28c84a6be.jpg",
+    "test/shoes/3e35227b-2061-46eb-8379-a6844a4bd5ac.jpg",
+    "test/shoes/4797602a-efe9-438d-859a-3db113007ef9.jpg",
+    "test/shoes/4be01935-1fff-4595-aac4-b0a0963b4706.jpg",
+    "test/shoes/4bef29fd-fa24-44b7-8626-f2230fcd53ed.jpg",
+    "test/shoes/54120c82-5bb7-4bba-a781-af18362eb24c.jpg"
   ],
   "accessory": [
     "test/hat/2a12baab-f020-42e3-8e6b-5d82e3ed0b55.jpg",
@@ -109,6 +138,8 @@
     "test/hat/a762dfc0-8da7-46d4-9ef1-3c7a085142da.jpg",
     "test/hat/bade5af9-c62c-4f10-9b52-c31f50211d48.jpg",
     "test/hat/bcc1aec3-9913-4a2d-b6a0-8f4d97e58b0c.jpg",
-    "test/hat/c399e385-258a-465c-95d1-ba216c16d7d1.jpg"
+    "test/hat/c399e385-258a-465c-95d1-ba216c16d7d1.jpg",
+    "test/hat/d116fe9a-a72b-49e2-806d-e92f3a67a032.jpg",
+    "test/hat/ff62e59f-c949-4f8e-8fca-798ab3e174c5.jpg"
   ]
 }
