@@ -1,6 +1,7 @@
 import logging
 import uuid
 from typing import Any, Dict, List, Optional, Set, Tuple
+
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from fashion_pipeline.config.settings import settings
@@ -252,16 +253,16 @@ class ShoppingService:
             if (c_slot, c_cat, c_col, c_fab, c_pat) in owned_signatures:
                 continue
 
-            sku_id = candidate["sku_id"]
             virtual_item = self._to_transient_wardrobe_item(candidate, user_id)
             virtual_id = virtual_item.item_id
 
             # Evaluate outfit combinations with virtual item added
             combined_wardrobe = user_items + [virtual_item]
+            eval_pool_size = max(200, len(combined_wardrobe) * 25)
             generated_outfits = self.engine.recommend(
                 wardrobe=combined_wardrobe,
                 context=resolved_context,
-                top_k=25,
+                top_k=eval_pool_size,
             )
 
             # Filter for outfits containing this store item and meeting min score
@@ -272,17 +273,28 @@ class ShoppingService:
             ]
 
             unlocked_count = len(matching_outfits)
+            if unlocked_count == 0:
+                continue
+
             best_score = max((o.total_score for o in matching_outfits), default=0.0)
             is_gap = candidate.get("slot") in missing_slots
 
+            price = float(candidate.get("price_usd", 0.0))
+            cost_per_outfit = price / unlocked_count if unlocked_count > 0 else price
+            weather_val = resolved_context.weather.value
+            occasion_val = resolved_context.occasion.value
+            style_val = resolved_context.style_mood.value
+
             if is_gap:
                 reason = (
-                    f"Fills a missing {candidate.get('slot')} gap for {resolved_context.weather.value} weather. "
+                    f"Fills a missing {candidate.get('slot')} gap for {weather_val} weather at ${price:.2f} "
+                    f"(${cost_per_outfit:.2f} per unlocked outfit). "
                     f"Unlocks {unlocked_count} outfits with best score {best_score:.1f}/100."
                 )
             else:
                 reason = (
-                    f"Matches your existing garments for {resolved_context.occasion.value}. "
+                    f"Matches your {style_val} style for {occasion_val} in {weather_val} weather at ${price:.2f} "
+                    f"(${cost_per_outfit:.2f} per unlocked outfit). "
                     f"Unlocks {unlocked_count} outfits with best score {best_score:.1f}/100."
                 )
 

@@ -1,5 +1,3 @@
-import json
-import os
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
@@ -14,6 +12,8 @@ from fashion_pipeline.schemas.context import (
     OccasionType,
     WeatherCondition,
 )
+from fashion_pipeline.schemas.shopping import StoreItemResponse
+from fashion_pipeline.services.shopping_service import ShoppingService
 from fashion_pipeline.storage.minio_client import storage_client
 
 # In-memory SQLite async test engine with StaticPool
@@ -73,7 +73,7 @@ def test_get_store_items_catalog():
     assert resp.status_code == 200
 
     items = resp.json()
-    assert 24 <= len(items) <= 30
+    assert 36 <= len(items) <= 45
 
     slots_present = set()
     for item in items:
@@ -318,3 +318,169 @@ def test_store_repository_direct():
 
     missing = repo.get_by_sku("does-not-exist")
     assert missing is None
+
+
+@pytest.mark.asyncio
+async def test_shopping_recommendations_excludes_zero_unlock_candidates():
+    """Verify store items that unlock zero outfits are never returned."""
+    user_id = "user_zero_unlock_check"
+    async with _test_session_factory() as session:
+        user = User(user_id=user_id, display_name="Zero Unlock User")
+        session.add(user)
+        # Add 1 top
+        top_item = WardrobeItem(
+            item_id=f"item-{user_id}-top-1",
+            user_id=user_id,
+            bucket="raw-images",
+            object_key=f"users/{user_id}/items/top1.jpg",
+            status="READY",
+            slot="top",
+            category="t-shirt",
+            color="black",
+            fabric="cotton",
+            pattern="solid",
+            fit="regular fit",
+            sleeve="short sleeve",
+            neckline="crew neck",
+            tags_json={"category": {"label": "t-shirt", "confidence": 0.99}},
+        )
+        session.add(top_item)
+        await session.commit()
+
+    client = TestClient(app)
+    req_body = {
+        "occasion": OccasionType.CASUAL_DAILY.value,
+        "weather": WeatherCondition.WARM.value,
+    }
+    resp = client.post(
+        f"/api/v1/users/{user_id}/shopping/recommendations?top_k=20",
+        json=req_body,
+    )
+    assert resp.status_code == 200
+    recommendations = resp.json()["recommendations"]
+    assert len(recommendations) > 0
+    for rec in recommendations:
+        assert rec["unlocked_outfits_count"] > 0
+        assert rec["best_outfit_score"] > 0.0
+        assert "Unlocks 0 outfits" not in rec["reason"]
+        # In the heuristic engine, accessories unlock 0 outfits alone; verify excluded
+        assert rec["store_item"]["slot"] != "accessory"
+
+
+@pytest.mark.asyncio
+async def test_shopping_recommendations_no_truncation_bias_large_wardrobe():
+    """Verify large wardrobes do not truncate unlocked outfit counts due to evaluation pool limits."""
+    user_id = "user_large_wardrobe_001"
+    async with _test_session_factory() as session:
+        user = User(user_id=user_id, display_name="Large Wardrobe User")
+        session.add(user)
+
+        garments = []
+        # Create 6 tops and 5 bottoms (30 possible combinations before candidate item)
+        for i in range(6):
+            garments.append(
+                WardrobeItem(
+                    item_id=f"item-{user_id}-top-{i}",
+                    user_id=user_id,
+                    bucket="raw-images",
+                    object_key=f"users/{user_id}/items/top_{i}.jpg",
+                    status="READY",
+                    slot="top",
+                    category="shirt",
+                    color="white" if i % 2 == 0 else "blue",
+                    fabric="cotton",
+                    pattern="solid",
+                    fit="regular fit",
+                    sleeve="long sleeve",
+                    neckline="collar",
+                    tags_json={"category": {"label": "shirt", "confidence": 0.99}},
+                )
+            )
+        for j in range(5):
+            garments.append(
+                WardrobeItem(
+                    item_id=f"item-{user_id}-btm-{j}",
+                    user_id=user_id,
+                    bucket="raw-images",
+                    object_key=f"users/{user_id}/items/btm_{j}.jpg",
+                    status="READY",
+                    slot="bottom",
+                    category="pants",
+                    color="black" if j % 2 == 0 else "grey",
+                    fabric="cotton",
+                    pattern="solid",
+                    fit="regular fit",
+                    tags_json={"category": {"label": "pants", "confidence": 0.99}},
+                )
+            )
+        # Add 1 footwear
+        garments.append(
+            WardrobeItem(
+                item_id=f"item-{user_id}-shoe-1",
+                user_id=user_id,
+                bucket="raw-images",
+                object_key=f"users/{user_id}/items/shoe_1.jpg",
+                status="READY",
+                slot="footwear",
+                category="shoes",
+                color="black",
+                fabric="leather",
+                pattern="solid",
+                fit="regular fit",
+                tags_json={"category": {"label": "shoes", "confidence": 0.99}},
+            )
+        )
+        session.add_all(garments)
+        await session.commit()
+
+    client = TestClient(app)
+    req_body = {
+        "occasion": OccasionType.CASUAL_DAILY.value,
+        "weather": WeatherCondition.WARM.value,
+    }
+    resp = client.post(
+        f"/api/v1/users/{user_id}/shopping/recommendations?top_k=10",
+        json=req_body,
+    )
+    assert resp.status_code == 200
+    recommendations = resp.json()["recommendations"]
+    assert len(recommendations) > 0
+
+    # Verify that bottom candidates unlocking multiple outfits are not truncated to zero
+    for rec in recommendations:
+        assert rec["unlocked_outfits_count"] > 0
+        if rec["store_item"]["slot"] == "bottom":
+            assert rec["unlocked_outfits_count"] >= 5
+
+
+def test_expanded_store_catalog_validation():
+    """Verify that all items in store_catalog.json parse cleanly into StoreItemResponse."""
+    repo = StoreRepository()
+    raw_items = repo.list_items()
+    assert 36 <= len(raw_items) <= 45
+
+    service = ShoppingService()
+    validated_items = service.list_store_items()
+    assert len(validated_items) == len(raw_items)
+
+    slots = {itm.slot for itm in validated_items}
+    assert slots == {"top", "bottom", "one_piece", "outerwear", "footwear", "accessory"}
+
+    # Check diverse accessories exist
+    accessory_categories = {
+        itm.category for itm in validated_items if itm.slot == "accessory"
+    }
+    assert len(accessory_categories) >= 3
+    assert "hat" in accessory_categories
+    assert "bag" in accessory_categories or "scarf" in accessory_categories or "belt" in accessory_categories
+
+    for item in validated_items:
+        assert isinstance(item, StoreItemResponse)
+        assert item.sku_id.startswith("sku-")
+        assert item.price_usd > 0
+        assert item.product_url.startswith("http")
+        assert item.image_url.startswith("https://raw.githubusercontent.com/")
+        assert len(item.tags) > 0
+        for facet, tag in item.tags.items():
+            assert len(tag.label) > 0
+            assert 0.0 <= tag.confidence <= 1.0
