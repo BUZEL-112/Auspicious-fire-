@@ -166,11 +166,9 @@
       <div class="form-group">
         <label for="userSelect">User Persona</label>
         <select id="userSelect">
-          <option value="user_001">user_001 (Fashion User 001)</option>
-          <option value="user_002" selected>user_002 (Fashion User 002)</option>
-          <option value="user_003">user_003 (Fashion User 003)</option>
-          <option value="user_004">user_004 (Fashion User 004)</option>
-          <option value="user_005">user_005 (Fashion User 005)</option>
+          <option value="user_001">user_001 (Daniel, London)</option>
+          <option value="user_002" selected>user_002 (Kenji, Tokyo)</option>
+          <option value="user_003">user_003 (Amara, Lagos)</option>
         </select>
       </div>
 
@@ -281,7 +279,7 @@
         const fabric = itm.hints ? itm.hints.fabric : "";
 
         card.innerHTML = `
-          <img src="${itm.image_url}" alt="${cat}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'160\\' height=\\'160\\' fill=\\'%231e293b\\'><rect width=\\'160\\' height=\\'160\\' fill=\\'%231e293b\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2394a3b8\\' font-size=\\'12\\' text-anchor=\\'middle\\' dy=\\'.3em\\'>Image</text></svg>'">
+          <img src="${/^https?:/.test(itm.image_url) ? itm.image_url : "../" + itm.image_url.split("?")[0]}" alt="${cat}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'160\\' height=\\'160\\' fill=\\'%231e293b\\'><rect width=\\'160\\' height=\\'160\\' fill=\\'%231e293b\\'/><text x=\\'50%\\' y=\\'50%\\' fill=\\'%2394a3b8\\' font-size=\\'12\\' text-anchor=\\'middle\\' dy=\\'.3em\\'>Image</text></svg>'">
           <div class="card-body">
             <span class="badge badge-${slot}">${slot}</span>
             <div class="card-title">${cat}</div>

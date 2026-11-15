@@ -18,6 +18,10 @@ if [ ! -f /swapfile ] && [ -w / ]; then
     fi
 fi
 
+echo "=== [1b] Fetching curated demo wardrobe release ==="
+bash scripts/fetch_demo_wardrobe.sh || \
+    echo "WARNING: demo wardrobe fetch failed; using the copy bundled in the repository."
+
 echo "=== [2/5] Installing and configuring PostgreSQL ==="
 if ! command -v psql &>/dev/null; then
     apt-get update -qq

@@ -78,8 +78,10 @@ st.markdown(
 
 @st.cache_resource
 def get_cached_vision_engine() -> FashionVisionEngine:
-    """Initialize and cache the FashionVisionEngine in memory."""
-    return FashionVisionEngine()
+    """Initialize, load model weights, and cache the FashionVisionEngine in memory."""
+    engine = FashionVisionEngine()
+    engine.cold_start_init()
+    return engine
 
 
 @st.cache_data
@@ -106,6 +108,46 @@ def check_backend_api_health(api_url: str = "http://localhost:8000") -> bool:
         return resp.status_code == 200
     except Exception:
         return False
+
+
+def slot_keyed_crops(outfit_items: Dict[str, Any]) -> Dict[str, bytes]:
+    """Map outfit slots to uploaded crop bytes.
+
+    Uploaded crops are stored by item_id, but the visualizer looks images up by slot.
+    """
+    crops: Dict[str, bytes] = {}
+    for slot_key, item in outfit_items.items():
+        item_id = getattr(item, "item_id", None)
+        if item_id and item_id in st.session_state.custom_crops:
+            crops[slot_key] = st.session_state.custom_crops[item_id]
+    return crops
+
+
+def best_outfit_with_item(
+    engine: HeuristicRecommendationEngine,
+    wardrobe: List[WardrobeItem],
+    item: WardrobeItem,
+    context: DressingContext,
+) -> Any:
+    """Return the highest-scoring outfit that actually contains ``item``, or None.
+
+    The engine's top outfit for wardrobe + item often leaves the item out, which made the
+    shopping preview show an "unlocked" look without the product in it.
+    """
+    candidates = engine.generate_recommendations(wardrobe=[item] + wardrobe, context=context, top_k=10_000)
+    for outfit in candidates:
+        if any(getattr(g, "item_id", None) == item.item_id for g in outfit.items.values()):
+            return outfit
+
+    # The engine only adds outerwear in cold or rainy weather; layer it onto the best outfit instead.
+    if item.slot == "outerwear" and candidates and engine.filter_item_for_context(item, context):
+        by_id = {w.item_id: w for w in wardrobe}
+        base = candidates[0].items
+        combo = {s: by_id[g.item_id] for s, g in base.items() if g.item_id in by_id}
+        if len(combo) == len(base):
+            combo["outerwear"] = item
+            return engine.evaluate_outfit(combo, context)
+    return None
 
 
 def convert_manifest_user_to_wardrobe_items(user_data: Dict[str, Any]) -> List[WardrobeItem]:
@@ -208,6 +250,20 @@ if "initialized_persona" not in st.session_state:
     st.session_state.initialized_persona = True
 
 
+def load_persona(user_id: str) -> None:
+    """Replace the active wardrobe with a persona from the manifest (widget callback)."""
+    persona = next((u for u in load_cached_dummy_manifest().get("users", []) if u.get("user_id") == user_id), None)
+    if persona is None:
+        return
+    st.session_state.active_wardrobe = convert_manifest_user_to_wardrobe_items(persona)
+    st.session_state.active_user_id = user_id
+    st.session_state.custom_crops = {}
+    st.session_state.sidebar_persona = user_id
+    st.session_state.persona_loaded_msg = (
+        f"Loaded {len(st.session_state.active_wardrobe)} garments for {persona.get('display_name')}."
+    )
+
+
 # Sidebar Configuration
 st.sidebar.title("Configuration")
 
@@ -228,6 +284,28 @@ else:
         st.sidebar.success("Backend API is online and responding.")
     else:
         st.sidebar.warning("Backend API not reachable. Fallback to In-Memory Engine is active.")
+
+st.sidebar.markdown("---")
+st.sidebar.subheader("Active Persona")
+_personas = load_cached_dummy_manifest().get("users", [])
+_persona_labels = {
+    u["user_id"]: f"{u.get('display_name')} ({u.get('default_city')}, {u.get('default_style', '').replace('_', ' ')})"
+    for u in _personas
+}
+if _personas:
+    if st.session_state.get("sidebar_persona") not in _persona_labels:
+        st.session_state.sidebar_persona = (
+            st.session_state.active_user_id
+            if st.session_state.active_user_id in _persona_labels
+            else _personas[0]["user_id"]
+        )
+    st.sidebar.selectbox(
+        "Switch persona (available on every step)",
+        options=list(_persona_labels),
+        format_func=lambda uid: _persona_labels[uid],
+        key="sidebar_persona",
+        on_change=lambda: load_persona(st.session_state.sidebar_persona),
+    )
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("Active Wardrobe Inventory")
@@ -295,11 +373,14 @@ with tab_step1:
 
             col_btn, col_info = st.columns([1, 3])
             with col_btn:
-                if st.button("Load This Persona into Active Wardrobe", use_container_width=True):
-                    st.session_state.active_wardrobe = convert_manifest_user_to_wardrobe_items(selected_persona)
-                    st.session_state.active_user_id = selected_persona.get("user_id", "user_001")
-                    st.success(f"Loaded {len(st.session_state.active_wardrobe)} garments for {selected_persona.get('display_name')}.")
-                    st.rerun()
+                st.button(
+                    "Load This Persona into Active Wardrobe",
+                    use_container_width=True,
+                    on_click=load_persona,
+                    args=(selected_persona.get("user_id", "user_001"),),
+                )
+                if st.session_state.get("persona_loaded_msg"):
+                    st.success(st.session_state.pop("persona_loaded_msg"))
 
             with col_info:
                 st.info(
@@ -327,7 +408,7 @@ with tab_step1:
                         st.markdown(f"**{category}** ({color})")
                         st.caption(f"Slot: {slot} | Fabric: {fabric}")
                         if img_url:
-                            st.image(img_url, width=160)
+                            st.image(img_url.split("?", 1)[0], width=160)
 
     else:
         # Option B: Upload Custom Image
@@ -491,7 +572,7 @@ with tab_step2:
                         lookbook_img = build_stacked_outfit_image(
                             outfit_items=outfit.items,
                             canvas_width=420,
-                            garment_images=st.session_state.custom_crops,
+                            garment_images=slot_keyed_crops(outfit.items),
                         )
                         st.image(lookbook_img, caption=f"Outfit #{idx + 1} Lookbook Composition", width=380)
 
@@ -579,7 +660,7 @@ with tab_step2:
 
             with col_store_info:
                 if image_url:
-                    st.image(image_url, width=180)
+                    st.image(image_url.split("?", 1)[0], width=180)
                 st.write(f"**Price**: ${price:.2f} USD")
                 st.write(f"**Category**: {category.title()} | **Slot**: {slot.title()}")
                 st.write(f"**Color**: {color.title()} | **Fabric**: {fabric.title()}")
@@ -634,23 +715,22 @@ with tab_step2:
                     tags_json=store_item.get("tags"),
                 )
 
-                test_wardrobe = [preview_transient] + st.session_state.active_wardrobe
-                simulated_outfits = engine.generate_recommendations(
-                    wardrobe=test_wardrobe,
+                sim_outfit = best_outfit_with_item(
+                    engine=engine,
+                    wardrobe=st.session_state.active_wardrobe,
+                    item=preview_transient,
                     context=context_obj,
-                    top_k=1,
                 )
 
-                if simulated_outfits:
-                    sim_outfit = simulated_outfits[0]
+                if sim_outfit is not None:
                     st.caption(f"Unlocked Lookbook (Score: {sim_outfit.total_score:.1f}/100)")
                     sim_img = build_stacked_outfit_image(
                         outfit_items=sim_outfit.items,
                         canvas_width=320,
-                        garment_images=st.session_state.custom_crops,
+                        garment_images=slot_keyed_crops(sim_outfit.items),
                     )
                     st.image(sim_img, width=280)
                 else:
-                    st.caption("No combined outfit available.")
+                    st.caption("This item does not fit an outfit for the selected context.")
 
             st.markdown("---")

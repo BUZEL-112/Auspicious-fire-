@@ -25,7 +25,7 @@ Detailed technical and scientific documentation is available in the [Technical A
   - Hard Thermal Filters (suppresses wool and coats in hot weather, suppresses shorts and sandals in cold weather).
   - Hard Formality Filters (suppresses hoodies and t-shirts in black tie and formal events).
   - Compatibility Scoring (color harmony, style coherence, layer balance).
-- **Pre-Packaged Dataset**: 100 garments across five distinct style personas with clothing image URLs in `tests/dummy/dummy_wardrobes.json`.
+- **Pre-Packaged Dataset**: 30 hand-verified garments across three style personas in `tests/dummy/dummy_wardrobes.json`, with images bundled in `data/demo_wardrobe/` (sources and licences in `data/demo_wardrobe/ATTRIBUTION.md`).
 
 ### Phase 3: Store Catalog Gap Analysis and Outfit Unlock Scoring
 - **Store Catalog API**: Explore retail inventory by garment slot via `GET /api/v1/shopping/store/items`.
@@ -76,7 +76,11 @@ Run these commands inside your Google Colab terminal, notebook cells, or remotel
 
 ```bash
 # 1. Install packages and set up dependencies
+#    (also fetches the curated demo wardrobe release, demo-wardrobe-v1)
 bash scripts/colab_setup.sh
+
+# Optional: refresh only the demo wardrobe data (photos, personas, store catalog)
+bash scripts/fetch_demo_wardrobe.sh
 
 # 2. Launch background services (PostgreSQL, MinIO, Kafka KRaft, API, Worker)
 bash scripts/start_services.sh

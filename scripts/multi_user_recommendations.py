@@ -10,12 +10,21 @@ MANIFEST = "/content/Auspicious-fire-/tests/dummy/dummy_wardrobes.json"
 
 USER_CONFIGS = [
     {
-        "user_id": "user_002",
+        "user_id": "user_001",
         "scenario_name": "Work / Office in Cold Weather",
         "context": {
             "occasion": "work_office",
             "weather": "cold",
             "formality": "business_casual",
+        },
+    },
+    {
+        "user_id": "user_002",
+        "scenario_name": "Outdoor / Travel in Mild Weather",
+        "context": {
+            "occasion": "outdoor_travel",
+            "weather": "mild",
+            "style_mood": "relaxed_comfort",
         },
     },
     {
@@ -25,24 +34,6 @@ USER_CONFIGS = [
             "occasion": "party_social",
             "weather": "warm",
             "style_mood": "bold_expressive",
-        },
-    },
-    {
-        "user_id": "user_004",
-        "scenario_name": "Outdoor / Travel in Mild Weather",
-        "context": {
-            "occasion": "outdoor_travel",
-            "weather": "mild",
-            "style_mood": "relaxed_comfort",
-        },
-    },
-    {
-        "user_id": "user_005",
-        "scenario_name": "Formal Event in Mild Weather",
-        "context": {
-            "occasion": "formal_event",
-            "weather": "mild",
-            "formality": "semi_formal",
         },
     },
 ]

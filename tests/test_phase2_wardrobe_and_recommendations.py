@@ -72,20 +72,23 @@ async def setup_test_db(monkeypatch):
 
 
 def test_dummy_wardrobe_manifest_structure():
-    """Verify dummy wardrobes JSON manifest contains 5 users with 20 garments each."""
+    """Verify the demo manifest contains 3 users with 10 locally bundled, verified garments each."""
     manifest_path = "tests/dummy/dummy_wardrobes.json"
     assert os.path.exists(manifest_path), "tests/dummy/dummy_wardrobes.json must exist"
 
     with open(manifest_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    assert data["total_users"] == 5
-    assert data["total_items"] == 100
-    assert len(data["users"]) == 5
+    assert data["total_users"] == 3
+    assert data["total_items"] == 30
+    assert len(data["users"]) == 3
+
+    with open("data/demo_wardrobe/sources.json", "r", encoding="utf-8") as f:
+        sources = json.load(f)
 
     for user in data["users"]:
-        assert user["items_count"] == 20
-        assert len(user["items"]) == 20
+        assert user["items_count"] == 10
+        assert len(user["items"]) == 10
 
         slot_counts = {}
         for itm in user["items"]:
@@ -93,19 +96,18 @@ def test_dummy_wardrobe_manifest_structure():
             assert "user_id" in itm
             assert "image_url" in itm
             assert "hints" in itm
-            # Must be a real reachable GitHub URL, not example.com
-            assert "example.com" not in itm["image_url"]
-            assert itm["image_url"].startswith("https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/")
+            # Must point at a bundled image with a recorded source and licence
+            local_path = itm["image_url"].split("?", 1)[0]
+            assert local_path.startswith("data/demo_wardrobe/images/")
+            assert os.path.isfile(local_path), f"Missing demo image: {local_path}"
+            assert os.path.basename(local_path) in sources
 
             slot = itm["hints"]["slot"]
             slot_counts[slot] = slot_counts.get(slot, 0) + 1
 
-        assert slot_counts["top"] == 6
-        assert slot_counts["bottom"] == 5
-        assert slot_counts["one_piece"] == 2
-        assert slot_counts["outerwear"] == 2
-        assert slot_counts["footwear"] == 3
-        assert slot_counts["accessory"] == 2
+        # Every persona can assemble a complete outfit in any weather
+        for required_slot in ("top", "bottom", "outerwear", "footwear"):
+            assert slot_counts.get(required_slot, 0) >= 2
 
 
 def test_url_to_images_converter():
@@ -115,7 +117,7 @@ def test_url_to_images_converter():
         data = json.load(f)
     sample_real_url = data["users"][0]["items"][0]["image_url"]
 
-    # Real URL download test
+    # Bundled local image test
     real_img_bytes = convert_url_to_image_bytes(sample_real_url)
     assert isinstance(real_img_bytes, bytes)
     assert len(real_img_bytes) > 1000
@@ -135,6 +137,22 @@ def test_url_to_images_converter():
         assert item_id.startswith("item-user_001")
         assert len(raw_bytes) > 1000
         assert "hints" in item_meta
+
+
+def test_local_image_reads_are_confined_to_demo_folder():
+    """Client-supplied image_url values must never read files outside data/demo_wardrobe."""
+    with open("pyproject.toml", "rb") as f:
+        secret = f.read()
+
+    for path in (
+        "pyproject.toml",
+        os.path.abspath("pyproject.toml"),
+        "data/demo_wardrobe/../../pyproject.toml",
+        "data/demo_wardrobe/sources.json",  # inside the folder but not an image
+    ):
+        result = convert_url_to_image_bytes(path)
+        assert result != secret
+        assert result[:2] == b"\xff\xd8", f"Expected synthesized JPEG fallback for {path}"
 
 
 def test_context_questionnaire_endpoint():
@@ -206,7 +224,7 @@ def test_recommendations_with_context_filtering():
     with open(manifest_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # Ingest user_002's 20 items from manifest
+    # Ingest user_002's items from manifest
     user_items = data["users"][1]["items"]
     for itm in user_items:
         r = client.post(

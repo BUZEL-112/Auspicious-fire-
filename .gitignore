@@ -17,3 +17,24 @@ debug-xe_info.txt
 exper.txt
 frontend/
 node_modules/
+
+# Tool caches
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Model weights downloaded at runtime (YOLO, SAM); never commit
+*.pt
+*.pth
+
+# Runtime state from scripts/start_services.sh
+logs/
+.pids/
+
+# Notebook outputs written by `colab exec -f notebook.ipynb`
+*_output.ipynb
+
+# Local secrets and OS files
+.streamlit/secrets.toml
+.DS_Store
+Thumbs.db

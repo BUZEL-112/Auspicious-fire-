@@ -1,3 +1,5 @@
+import os
+
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
@@ -81,7 +83,8 @@ def test_get_store_items_catalog():
         assert len(item["name"]) > 0
         assert item["price_usd"] > 0
         assert item["product_url"].startswith("http")
-        assert item["image_url"].startswith("https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/")
+        assert item["image_url"].startswith("data/demo_wardrobe/")
+        assert os.path.isfile(item["image_url"]), f"Missing store image: {item['image_url']}"
         assert "example.com" not in item["image_url"]
         assert item["slot"] in {"top", "bottom", "one_piece", "outerwear", "footwear", "accessory"}
         assert len(item["tags"]) > 0
@@ -242,7 +245,7 @@ def test_shopping_one_click_add_to_wardrobe():
     assert item_data["category"] == "blazer"
     assert item_data["color"] == "navy"
     assert item_data["fabric"] == "wool"
-    assert "alexeygrigorev/clothing-dataset-small" in item_data["source_url"]
+    assert item_data["source_url"] == "data/demo_wardrobe/images/store_blazer_navy.jpg"
 
     # Verify GET /api/v1/users/{user_id}/wardrobe returns the newly added item
     get_resp = client.get(f"/api/v1/users/{user_id}/wardrobe")
@@ -479,7 +482,7 @@ def test_expanded_store_catalog_validation():
         assert item.sku_id.startswith("sku-")
         assert item.price_usd > 0
         assert item.product_url.startswith("http")
-        assert item.image_url.startswith("https://raw.githubusercontent.com/")
+        assert item.image_url.startswith("data/demo_wardrobe/")
         assert len(item.tags) > 0
         for facet, tag in item.tags.items():
             assert len(tag.label) > 0
