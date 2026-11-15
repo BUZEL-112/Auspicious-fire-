@@ -250,6 +250,20 @@ if "initialized_persona" not in st.session_state:
     st.session_state.initialized_persona = True
 
 
+def load_persona(user_id: str) -> None:
+    """Replace the active wardrobe with a persona from the manifest (widget callback)."""
+    persona = next((u for u in load_cached_dummy_manifest().get("users", []) if u.get("user_id") == user_id), None)
+    if persona is None:
+        return
+    st.session_state.active_wardrobe = convert_manifest_user_to_wardrobe_items(persona)
+    st.session_state.active_user_id = user_id
+    st.session_state.custom_crops = {}
+    st.session_state.sidebar_persona = user_id
+    st.session_state.persona_loaded_msg = (
+        f"Loaded {len(st.session_state.active_wardrobe)} garments for {persona.get('display_name')}."
+    )
+
+
 # Sidebar Configuration
 st.sidebar.title("Configuration")
 
@@ -270,6 +284,28 @@ else:
         st.sidebar.success("Backend API is online and responding.")
     else:
         st.sidebar.warning("Backend API not reachable. Fallback to In-Memory Engine is active.")
+
+st.sidebar.markdown("---")
+st.sidebar.subheader("Active Persona")
+_personas = load_cached_dummy_manifest().get("users", [])
+_persona_labels = {
+    u["user_id"]: f"{u.get('display_name')} ({u.get('default_city')}, {u.get('default_style', '').replace('_', ' ')})"
+    for u in _personas
+}
+if _personas:
+    if st.session_state.get("sidebar_persona") not in _persona_labels:
+        st.session_state.sidebar_persona = (
+            st.session_state.active_user_id
+            if st.session_state.active_user_id in _persona_labels
+            else _personas[0]["user_id"]
+        )
+    st.sidebar.selectbox(
+        "Switch persona (available on every step)",
+        options=list(_persona_labels),
+        format_func=lambda uid: _persona_labels[uid],
+        key="sidebar_persona",
+        on_change=lambda: load_persona(st.session_state.sidebar_persona),
+    )
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("Active Wardrobe Inventory")
@@ -337,11 +373,14 @@ with tab_step1:
 
             col_btn, col_info = st.columns([1, 3])
             with col_btn:
-                if st.button("Load This Persona into Active Wardrobe", use_container_width=True):
-                    st.session_state.active_wardrobe = convert_manifest_user_to_wardrobe_items(selected_persona)
-                    st.session_state.active_user_id = selected_persona.get("user_id", "user_001")
-                    st.success(f"Loaded {len(st.session_state.active_wardrobe)} garments for {selected_persona.get('display_name')}.")
-                    st.rerun()
+                st.button(
+                    "Load This Persona into Active Wardrobe",
+                    use_container_width=True,
+                    on_click=load_persona,
+                    args=(selected_persona.get("user_id", "user_001"),),
+                )
+                if st.session_state.get("persona_loaded_msg"):
+                    st.success(st.session_state.pop("persona_loaded_msg"))
 
             with col_info:
                 st.info(
