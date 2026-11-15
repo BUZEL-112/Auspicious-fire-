@@ -139,6 +139,22 @@ def test_url_to_images_converter():
         assert "hints" in item_meta
 
 
+def test_local_image_reads_are_confined_to_demo_folder():
+    """Client-supplied image_url values must never read files outside data/demo_wardrobe."""
+    with open("pyproject.toml", "rb") as f:
+        secret = f.read()
+
+    for path in (
+        "pyproject.toml",
+        os.path.abspath("pyproject.toml"),
+        "data/demo_wardrobe/../../pyproject.toml",
+        "data/demo_wardrobe/sources.json",  # inside the folder but not an image
+    ):
+        result = convert_url_to_image_bytes(path)
+        assert result != secret
+        assert result[:2] == b"\xff\xd8", f"Expected synthesized JPEG fallback for {path}"
+
+
 def test_context_questionnaire_endpoint():
     """Verify GET /api/v1/context/questions returns the 5 context questions."""
     client = TestClient(app)

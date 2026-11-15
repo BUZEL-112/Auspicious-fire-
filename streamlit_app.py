@@ -123,6 +123,33 @@ def slot_keyed_crops(outfit_items: Dict[str, Any]) -> Dict[str, bytes]:
     return crops
 
 
+def best_outfit_with_item(
+    engine: HeuristicRecommendationEngine,
+    wardrobe: List[WardrobeItem],
+    item: WardrobeItem,
+    context: DressingContext,
+) -> Any:
+    """Return the highest-scoring outfit that actually contains ``item``, or None.
+
+    The engine's top outfit for wardrobe + item often leaves the item out, which made the
+    shopping preview show an "unlocked" look without the product in it.
+    """
+    candidates = engine.generate_recommendations(wardrobe=[item] + wardrobe, context=context, top_k=10_000)
+    for outfit in candidates:
+        if any(getattr(g, "item_id", None) == item.item_id for g in outfit.items.values()):
+            return outfit
+
+    # The engine only adds outerwear in cold or rainy weather; layer it onto the best outfit instead.
+    if item.slot == "outerwear" and candidates and engine.filter_item_for_context(item, context):
+        by_id = {w.item_id: w for w in wardrobe}
+        base = candidates[0].items
+        combo = {s: by_id[g.item_id] for s, g in base.items() if g.item_id in by_id}
+        if len(combo) == len(base):
+            combo["outerwear"] = item
+            return engine.evaluate_outfit(combo, context)
+    return None
+
+
 def convert_manifest_user_to_wardrobe_items(user_data: Dict[str, Any]) -> List[WardrobeItem]:
     """Convert manifest user garment entries into database-compatible WardrobeItem objects."""
     items: List[WardrobeItem] = []
@@ -649,15 +676,14 @@ with tab_step2:
                     tags_json=store_item.get("tags"),
                 )
 
-                test_wardrobe = [preview_transient] + st.session_state.active_wardrobe
-                simulated_outfits = engine.generate_recommendations(
-                    wardrobe=test_wardrobe,
+                sim_outfit = best_outfit_with_item(
+                    engine=engine,
+                    wardrobe=st.session_state.active_wardrobe,
+                    item=preview_transient,
                     context=context_obj,
-                    top_k=1,
                 )
 
-                if simulated_outfits:
-                    sim_outfit = simulated_outfits[0]
+                if sim_outfit is not None:
                     st.caption(f"Unlocked Lookbook (Score: {sim_outfit.total_score:.1f}/100)")
                     sim_img = build_stacked_outfit_image(
                         outfit_items=sim_outfit.items,
@@ -666,6 +692,6 @@ with tab_step2:
                     )
                     st.image(sim_img, width=280)
                 else:
-                    st.caption("No combined outfit available.")
+                    st.caption("This item does not fit an outfit for the selected context.")
 
             st.markdown("---")

@@ -409,15 +409,38 @@ def synthesize_garment_image(
     return output.getvalue()
 
 
+LOCAL_IMAGE_ROOT = os.path.join("data", "demo_wardrobe")
+LOCAL_IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png", ".webp")
+
+
+def _resolve_local_demo_image(path: str) -> Optional[str]:
+    """Return the real path of a bundled demo image, or None if the path is outside the demo root."""
+    if not path.lower().endswith(LOCAL_IMAGE_EXTENSIONS):
+        return None
+    root = os.path.realpath(LOCAL_IMAGE_ROOT)
+    resolved = os.path.realpath(path)
+    try:
+        inside_root = os.path.commonpath([root, resolved]) == root
+    except ValueError:  # different drives on Windows
+        return None
+    if not inside_root or not os.path.isfile(resolved):
+        return None
+    return resolved
+
+
 def download_or_synthesize_garment_image(
     image_url: str,
     timeout: float = 2.0,
 ) -> bytes:
-    """Convert a garment image URL or local file path into image bytes with fallback to local synthesis."""
+    """Convert a garment image URL or bundled demo image path into image bytes with fallback to local synthesis.
+
+    Local reads are limited to files under ``LOCAL_IMAGE_ROOT``. The API passes client-supplied
+    ``image_url`` values here, so arbitrary filesystem paths must never be opened.
+    """
     if image_url and not image_url.startswith(("http://", "https://")):
         # Local paths may carry metadata hints in a query string; strip it to find the file.
-        local_path = image_url.split("?", 1)[0]
-        if os.path.isfile(local_path):
+        local_path = _resolve_local_demo_image(image_url.split("?", 1)[0])
+        if local_path is not None:
             with open(local_path, "rb") as f:
                 return f.read()
 
