@@ -4,10 +4,25 @@ import pytest
 from fashion_pipeline.ml.engine import FashionVisionEngine
 
 
+def _use_fallback_models(engine: FashionVisionEngine) -> None:
+    """Stand-in for _load_models: same end state as its offline fallback branch."""
+    engine.clip_model = None
+    engine.clip_processor = None
+    engine.segformer_model = None
+    engine.segformer_processor = None
+    engine.yolo_model = None
+    engine.sam_predictor = None
+
+
 @pytest.fixture(scope="module")
 def vision_engine():
-    engine = FashionVisionEngine(device="cpu", use_fp16=False)
-    engine.cold_start_init()
+    # These tests check pipeline wiring on synthetic images, so they must not depend on
+    # whichever model weights happen to be downloadable (real SegFormer finds no garment
+    # in random noise). Force the deterministic fallback models on every machine.
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setattr(FashionVisionEngine, "_load_models", _use_fallback_models)
+        engine = FashionVisionEngine(device="cpu", use_fp16=False)
+        engine.cold_start_init()
     return engine
 
 
