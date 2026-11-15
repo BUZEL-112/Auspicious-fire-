@@ -4,7 +4,7 @@
     "name": "Classic Navy Wool Blazer",
     "price_usd": 149.0,
     "product_url": "https://store.example.com/products/sku-outerwear-001",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/0028956e-9962-46f0-ad45-2c42f8a59d94.jpg",
+    "image_url": "data/demo_wardrobe/images/store_blazer_navy.jpg",
     "slot": "outerwear",
     "category": "blazer",
     "color": "navy",
@@ -14,511 +14,42 @@
     "sleeve": "long sleeve",
     "fit": "regular fit",
     "tags": {
-      "category": {"label": "blazer", "confidence": 0.99},
-      "color": {"label": "navy", "confidence": 0.99},
-      "fabric": {"label": "wool", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "collar", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-outerwear-002",
-    "name": "Tailored Black Trench Coat",
-    "price_usd": 189.0,
-    "product_url": "https://store.example.com/products/sku-outerwear-002",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/01e4ab4f-6148-4dd7-9a43-df7681fbc71d.jpg",
-    "slot": "outerwear",
-    "category": "coat",
-    "color": "black",
-    "fabric": "cotton",
-    "pattern": "solid",
-    "neckline": "collar",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "coat", "confidence": 0.99},
-      "color": {"label": "black", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "collar", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-outerwear-003",
-    "name": "Charcoal Winter Wool Overcoat",
-    "price_usd": 219.0,
-    "product_url": "https://store.example.com/products/sku-outerwear-003",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/0a86d893-93f1-4a52-8c42-07bb9f439833.jpg",
-    "slot": "outerwear",
-    "category": "coat",
-    "color": "grey",
-    "fabric": "wool",
-    "pattern": "solid",
-    "neckline": "collar",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "coat", "confidence": 0.99},
-      "color": {"label": "grey", "confidence": 0.99},
-      "fabric": {"label": "wool", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "collar", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-outerwear-004",
-    "name": "Lightweight Windbreaker Sport Jacket",
-    "price_usd": 79.0,
-    "product_url": "https://store.example.com/products/sku-outerwear-004",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/0d73e759-eeaa-43ab-98d4-196b6974c41e.jpg",
-    "slot": "outerwear",
-    "category": "jacket",
-    "color": "blue",
-    "fabric": "polyester",
-    "pattern": "solid",
-    "neckline": "crew neck",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "jacket", "confidence": 0.99},
-      "color": {"label": "blue", "confidence": 0.99},
-      "fabric": {"label": "polyester", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "crew neck", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-outerwear-005",
-    "name": "Casual Olive Field Jacket",
-    "price_usd": 99.0,
-    "product_url": "https://store.example.com/products/sku-outerwear-005",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/105c3674-f1d0-4fc6-8131-e53001670352.jpg",
-    "slot": "outerwear",
-    "category": "jacket",
-    "color": "green",
-    "fabric": "cotton",
-    "pattern": "solid",
-    "neckline": "collar",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "jacket", "confidence": 0.99},
-      "color": {"label": "green", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "collar", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-outerwear-006",
-    "name": "Slim Fit Tan Cotton Blazer",
-    "price_usd": 139.0,
-    "product_url": "https://store.example.com/products/sku-outerwear-006",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/1dcf0cd4-ca7e-46ac-90c7-ce465153a7f0.jpg",
-    "slot": "outerwear",
-    "category": "blazer",
-    "color": "beige",
-    "fabric": "cotton",
-    "pattern": "solid",
-    "neckline": "collar",
-    "sleeve": "long sleeve",
-    "fit": "slim fit",
-    "tags": {
-      "category": {"label": "blazer", "confidence": 0.99},
-      "color": {"label": "beige", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "collar", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "slim fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-top-001",
-    "name": "Crisp White Oxford Dress Shirt",
-    "price_usd": 59.0,
-    "product_url": "https://store.example.com/products/sku-top-001",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/01b3083f-4387-4753-8ae2-a2470dc53f19.jpg",
-    "slot": "top",
-    "category": "shirt",
-    "color": "white",
-    "fabric": "cotton",
-    "pattern": "solid",
-    "neckline": "collar",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "shirt", "confidence": 0.99},
-      "color": {"label": "white", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "collar", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-top-002",
-    "name": "Premium Black Crew Neck T-Shirt",
-    "price_usd": 29.0,
-    "product_url": "https://store.example.com/products/sku-top-002",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/01fd527c-da05-4141-861c-3aaec8070601.jpg",
-    "slot": "top",
-    "category": "t-shirt",
-    "color": "black",
-    "fabric": "cotton",
-    "pattern": "solid",
-    "neckline": "crew neck",
-    "sleeve": "short sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "t-shirt", "confidence": 0.99},
-      "color": {"label": "black", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "crew neck", "confidence": 0.99},
-      "sleeve": {"label": "short sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-top-003",
-    "name": "Navy Knit Crewneck Sweater",
-    "price_usd": 89.0,
-    "product_url": "https://store.example.com/products/sku-top-003",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/03a33083-e7bf-414d-bd35-c56273ae779c.jpg",
-    "slot": "top",
-    "category": "sweater",
-    "color": "navy",
-    "fabric": "wool",
-    "pattern": "solid",
-    "neckline": "crew neck",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "sweater", "confidence": 0.99},
-      "color": {"label": "navy", "confidence": 0.99},
-      "fabric": {"label": "wool", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "crew neck", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-top-004",
-    "name": "Athletic Breathable Performance Top",
-    "price_usd": 35.0,
-    "product_url": "https://store.example.com/products/sku-top-004",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/t-shirt/05d01bf9-6ff5-4c5e-b946-b4ca004a125b.jpg",
-    "slot": "top",
-    "category": "t-shirt",
-    "color": "blue",
-    "fabric": "polyester",
-    "pattern": "solid",
-    "neckline": "crew neck",
-    "sleeve": "short sleeve",
-    "fit": "slim fit",
-    "tags": {
-      "category": {"label": "t-shirt", "confidence": 0.99},
-      "color": {"label": "blue", "confidence": 0.99},
-      "fabric": {"label": "polyester", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "crew neck", "confidence": 0.99},
-      "sleeve": {"label": "short sleeve", "confidence": 0.99},
-      "fit": {"label": "slim fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-top-005",
-    "name": "Silk Elegant Cream Blouse",
-    "price_usd": 75.0,
-    "product_url": "https://store.example.com/products/sku-top-005",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/0e99edde-0ed8-4c8c-a405-0517c1b801a4.jpg",
-    "slot": "top",
-    "category": "blouse",
-    "color": "beige",
-    "fabric": "silk",
-    "pattern": "solid",
-    "neckline": "v-neck",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "blouse", "confidence": 0.99},
-      "color": {"label": "beige", "confidence": 0.99},
-      "fabric": {"label": "silk", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "v-neck", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-bottom-001",
-    "name": "Tailored Charcoal Wool Trousers",
-    "price_usd": 99.0,
-    "product_url": "https://store.example.com/products/sku-bottom-001",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/01033304-f9a4-48c4-af65-677512880fae.jpg",
-    "slot": "bottom",
-    "category": "pants",
-    "color": "grey",
-    "fabric": "wool",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "slim fit",
-    "tags": {
-      "category": {"label": "pants", "confidence": 0.99},
-      "color": {"label": "grey", "confidence": 0.99},
-      "fabric": {"label": "wool", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "slim fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-bottom-002",
-    "name": "Dark Indigo Straight Cut Jeans",
-    "price_usd": 79.0,
-    "product_url": "https://store.example.com/products/sku-bottom-002",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/046d0a65-f5a6-47f6-afaf-e692bfcfcb00.jpg",
-    "slot": "bottom",
-    "category": "jeans",
-    "color": "navy",
-    "fabric": "denim",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "jeans", "confidence": 0.99},
-      "color": {"label": "navy", "confidence": 0.99},
-      "fabric": {"label": "denim", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-bottom-003",
-    "name": "Classic Khaki Cotton Chinos",
-    "price_usd": 69.0,
-    "product_url": "https://store.example.com/products/sku-bottom-003",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/05814dc4-0520-47e6-91e0-402a971ba40a.jpg",
-    "slot": "bottom",
-    "category": "pants",
-    "color": "beige",
-    "fabric": "cotton",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "pants", "confidence": 0.99},
-      "color": {"label": "beige", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-bottom-004",
-    "name": "Athletic Running Training Shorts",
-    "price_usd": 39.0,
-    "product_url": "https://store.example.com/products/sku-bottom-004",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shorts/06248e28-9e26-4036-8a8f-40cc605c83fb.jpg",
-    "slot": "bottom",
-    "category": "shorts",
-    "color": "black",
-    "fabric": "polyester",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "shorts", "confidence": 0.99},
-      "color": {"label": "black", "confidence": 0.99},
-      "fabric": {"label": "polyester", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-bottom-005",
-    "name": "Pleated Navy A-Line Skirt",
-    "price_usd": 65.0,
-    "product_url": "https://store.example.com/products/sku-bottom-005",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/skirt/0558b2c5-be00-49de-b27f-8c88114ac36f.jpg",
-    "slot": "bottom",
-    "category": "skirt",
-    "color": "navy",
-    "fabric": "cotton",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "skirt", "confidence": 0.99},
-      "color": {"label": "navy", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-onepiece-001",
-    "name": "Elegant Black Silk Evening Dress",
-    "price_usd": 139.0,
-    "product_url": "https://store.example.com/products/sku-onepiece-001",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/06a00c0f-5f9a-410d-a7da-3881a9df3a71.jpg",
-    "slot": "one_piece",
-    "category": "dress",
-    "color": "black",
-    "fabric": "silk",
-    "pattern": "solid",
-    "neckline": "v-neck",
-    "sleeve": "sleeveless",
-    "fit": "slim fit",
-    "tags": {
-      "category": {"label": "dress", "confidence": 0.99},
-      "color": {"label": "black", "confidence": 0.99},
-      "fabric": {"label": "silk", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "v-neck", "confidence": 0.99},
-      "sleeve": {"label": "sleeveless", "confidence": 0.99},
-      "fit": {"label": "slim fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-onepiece-002",
-    "name": "Floral Cotton Casual Summer Dress",
-    "price_usd": 89.0,
-    "product_url": "https://store.example.com/products/sku-onepiece-002",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/28b09463-6bbb-491d-9ffc-f36df5c6b211.jpg",
-    "slot": "one_piece",
-    "category": "dress",
-    "color": "white",
-    "fabric": "cotton",
-    "pattern": "floral",
-    "neckline": "round neck",
-    "sleeve": "short sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "dress", "confidence": 0.99},
-      "color": {"label": "white", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "floral", "confidence": 0.99},
-      "neckline": {"label": "round neck", "confidence": 0.99},
-      "sleeve": {"label": "short sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-onepiece-003",
-    "name": "Navy Knit Long Sleeve Dress",
-    "price_usd": 109.0,
-    "product_url": "https://store.example.com/products/sku-onepiece-003",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/35f157d0-53e4-4496-b087-da4ad63edd47.jpg",
-    "slot": "one_piece",
-    "category": "dress",
-    "color": "navy",
-    "fabric": "knit",
-    "pattern": "solid",
-    "neckline": "crew neck",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "dress", "confidence": 0.99},
-      "color": {"label": "navy", "confidence": 0.99},
-      "fabric": {"label": "knit", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "crew neck", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-onepiece-004",
-    "name": "Red Minimalist Cotton Shift Dress",
-    "price_usd": 79.0,
-    "product_url": "https://store.example.com/products/sku-onepiece-004",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/3f844e1e-4a00-4b64-8c1d-3b847191bf11.jpg",
-    "slot": "one_piece",
-    "category": "dress",
-    "color": "red",
-    "fabric": "cotton",
-    "pattern": "solid",
-    "neckline": "round neck",
-    "sleeve": "short sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "dress", "confidence": 0.99},
-      "color": {"label": "red", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "round neck", "confidence": 0.99},
-      "sleeve": {"label": "short sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-footwear-001",
-    "name": "Classic Black Leather Oxford Shoes",
-    "price_usd": 145.0,
-    "product_url": "https://store.example.com/products/sku-footwear-001",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/07d88b75-85a4-407b-aa73-12294a2ff9a8.jpg",
-    "slot": "footwear",
-    "category": "shoes",
-    "color": "black",
-    "fabric": "leather",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "shoes", "confidence": 0.99},
-      "color": {"label": "black", "confidence": 0.99},
-      "fabric": {"label": "leather", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-footwear-002",
-    "name": "Minimalist White Leather Sneakers",
-    "price_usd": 95.0,
-    "product_url": "https://store.example.com/products/sku-footwear-002",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/0dd87e47-ca85-4d5c-9fd1-59f5a01eb656.jpg",
-    "slot": "footwear",
-    "category": "sneakers",
-    "color": "white",
-    "fabric": "leather",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "sneakers", "confidence": 0.99},
-      "color": {"label": "white", "confidence": 0.99},
-      "fabric": {"label": "leather", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
+      "category": {
+        "label": "blazer",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "navy",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "wool",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "collar",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
     }
   },
   {
     "sku_id": "sku-footwear-003",
-    "name": "Dark Brown Leather Chelsea Boots",
+    "name": "Tan Leather Work Boots",
     "price_usd": 160.0,
     "product_url": "https://store.example.com/products/sku-footwear-003",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/132e5fa5-ed38-4293-8dff-20727b6b5ac2.jpg",
+    "image_url": "data/demo_wardrobe/images/store_boots_tan.jpg",
     "slot": "footwear",
     "category": "boots",
     "color": "brown",
@@ -528,333 +59,34 @@
     "sleeve": null,
     "fit": "regular fit",
     "tags": {
-      "category": {"label": "boots", "confidence": 0.99},
-      "color": {"label": "brown", "confidence": 0.99},
-      "fabric": {"label": "leather", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-footwear-004",
-    "name": "Blue Performance Running Shoes",
-    "price_usd": 110.0,
-    "product_url": "https://store.example.com/products/sku-footwear-004",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/15120826-cc4c-44d4-8648-7f334bf5fd69.jpg",
-    "slot": "footwear",
-    "category": "sneakers",
-    "color": "blue",
-    "fabric": "mesh",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "sneakers", "confidence": 0.99},
-      "color": {"label": "blue", "confidence": 0.99},
-      "fabric": {"label": "mesh", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-footwear-005",
-    "name": "Brown Leather Summer Slide Sandals",
-    "price_usd": 55.0,
-    "product_url": "https://store.example.com/products/sku-footwear-005",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/16fd381e-9da4-493b-aa53-c217eab6bff0.jpg",
-    "slot": "footwear",
-    "category": "sandals",
-    "color": "brown",
-    "fabric": "leather",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "sandals", "confidence": 0.99},
-      "color": {"label": "brown", "confidence": 0.99},
-      "fabric": {"label": "leather", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-accessory-001",
-    "name": "Black Wool Structured Fedora Hat",
-    "price_usd": 45.0,
-    "product_url": "https://store.example.com/products/sku-accessory-001",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/2a12baab-f020-42e3-8e6b-5d82e3ed0b55.jpg",
-    "slot": "accessory",
-    "category": "hat",
-    "color": "black",
-    "fabric": "wool",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "hat", "confidence": 0.99},
-      "color": {"label": "black", "confidence": 0.99},
-      "fabric": {"label": "wool", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-accessory-002",
-    "name": "Navy Cotton Adjustable Baseball Cap",
-    "price_usd": 25.0,
-    "product_url": "https://store.example.com/products/sku-accessory-002",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/31ae3916-c352-45fe-9866-a8947fc74991.jpg",
-    "slot": "accessory",
-    "category": "hat",
-    "color": "navy",
-    "fabric": "cotton",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "hat", "confidence": 0.99},
-      "color": {"label": "navy", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-accessory-003",
-    "name": "Beige Woven Straw Sun Hat",
-    "price_usd": 35.0,
-    "product_url": "https://store.example.com/products/sku-accessory-003",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/3f0be386-9a59-4aeb-93f6-dbe63e3a3002.jpg",
-    "slot": "accessory",
-    "category": "hat",
-    "color": "beige",
-    "fabric": "straw",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "hat", "confidence": 0.99},
-      "color": {"label": "beige", "confidence": 0.99},
-      "fabric": {"label": "straw", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-accessory-004",
-    "name": "Grey Merino Wool Ribbed Beanie",
-    "price_usd": 29.0,
-    "product_url": "https://store.example.com/products/sku-accessory-004",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/hat/6c2f18d0-30ff-468c-a470-39c65abf4851.jpg",
-    "slot": "accessory",
-    "category": "hat",
-    "color": "grey",
-    "fabric": "knit",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "hat", "confidence": 0.99},
-      "color": {"label": "grey", "confidence": 0.99},
-      "fabric": {"label": "knit", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-accessory-005",
-    "name": "Classic Brown Leather Messenger Bag",
-    "price_usd": 89.0,
-    "product_url": "https://store.example.com/products/sku-accessory-005",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/bag/01737be7-83c8-47bc-ae46-d250882e997a.jpg",
-    "slot": "accessory",
-    "category": "bag",
-    "color": "brown",
-    "fabric": "leather",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "bag", "confidence": 0.99},
-      "color": {"label": "brown", "confidence": 0.99},
-      "fabric": {"label": "leather", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-accessory-006",
-    "name": "Warm Charcoal Cashmere Scarf",
-    "price_usd": 65.0,
-    "product_url": "https://store.example.com/products/sku-accessory-006",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/scarf/0200831a-e8dc-4389-980b-4024340d85ab.jpg",
-    "slot": "accessory",
-    "category": "scarf",
-    "color": "grey",
-    "fabric": "wool",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "scarf", "confidence": 0.99},
-      "color": {"label": "grey", "confidence": 0.99},
-      "fabric": {"label": "wool", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-accessory-007",
-    "name": "Classic Black Reversible Leather Belt",
-    "price_usd": 45.0,
-    "product_url": "https://store.example.com/products/sku-accessory-007",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/belt/038933ba-f203-4903-8822-0a18413ea4b2.jpg",
-    "slot": "accessory",
-    "category": "belt",
-    "color": "black",
-    "fabric": "leather",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "belt", "confidence": 0.99},
-      "color": {"label": "black", "confidence": 0.99},
-      "fabric": {"label": "leather", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-accessory-008",
-    "name": "Printed Red Silk Neck Scarf",
-    "price_usd": 39.0,
-    "product_url": "https://store.example.com/products/sku-accessory-008",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/scarf/0488b39a-0988-44ae-b19b-734fa09e3e3b.jpg",
-    "slot": "accessory",
-    "category": "scarf",
-    "color": "red",
-    "fabric": "silk",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "scarf", "confidence": 0.99},
-      "color": {"label": "red", "confidence": 0.99},
-      "fabric": {"label": "silk", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-accessory-009",
-    "name": "Minimalist Black Leather Tote Bag",
-    "price_usd": 95.0,
-    "product_url": "https://store.example.com/products/sku-accessory-009",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/bag/05a62fb8-22da-4b77-a50e-561b2e861d8a.jpg",
-    "slot": "accessory",
-    "category": "bag",
-    "color": "black",
-    "fabric": "leather",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "bag", "confidence": 0.99},
-      "color": {"label": "black", "confidence": 0.99},
-      "fabric": {"label": "leather", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-outerwear-007",
-    "name": "Warm Navy Quilted Puffer Jacket",
-    "price_usd": 159.0,
-    "product_url": "https://store.example.com/products/sku-outerwear-007",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/outwear/28d087b2-c0e8-48b0-a590-754e38634816.jpg",
-    "slot": "outerwear",
-    "category": "jacket",
-    "color": "navy",
-    "fabric": "polyester",
-    "pattern": "solid",
-    "neckline": "collar",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "jacket", "confidence": 0.99},
-      "color": {"label": "navy", "confidence": 0.99},
-      "fabric": {"label": "polyester", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "collar", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-top-006",
-    "name": "Charcoal Wool Knit Turtleneck",
-    "price_usd": 95.0,
-    "product_url": "https://store.example.com/products/sku-top-006",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/longsleeve/18df92d4-3453-43da-88fa-b93dc6555132.jpg",
-    "slot": "top",
-    "category": "sweater",
-    "color": "grey",
-    "fabric": "wool",
-    "pattern": "solid",
-    "neckline": "turtleneck",
-    "sleeve": "long sleeve",
-    "fit": "slim fit",
-    "tags": {
-      "category": {"label": "sweater", "confidence": 0.99},
-      "color": {"label": "grey", "confidence": 0.99},
-      "fabric": {"label": "wool", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "turtleneck", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "slim fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-top-007",
-    "name": "Blue Striped Cotton Button-Down Shirt",
-    "price_usd": 69.0,
-    "product_url": "https://store.example.com/products/sku-top-007",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shirt/2b4146a4-6ba9-42b5-afb8-39a04ea7e667.jpg",
-    "slot": "top",
-    "category": "shirt",
-    "color": "blue",
-    "fabric": "cotton",
-    "pattern": "striped",
-    "neckline": "collar",
-    "sleeve": "long sleeve",
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "shirt", "confidence": 0.99},
-      "color": {"label": "blue", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "striped", "confidence": 0.99},
-      "neckline": {"label": "collar", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
+      "category": {
+        "label": "boots",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "brown",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
     }
   },
   {
     "sku_id": "sku-bottom-006",
-    "name": "Slim Fit Black Cotton Chinos",
+    "name": "Black Cropped Stretch Trousers",
     "price_usd": 79.0,
     "product_url": "https://store.example.com/products/sku-bottom-006",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/pants/0793c200-a43b-4838-89c5-8f64ddcbb567.jpg",
+    "image_url": "data/demo_wardrobe/images/store_pants_black_cropped.jpg",
     "slot": "bottom",
     "category": "pants",
     "color": "black",
@@ -864,11 +96,1626 @@
     "sleeve": null,
     "fit": "slim fit",
     "tags": {
-      "category": {"label": "pants", "confidence": 0.99},
-      "color": {"label": "black", "confidence": 0.99},
-      "fabric": {"label": "cotton", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "slim fit", "confidence": 0.99}
+      "category": {
+        "label": "pants",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "slim fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-top-007",
+    "name": "Grey Utility Work Shirt",
+    "price_usd": 69.0,
+    "product_url": "https://store.example.com/products/sku-top-007",
+    "image_url": "data/demo_wardrobe/images/store_shirt_grey.jpg",
+    "slot": "top",
+    "category": "shirt",
+    "color": "grey",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": "collar",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "shirt",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "grey",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "collar",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-footwear-001",
+    "name": "Classic Black Leather Oxford Shoes",
+    "price_usd": 145.0,
+    "product_url": "https://store.example.com/products/sku-footwear-001",
+    "image_url": "data/demo_wardrobe/images/store_oxford_black.jpg",
+    "slot": "footwear",
+    "category": "shoes",
+    "color": "black",
+    "fabric": "leather",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "shoes",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-footwear-004",
+    "name": "Blue Knit Slip-On Sneakers",
+    "price_usd": 110.0,
+    "product_url": "https://store.example.com/products/sku-footwear-004",
+    "image_url": "data/demo_wardrobe/images/store_sneakers_blue.jpg",
+    "slot": "footwear",
+    "category": "sneakers",
+    "color": "blue",
+    "fabric": "polyester",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "sneakers",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "blue",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "polyester",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-footwear-002",
+    "name": "Black Knit Lace-Up Sneakers",
+    "price_usd": 95.0,
+    "product_url": "https://store.example.com/products/sku-footwear-002",
+    "image_url": "data/demo_wardrobe/images/store_sneakers_black.jpg",
+    "slot": "footwear",
+    "category": "sneakers",
+    "color": "black",
+    "fabric": "polyester",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "sneakers",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "polyester",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-footwear-005",
+    "name": "Black Leather Footbed Sandals",
+    "price_usd": 55.0,
+    "product_url": "https://store.example.com/products/sku-footwear-005",
+    "image_url": "data/demo_wardrobe/images/store_sandals_black.jpg",
+    "slot": "footwear",
+    "category": "sandals",
+    "color": "black",
+    "fabric": "leather",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "sandals",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-footwear-006",
+    "name": "Brown Leather Heeled Loafers",
+    "price_usd": 125.0,
+    "product_url": "https://store.example.com/products/sku-footwear-006",
+    "image_url": "data/demo_wardrobe/images/store_loafers_brown.jpg",
+    "slot": "footwear",
+    "category": "shoes",
+    "color": "brown",
+    "fabric": "leather",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "shoes",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "brown",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-bottom-004",
+    "name": "Burgundy Striped Track Pants",
+    "price_usd": 39.0,
+    "product_url": "https://store.example.com/products/sku-bottom-004",
+    "image_url": "data/demo_wardrobe/images/store_pants_burgundy_track.jpg",
+    "slot": "bottom",
+    "category": "pants",
+    "color": "red",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "pants",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "red",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-accessory-001",
+    "name": "Brown Felt Fedora Hat",
+    "price_usd": 45.0,
+    "product_url": "https://store.example.com/products/sku-accessory-001",
+    "image_url": "data/demo_wardrobe/images/store_hat_brown_fedora.jpg",
+    "slot": "accessory",
+    "category": "hat",
+    "color": "brown",
+    "fabric": "wool",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "hat",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "brown",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "wool",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-accessory-002",
+    "name": "Navy Denim Fisherman Cap",
+    "price_usd": 25.0,
+    "product_url": "https://store.example.com/products/sku-accessory-002",
+    "image_url": "data/demo_wardrobe/images/store_hat_navy_cap.jpg",
+    "slot": "accessory",
+    "category": "hat",
+    "color": "navy",
+    "fabric": "denim",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "hat",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "navy",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "denim",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-accessory-004",
+    "name": "Green Knit Beanie",
+    "price_usd": 29.0,
+    "product_url": "https://store.example.com/products/sku-accessory-004",
+    "image_url": "data/demo_wardrobe/images/store_hat_green_beanie.jpg",
+    "slot": "accessory",
+    "category": "hat",
+    "color": "green",
+    "fabric": "knit",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "hat",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "green",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "knit",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-footwear-007",
+    "price_usd": 175.0,
+    "product_url": "https://store.example.com/products/sku-footwear-007",
+    "slot": "footwear",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": null,
+    "name": "Black Leather Knee-High Boots",
+    "category": "boots",
+    "color": "black",
+    "fabric": "leather",
+    "image_url": "data/demo_wardrobe/images/store_boots_black_knee.jpg",
+    "tags": {
+      "category": {
+        "label": "boots",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-footwear-008",
+    "price_usd": 89.0,
+    "product_url": "https://store.example.com/products/sku-footwear-008",
+    "slot": "footwear",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": null,
+    "name": "Red Leather Block-Heel Pumps",
+    "category": "shoes",
+    "color": "red",
+    "fabric": "leather",
+    "image_url": "data/demo_wardrobe/images/store_pumps_red.jpg",
+    "tags": {
+      "category": {
+        "label": "shoes",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "red",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-footwear-009",
+    "price_usd": 150.0,
+    "product_url": "https://store.example.com/products/sku-footwear-009",
+    "slot": "footwear",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": null,
+    "name": "Tan Leather Cap-Toe Oxfords",
+    "category": "shoes",
+    "color": "brown",
+    "fabric": "leather",
+    "image_url": "data/demo_wardrobe/images/store_oxford_tan.jpg",
+    "tags": {
+      "category": {
+        "label": "shoes",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "brown",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-footwear-010",
+    "price_usd": 85.0,
+    "product_url": "https://store.example.com/products/sku-footwear-010",
+    "slot": "footwear",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": null,
+    "name": "Grey Suede Slip-On Shoes",
+    "category": "shoes",
+    "color": "grey",
+    "fabric": "leather",
+    "image_url": "data/demo_wardrobe/images/store_slipon_grey.jpg",
+    "tags": {
+      "category": {
+        "label": "shoes",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "grey",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-outerwear-002",
+    "name": "Tailored Black Trench Coat",
+    "price_usd": 189.0,
+    "product_url": "https://store.example.com/products/sku-outerwear-002",
+    "image_url": "data/demo_wardrobe/store/sku-outerwear-002.jpg",
+    "slot": "outerwear",
+    "category": "coat",
+    "color": "black",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": "collar",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "coat",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "collar",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-outerwear-003",
+    "name": "Charcoal Winter Wool Overcoat",
+    "price_usd": 219.0,
+    "product_url": "https://store.example.com/products/sku-outerwear-003",
+    "image_url": "data/demo_wardrobe/store/sku-outerwear-003.jpg",
+    "slot": "outerwear",
+    "category": "coat",
+    "color": "grey",
+    "fabric": "wool",
+    "pattern": "solid",
+    "neckline": "collar",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "coat",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "grey",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "wool",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "collar",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-outerwear-004",
+    "name": "Lightweight Windbreaker Sport Jacket",
+    "price_usd": 79.0,
+    "product_url": "https://store.example.com/products/sku-outerwear-004",
+    "image_url": "data/demo_wardrobe/store/sku-outerwear-004.jpg",
+    "slot": "outerwear",
+    "category": "jacket",
+    "color": "blue",
+    "fabric": "polyester",
+    "pattern": "solid",
+    "neckline": "crew neck",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "jacket",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "blue",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "polyester",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "crew neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-outerwear-005",
+    "name": "Casual Olive Field Jacket",
+    "price_usd": 99.0,
+    "product_url": "https://store.example.com/products/sku-outerwear-005",
+    "image_url": "data/demo_wardrobe/store/sku-outerwear-005.jpg",
+    "slot": "outerwear",
+    "category": "jacket",
+    "color": "green",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": "collar",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "jacket",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "green",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "collar",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-outerwear-006",
+    "name": "Slim Fit Tan Cotton Blazer",
+    "price_usd": 139.0,
+    "product_url": "https://store.example.com/products/sku-outerwear-006",
+    "image_url": "data/demo_wardrobe/store/sku-outerwear-006.jpg",
+    "slot": "outerwear",
+    "category": "blazer",
+    "color": "beige",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": "collar",
+    "sleeve": "long sleeve",
+    "fit": "slim fit",
+    "tags": {
+      "category": {
+        "label": "blazer",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "beige",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "collar",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "slim fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-top-001",
+    "name": "Crisp White Oxford Dress Shirt",
+    "price_usd": 59.0,
+    "product_url": "https://store.example.com/products/sku-top-001",
+    "image_url": "data/demo_wardrobe/store/sku-top-001.jpg",
+    "slot": "top",
+    "category": "shirt",
+    "color": "white",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": "collar",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "shirt",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "white",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "collar",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-top-002",
+    "name": "Premium Black Crew Neck T-Shirt",
+    "price_usd": 29.0,
+    "product_url": "https://store.example.com/products/sku-top-002",
+    "image_url": "data/demo_wardrobe/store/sku-top-002.jpg",
+    "slot": "top",
+    "category": "t-shirt",
+    "color": "black",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": "crew neck",
+    "sleeve": "short sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "t-shirt",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "crew neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "short sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-top-003",
+    "name": "Navy Knit Crewneck Sweater",
+    "price_usd": 89.0,
+    "product_url": "https://store.example.com/products/sku-top-003",
+    "image_url": "data/demo_wardrobe/store/sku-top-003.jpg",
+    "slot": "top",
+    "category": "sweater",
+    "color": "navy",
+    "fabric": "wool",
+    "pattern": "solid",
+    "neckline": "crew neck",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "sweater",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "navy",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "wool",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "crew neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-top-004",
+    "name": "Athletic Breathable Performance Top",
+    "price_usd": 35.0,
+    "product_url": "https://store.example.com/products/sku-top-004",
+    "image_url": "data/demo_wardrobe/store/sku-top-004.jpg",
+    "slot": "top",
+    "category": "t-shirt",
+    "color": "blue",
+    "fabric": "polyester",
+    "pattern": "solid",
+    "neckline": "crew neck",
+    "sleeve": "short sleeve",
+    "fit": "slim fit",
+    "tags": {
+      "category": {
+        "label": "t-shirt",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "blue",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "polyester",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "crew neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "short sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "slim fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-top-005",
+    "name": "Silk Elegant Cream Blouse",
+    "price_usd": 75.0,
+    "product_url": "https://store.example.com/products/sku-top-005",
+    "image_url": "data/demo_wardrobe/store/sku-top-005.jpg",
+    "slot": "top",
+    "category": "blouse",
+    "color": "beige",
+    "fabric": "silk",
+    "pattern": "solid",
+    "neckline": "v-neck",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "blouse",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "beige",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "silk",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "v-neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-bottom-001",
+    "name": "Tailored Charcoal Wool Trousers",
+    "price_usd": 99.0,
+    "product_url": "https://store.example.com/products/sku-bottom-001",
+    "image_url": "data/demo_wardrobe/store/sku-bottom-001.jpg",
+    "slot": "bottom",
+    "category": "pants",
+    "color": "grey",
+    "fabric": "wool",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "slim fit",
+    "tags": {
+      "category": {
+        "label": "pants",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "grey",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "wool",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "slim fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-bottom-002",
+    "name": "Dark Indigo Straight Cut Jeans",
+    "price_usd": 79.0,
+    "product_url": "https://store.example.com/products/sku-bottom-002",
+    "image_url": "data/demo_wardrobe/store/sku-bottom-002.jpg",
+    "slot": "bottom",
+    "category": "jeans",
+    "color": "navy",
+    "fabric": "denim",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "jeans",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "navy",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "denim",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-bottom-003",
+    "name": "Classic Khaki Cotton Chinos",
+    "price_usd": 69.0,
+    "product_url": "https://store.example.com/products/sku-bottom-003",
+    "image_url": "data/demo_wardrobe/store/sku-bottom-003.jpg",
+    "slot": "bottom",
+    "category": "pants",
+    "color": "beige",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "pants",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "beige",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-bottom-005",
+    "name": "Pleated Navy A-Line Skirt",
+    "price_usd": 65.0,
+    "product_url": "https://store.example.com/products/sku-bottom-005",
+    "image_url": "data/demo_wardrobe/store/sku-bottom-005.jpg",
+    "slot": "bottom",
+    "category": "skirt",
+    "color": "navy",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "skirt",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "navy",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-onepiece-001",
+    "name": "Elegant Black Silk Evening Dress",
+    "price_usd": 139.0,
+    "product_url": "https://store.example.com/products/sku-onepiece-001",
+    "image_url": "data/demo_wardrobe/store/sku-onepiece-001.jpg",
+    "slot": "one_piece",
+    "category": "dress",
+    "color": "black",
+    "fabric": "silk",
+    "pattern": "solid",
+    "neckline": "v-neck",
+    "sleeve": "sleeveless",
+    "fit": "slim fit",
+    "tags": {
+      "category": {
+        "label": "dress",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "silk",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "v-neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "sleeveless",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "slim fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-onepiece-002",
+    "name": "Floral Cotton Casual Summer Dress",
+    "price_usd": 89.0,
+    "product_url": "https://store.example.com/products/sku-onepiece-002",
+    "image_url": "data/demo_wardrobe/store/sku-onepiece-002.jpg",
+    "slot": "one_piece",
+    "category": "dress",
+    "color": "white",
+    "fabric": "cotton",
+    "pattern": "floral",
+    "neckline": "round neck",
+    "sleeve": "short sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "dress",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "white",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "floral",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "round neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "short sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-onepiece-003",
+    "name": "Navy Knit Long Sleeve Dress",
+    "price_usd": 109.0,
+    "product_url": "https://store.example.com/products/sku-onepiece-003",
+    "image_url": "data/demo_wardrobe/store/sku-onepiece-003.jpg",
+    "slot": "one_piece",
+    "category": "dress",
+    "color": "navy",
+    "fabric": "knit",
+    "pattern": "solid",
+    "neckline": "crew neck",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "dress",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "navy",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "knit",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "crew neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-onepiece-004",
+    "name": "Red Minimalist Cotton Shift Dress",
+    "price_usd": 79.0,
+    "product_url": "https://store.example.com/products/sku-onepiece-004",
+    "image_url": "data/demo_wardrobe/store/sku-onepiece-004.jpg",
+    "slot": "one_piece",
+    "category": "dress",
+    "color": "red",
+    "fabric": "cotton",
+    "pattern": "solid",
+    "neckline": "round neck",
+    "sleeve": "short sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "dress",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "red",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "cotton",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "round neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "short sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-accessory-003",
+    "name": "Beige Woven Straw Sun Hat",
+    "price_usd": 35.0,
+    "product_url": "https://store.example.com/products/sku-accessory-003",
+    "image_url": "data/demo_wardrobe/store/sku-accessory-003.jpg",
+    "slot": "accessory",
+    "category": "hat",
+    "color": "beige",
+    "fabric": "straw",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "hat",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "beige",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "straw",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-accessory-005",
+    "name": "Classic Brown Leather Messenger Bag",
+    "price_usd": 89.0,
+    "product_url": "https://store.example.com/products/sku-accessory-005",
+    "image_url": "data/demo_wardrobe/store/sku-accessory-005.jpg",
+    "slot": "accessory",
+    "category": "bag",
+    "color": "brown",
+    "fabric": "leather",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "bag",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "brown",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-accessory-006",
+    "name": "Warm Charcoal Cashmere Scarf",
+    "price_usd": 65.0,
+    "product_url": "https://store.example.com/products/sku-accessory-006",
+    "image_url": "data/demo_wardrobe/store/sku-accessory-006.jpg",
+    "slot": "accessory",
+    "category": "scarf",
+    "color": "grey",
+    "fabric": "wool",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "scarf",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "grey",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "wool",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-accessory-007",
+    "name": "Classic Black Reversible Leather Belt",
+    "price_usd": 45.0,
+    "product_url": "https://store.example.com/products/sku-accessory-007",
+    "image_url": "data/demo_wardrobe/store/sku-accessory-007.jpg",
+    "slot": "accessory",
+    "category": "belt",
+    "color": "black",
+    "fabric": "leather",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "belt",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-accessory-008",
+    "name": "Printed Red Silk Neck Scarf",
+    "price_usd": 39.0,
+    "product_url": "https://store.example.com/products/sku-accessory-008",
+    "image_url": "data/demo_wardrobe/store/sku-accessory-008.jpg",
+    "slot": "accessory",
+    "category": "scarf",
+    "color": "red",
+    "fabric": "silk",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "scarf",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "red",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "silk",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-accessory-009",
+    "name": "Minimalist Black Leather Tote Bag",
+    "price_usd": 95.0,
+    "product_url": "https://store.example.com/products/sku-accessory-009",
+    "image_url": "data/demo_wardrobe/store/sku-accessory-009.jpg",
+    "slot": "accessory",
+    "category": "bag",
+    "color": "black",
+    "fabric": "leather",
+    "pattern": "solid",
+    "neckline": null,
+    "sleeve": null,
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "bag",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "black",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "leather",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-outerwear-007",
+    "name": "Warm Navy Quilted Puffer Jacket",
+    "price_usd": 159.0,
+    "product_url": "https://store.example.com/products/sku-outerwear-007",
+    "image_url": "data/demo_wardrobe/store/sku-outerwear-007.jpg",
+    "slot": "outerwear",
+    "category": "jacket",
+    "color": "navy",
+    "fabric": "polyester",
+    "pattern": "solid",
+    "neckline": "collar",
+    "sleeve": "long sleeve",
+    "fit": "regular fit",
+    "tags": {
+      "category": {
+        "label": "jacket",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "navy",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "polyester",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "collar",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
+    }
+  },
+  {
+    "sku_id": "sku-top-006",
+    "name": "Charcoal Wool Knit Turtleneck",
+    "price_usd": 95.0,
+    "product_url": "https://store.example.com/products/sku-top-006",
+    "image_url": "data/demo_wardrobe/store/sku-top-006.jpg",
+    "slot": "top",
+    "category": "sweater",
+    "color": "grey",
+    "fabric": "wool",
+    "pattern": "solid",
+    "neckline": "turtleneck",
+    "sleeve": "long sleeve",
+    "fit": "slim fit",
+    "tags": {
+      "category": {
+        "label": "sweater",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "grey",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "wool",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "turtleneck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "slim fit",
+        "confidence": 0.99
+      }
     }
   },
   {
@@ -876,7 +1723,7 @@
     "name": "Tailored Navy Wool Knit Dress",
     "price_usd": 129.0,
     "product_url": "https://store.example.com/products/sku-onepiece-005",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/dress/4508ec73-61b4-4b55-a0bc-16bc752174a7.jpg",
+    "image_url": "data/demo_wardrobe/store/sku-onepiece-005.jpg",
     "slot": "one_piece",
     "category": "dress",
     "color": "navy",
@@ -886,35 +1733,34 @@
     "sleeve": "long sleeve",
     "fit": "regular fit",
     "tags": {
-      "category": {"label": "dress", "confidence": 0.99},
-      "color": {"label": "navy", "confidence": 0.99},
-      "fabric": {"label": "wool", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "neckline": {"label": "v-neck", "confidence": 0.99},
-      "sleeve": {"label": "long sleeve", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
-    }
-  },
-  {
-    "sku_id": "sku-footwear-006",
-    "name": "Classic Beige Suede Loafers",
-    "price_usd": 125.0,
-    "product_url": "https://store.example.com/products/sku-footwear-006",
-    "image_url": "https://raw.githubusercontent.com/alexeygrigorev/clothing-dataset-small/master/test/shoes/28ca9489-0941-4cf1-8c4d-cf2eef85959c.jpg",
-    "slot": "footwear",
-    "category": "shoes",
-    "color": "beige",
-    "fabric": "suede",
-    "pattern": "solid",
-    "neckline": null,
-    "sleeve": null,
-    "fit": "regular fit",
-    "tags": {
-      "category": {"label": "shoes", "confidence": 0.99},
-      "color": {"label": "beige", "confidence": 0.99},
-      "fabric": {"label": "suede", "confidence": 0.99},
-      "pattern": {"label": "solid", "confidence": 0.99},
-      "fit": {"label": "regular fit", "confidence": 0.99}
+      "category": {
+        "label": "dress",
+        "confidence": 0.99
+      },
+      "color": {
+        "label": "navy",
+        "confidence": 0.99
+      },
+      "fabric": {
+        "label": "wool",
+        "confidence": 0.99
+      },
+      "pattern": {
+        "label": "solid",
+        "confidence": 0.99
+      },
+      "neckline": {
+        "label": "v-neck",
+        "confidence": 0.99
+      },
+      "sleeve": {
+        "label": "long sleeve",
+        "confidence": 0.99
+      },
+      "fit": {
+        "label": "regular fit",
+        "confidence": 0.99
+      }
     }
   }
 ]

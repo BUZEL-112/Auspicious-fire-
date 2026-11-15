@@ -414,9 +414,12 @@ def download_or_synthesize_garment_image(
     timeout: float = 2.0,
 ) -> bytes:
     """Convert a garment image URL or local file path into image bytes with fallback to local synthesis."""
-    if image_url and not image_url.startswith(("http://", "https://")) and os.path.isfile(image_url):
-        with open(image_url, "rb") as f:
-            return f.read()
+    if image_url and not image_url.startswith(("http://", "https://")):
+        # Local paths may carry metadata hints in a query string; strip it to find the file.
+        local_path = image_url.split("?", 1)[0]
+        if os.path.isfile(local_path):
+            with open(local_path, "rb") as f:
+                return f.read()
 
     if "example.com" not in image_url and image_url.startswith(("http://", "https://")):
         try:

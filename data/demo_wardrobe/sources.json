@@ -1,0 +1,421 @@
+{
+  "f1_coat_beige_trench.jpg": {
+    "source": "Pexels",
+    "page": "https://www.pexels.com/photo/5424917/",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "author": "See Pexels page",
+    "verify_key": "x5424917"
+  },
+  "f1_coat_black_puffer.jpg": {
+    "source": "Pexels",
+    "page": "https://www.pexels.com/photo/6045058/",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "author": "See Pexels page",
+    "verify_key": "x6045058",
+    "note": "cropped to the garment"
+  },
+  "f1_dress_red.jpg": {
+    "source": "Pexels",
+    "page": "https://www.pexels.com/photo/7007782/",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "author": "See Pexels page",
+    "verify_key": "x7007782"
+  },
+  "f1_pants_black_leather.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Leather_Pants_Worn_by_the_Welders_-_DPLA_-_05db71325c322151bf5acaf101546bfb_(page_1).jpg",
+    "license": "Public domain",
+    "license_url": "",
+    "author": "See Commons page",
+    "title": "File:Leather Pants Worn by the Welders - DPLA - 05db71325c322151bf5acaf101546bfb (page 1).jpg",
+    "verify_key": "p065"
+  },
+  "f1_pumps_black.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Black_Leather_Pumps_Worn_by_Bonnie_Blake_-_DPLA_-_12bcc989cf7708c987a7be7c19a640b9_(page_2).jpg",
+    "license": "Public domain",
+    "license_url": "",
+    "author": "Fitzwell",
+    "title": "File:Black Leather Pumps Worn by Bonnie Blake - DPLA - 12bcc989cf7708c987a7be7c19a640b9 (page 2).jpg",
+    "verify_key": "p369"
+  },
+  "f1_skirt_denim.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Microskirt2.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "author": "user:Safedom",
+    "title": "File:Microskirt2.jpg",
+    "verify_key": "p072"
+  },
+  "f1_sneakers_navy_canvas.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Zapatillas_tortola_1947_nueva_coleccion.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Francisco P\u00e9rez Ibarra",
+    "title": "File:Zapatillas tortola 1947 nueva coleccion.jpg",
+    "verify_key": "p155"
+  },
+  "f1_sweater_pink.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Pull_moncler_rose.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Arroser",
+    "title": "File:Pull moncler rose.jpg",
+    "verify_key": "p081"
+  },
+  "f1_tshirt_grey_graphic.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Hollow-man-shirt-grau.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Andre Turowski",
+    "title": "File:Hollow-man-shirt-grau.jpg",
+    "verify_key": "f6"
+  },
+  "f1_tshirt_white_vneck.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Camiseta_Blanca_con_cuello_en_V.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Rafasshop",
+    "title": "File:Camiseta Blanca con cuello en V.jpg",
+    "verify_key": "f0"
+  },
+  "m1_brogues_brown.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Web_SWM-Right-angle_89472ff2-95a8-4326-b561-38f216927132.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Justin Schneider",
+    "title": "File:Web SWM-Right-angle 89472ff2-95a8-4326-b561-38f216927132.jpg",
+    "verify_key": "p364"
+  },
+  "m1_chinos_beige.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Chino_pants.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "author": "Kuha455405",
+    "title": "File:Chino pants.jpg",
+    "verify_key": "c42"
+  },
+  "m1_coat_brown.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:P%C5%82aszcz_m%C4%99ski.jpg",
+    "license": "Public domain",
+    "license_url": "",
+    "author": "Unknown authorUnknown author",
+    "title": "File:P\u0142aszcz m\u0119ski.jpg",
+    "verify_key": "p082"
+  },
+  "m1_derby_brown.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:%E3%83%97%E3%83%AC%E3%83%BC%E3%83%B3%E3%83%88%E3%82%A5%E3%83%BB%E3%83%80%E3%83%BC%E3%83%93%E3%83%BC%E3%82%B7%E3%83%A5%E3%83%BC%E3%82%BA.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "\u68ee\u5965\u4f38\u4e4b\u4ecb",
+    "title": "File:\u30d7\u30ec\u30fc\u30f3\u30c8\u30a5\u30fb\u30c0\u30fc\u30d3\u30fc\u30b7\u30e5\u30fc\u30ba.jpg",
+    "verify_key": "p157"
+  },
+  "m1_jacket_brown_leather.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Museo_del_Bicentenario_-_Campera_de_gamuza_de_Fernando_De_la_R%C3%BAa.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Museo del Bicentenario\n\n\n This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license.\nYou are free:\nto share \u2013 to copy, distr",
+    "title": "File:Museo del Bicentenario - Campera de gamuza de Fernando De la R\u00faa.jpg",
+    "verify_key": "p074"
+  },
+  "m1_jeans_navy.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Jeans_Gul%26Bl%C3%A5_i_modellen_Dallas.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Eriksson Elisabeth",
+    "title": "File:Jeans Gul&Bl\u00e5 i modellen Dallas.jpg",
+    "verify_key": "p058"
+  },
+  "m1_shirt_pink_striped.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Arnaud_Rousseau_Dress_Shirt_with_a_Modern_Spread_Collar.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Ashjini",
+    "title": "File:Arnaud Rousseau Dress Shirt with a Modern Spread Collar.jpg",
+    "verify_key": "p002"
+  },
+  "m1_sneakers_navy.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:CrystaRunning.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "dfgfdd",
+    "title": "File:CrystaRunning.jpg",
+    "verify_key": "p201"
+  },
+  "m1_sweater_brown.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Polo_Ralph_Lauren_Gun_Patch_Sweater_(13973497074).jpg",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "author": "Robert Sheie",
+    "title": "File:Polo Ralph Lauren Gun Patch Sweater (13973497074).jpg",
+    "verify_key": "p079"
+  },
+  "m1_tshirt_white.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Crew_neck_T-shirt.jpg",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "author": "GlennD09",
+    "title": "File:Crew neck T-shirt.jpg",
+    "verify_key": "f1"
+  },
+  "m2_boots_black.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Doctors_1460_Black_Worn.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "IlPasseggero",
+    "title": "File:Doctors 1460 Black Worn.jpg",
+    "verify_key": "p203"
+  },
+  "m2_coat_black_leather.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Black_Leather_Coat_of_Charles_A._Lindbergh_-_DPLA_-_eec840e73527f044387d2568bbdb7f20_(page_2).jpg",
+    "license": "Public domain",
+    "license_url": "",
+    "author": "Spalding",
+    "title": "File:Black Leather Coat of Charles A. Lindbergh - DPLA - eec840e73527f044387d2568bbdb7f20 (page 2).jpg",
+    "verify_key": "p016"
+  },
+  "m2_jacket_green_parka.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:DustyRoyParka.jpg",
+    "license": "Public domain",
+    "license_url": "",
+    "author": "Dusty Roy",
+    "title": "File:DustyRoyParka.jpg",
+    "verify_key": "p047"
+  },
+  "m2_jeans_black.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Jeans_BW_2_(3213391837).jpg",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "author": "THOR",
+    "title": "File:Jeans BW 2 (3213391837).jpg",
+    "verify_key": "p056"
+  },
+  "m2_jeans_navy.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Stretch_Jeans_from_AKINGS.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "CMFong2",
+    "title": "File:Stretch Jeans from AKINGS.jpg",
+    "verify_key": "p093"
+  },
+  "m2_shirt_plaid.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Madraskarohemd_Sir_Oliver.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Labegola",
+    "title": "File:Madraskarohemd Sir Oliver.jpg",
+    "verify_key": "p070"
+  },
+  "m2_sneakers_black.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:2023_Adidas_Yeezy_Boost_350_V2_Onyx_(1).jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Jacek Halicki",
+    "title": "File:2023 Adidas Yeezy Boost 350 V2 Onyx (1).jpg",
+    "verify_key": "p168"
+  },
+  "m2_sneakers_grey.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:2023_Adidas_Yeezy_350_V2_EF2905_(2).jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Jacek Halicki",
+    "title": "File:2023 Adidas Yeezy 350 V2 EF2905 (2).jpg",
+    "verify_key": "p160"
+  },
+  "m2_sweater_grey_turtleneck.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Jersei-coll-alt.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Joan Rocaguinard",
+    "title": "File:Jersei-coll-alt.jpg",
+    "verify_key": "p059"
+  },
+  "m2_tshirt_black.jpg": {
+    "source": "Pexels",
+    "page": "https://www.pexels.com/photo/8532616/",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "author": "See Pexels page",
+    "verify_key": "x8532616"
+  },
+  "store_blazer_navy.jpg": {
+    "source": "Pexels",
+    "page": "https://www.pexels.com/photo/18951524/",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "author": "See Pexels page",
+    "verify_key": "x18951524"
+  },
+  "store_boots_black_knee.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Cizme_dama_Lady-Shoes.ro.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Mihaela Bisog",
+    "title": "File:Cizme dama Lady-Shoes.ro.jpg",
+    "verify_key": "p193"
+  },
+  "store_boots_tan.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Bota-industrial-velazis.png",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "author": "Unlimitedana",
+    "title": "File:Bota-industrial-velazis.png",
+    "verify_key": "p188"
+  },
+  "store_hat_brown_fedora.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Hat,_woman%27s_(AM_1995.101.13-5).jpg",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "author": "Unknown authorUnknown author",
+    "title": "File:Hat, woman's (AM 1995.101.13-5).jpg",
+    "verify_key": "p121"
+  },
+  "store_hat_green_beanie.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:61HMtuGvjLL._AC_SX679._SX._UX._SY._UY.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Testingphas",
+    "title": "File:61HMtuGvjLL. AC SX679. SX. UX. SY. UY.jpg",
+    "verify_key": "p099"
+  },
+  "store_hat_navy_cap.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Casquette_marine.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "\u00c9douard Hue (User:EdouardHue)",
+    "title": "File:Casquette marine.jpg",
+    "verify_key": "p110"
+  },
+  "store_loafers_brown.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Brown_JK_loafers_with_5cm_heel_(20200202020202).jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "N509FZ",
+    "title": "File:Brown JK loafers with 5cm heel (20200202020202).jpg",
+    "verify_key": "p190"
+  },
+  "store_oxford_black.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Gershwin_Black_Elevator_Shoes.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Jademaestro",
+    "title": "File:Gershwin Black Elevator Shoes.jpg",
+    "verify_key": "p214"
+  },
+  "store_oxford_tan.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Web_HC-Right-angle.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Justin Schneider",
+    "title": "File:Web HC-Right-angle.jpg",
+    "verify_key": "p363"
+  },
+  "store_pants_black_cropped.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Cycling-knickers-capri-pants.jpg",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "author": "Teamestrogen.com",
+    "title": "File:Cycling-knickers-capri-pants.jpg",
+    "verify_key": "p046"
+  },
+  "store_pants_burgundy_track.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Trainingpants.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "author": "Kuha455405",
+    "title": "File:Trainingpants.jpg",
+    "verify_key": "p095"
+  },
+  "store_pumps_red.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Skor_f%C3%B6r_kvinna._Pumpsmodell_av_m%C3%B6rkr%C3%B6tt_skinn._Fodrade_med_ljusgr%C3%A5tt_skinn,_perforerat_under_foten_-_Nordiska_museet_-_NM.0256316A-B.jpg",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "author": "Elisabeth Eriksson",
+    "title": "File:Skor f\u00f6r kvinna. Pumpsmodell av m\u00f6rkr\u00f6tt skinn. Fodrade med ljusgr\u00e5tt skinn, perforerat under foten - Nordiska museet - NM.0256316A-B.jpg",
+    "verify_key": "p355"
+  },
+  "store_sandals_black.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:GIZEH_-_Cuir_Exquisite_-_Noir.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "BirkenstockFrance",
+    "title": "File:GIZEH - Cuir Exquisite - Noir.jpg",
+    "verify_key": "p215"
+  },
+  "store_shirt_grey.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Chilean_Scouting_shirt_of_San_Ignacio.jpg",
+    "license": "Public domain",
+    "license_url": "",
+    "author": "Jorge Barrios",
+    "title": "File:Chilean Scouting shirt of San Ignacio.jpg",
+    "verify_key": "p043"
+  },
+  "store_slipon_grey.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:01828jfPhat_Classic_Perry_Ellisfvf_01.jpg",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "author": "Judgefloro",
+    "title": "File:01828jfPhat Classic Perry Ellisfvf 01.jpg",
+    "verify_key": "p158"
+  },
+  "store_sneakers_black.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:CampusTyson.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "dfgfdd",
+    "title": "File:CampusTyson.jpg",
+    "verify_key": "p143"
+  },
+  "store_sneakers_blue.jpg": {
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Campus_BlueWhite.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "dfgfdd",
+    "title": "File:Campus BlueWhite.jpg",
+    "verify_key": "p141"
+  }
+}

@@ -342,7 +342,7 @@ with tab_step1:
                         st.markdown(f"**{category}** ({color})")
                         st.caption(f"Slot: {slot} | Fabric: {fabric}")
                         if img_url:
-                            st.image(img_url, width=160)
+                            st.image(img_url.split("?", 1)[0], width=160)
 
     else:
         # Option B: Upload Custom Image
@@ -594,7 +594,7 @@ with tab_step2:
 
             with col_store_info:
                 if image_url:
-                    st.image(image_url, width=180)
+                    st.image(image_url.split("?", 1)[0], width=180)
                 st.write(f"**Price**: ${price:.2f} USD")
                 st.write(f"**Category**: {category.title()} | **Slot**: {slot.title()}")
                 st.write(f"**Color**: {color.title()} | **Fabric**: {fabric.title()}")
