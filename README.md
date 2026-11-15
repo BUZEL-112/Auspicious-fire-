@@ -76,7 +76,11 @@ Run these commands inside your Google Colab terminal, notebook cells, or remotel
 
 ```bash
 # 1. Install packages and set up dependencies
+#    (also fetches the curated demo wardrobe release, demo-wardrobe-v1)
 bash scripts/colab_setup.sh
+
+# Optional: refresh only the demo wardrobe data (photos, personas, store catalog)
+bash scripts/fetch_demo_wardrobe.sh
 
 # 2. Launch background services (PostgreSQL, MinIO, Kafka KRaft, API, Worker)
 bash scripts/start_services.sh
