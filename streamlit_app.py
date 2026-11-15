@@ -78,8 +78,10 @@ st.markdown(
 
 @st.cache_resource
 def get_cached_vision_engine() -> FashionVisionEngine:
-    """Initialize and cache the FashionVisionEngine in memory."""
-    return FashionVisionEngine()
+    """Initialize, load model weights, and cache the FashionVisionEngine in memory."""
+    engine = FashionVisionEngine()
+    engine.cold_start_init()
+    return engine
 
 
 @st.cache_data
@@ -106,6 +108,19 @@ def check_backend_api_health(api_url: str = "http://localhost:8000") -> bool:
         return resp.status_code == 200
     except Exception:
         return False
+
+
+def slot_keyed_crops(outfit_items: Dict[str, Any]) -> Dict[str, bytes]:
+    """Map outfit slots to uploaded crop bytes.
+
+    Uploaded crops are stored by item_id, but the visualizer looks images up by slot.
+    """
+    crops: Dict[str, bytes] = {}
+    for slot_key, item in outfit_items.items():
+        item_id = getattr(item, "item_id", None)
+        if item_id and item_id in st.session_state.custom_crops:
+            crops[slot_key] = st.session_state.custom_crops[item_id]
+    return crops
 
 
 def convert_manifest_user_to_wardrobe_items(user_data: Dict[str, Any]) -> List[WardrobeItem]:
@@ -491,7 +506,7 @@ with tab_step2:
                         lookbook_img = build_stacked_outfit_image(
                             outfit_items=outfit.items,
                             canvas_width=420,
-                            garment_images=st.session_state.custom_crops,
+                            garment_images=slot_keyed_crops(outfit.items),
                         )
                         st.image(lookbook_img, caption=f"Outfit #{idx + 1} Lookbook Composition", width=380)
 
@@ -647,7 +662,7 @@ with tab_step2:
                     sim_img = build_stacked_outfit_image(
                         outfit_items=sim_outfit.items,
                         canvas_width=320,
-                        garment_images=st.session_state.custom_crops,
+                        garment_images=slot_keyed_crops(sim_outfit.items),
                     )
                     st.image(sim_img, width=280)
                 else:

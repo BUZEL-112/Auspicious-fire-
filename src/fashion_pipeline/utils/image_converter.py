@@ -7,6 +7,7 @@ clean visual garment representations when offline.
 import hashlib
 import io
 import logging
+import os
 from typing import Dict, Optional, Tuple
 from urllib.parse import parse_qs, urlparse
 
@@ -412,7 +413,11 @@ def download_or_synthesize_garment_image(
     image_url: str,
     timeout: float = 2.0,
 ) -> bytes:
-    """Convert a garment image URL into image bytes with fallback to local synthesis."""
+    """Convert a garment image URL or local file path into image bytes with fallback to local synthesis."""
+    if image_url and not image_url.startswith(("http://", "https://")) and os.path.isfile(image_url):
+        with open(image_url, "rb") as f:
+            return f.read()
+
     if "example.com" not in image_url and image_url.startswith(("http://", "https://")):
         try:
             with httpx.Client(timeout=timeout) as client:

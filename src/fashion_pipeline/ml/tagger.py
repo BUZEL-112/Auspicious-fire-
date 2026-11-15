@@ -42,7 +42,7 @@ def grouped_softmax_tagging(
     for facet, text_weights in cached_text_embeddings.items():
         # text_weights: (C, D)
         # logits: (N, C) = (N, D) @ (D, C) * temperature
-        logits = torch.matmul(image_embeddings, text_weights.t()) * (temperature / 100.0)
+        logits = torch.matmul(image_embeddings, text_weights.t()) * temperature
         probs = torch.softmax(logits, dim=-1)  # (N, C)
 
         best_probs, best_indices = torch.max(probs, dim=-1)  # (N,), (N,)
